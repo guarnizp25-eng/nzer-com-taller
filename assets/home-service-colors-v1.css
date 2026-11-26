@@ -1,0 +1,106 @@
+/* NZER – Identidad cromática por servicio, inspirada en los tonos de la ardilla.
+   Se conserva el carrusel, las fotos y las ofertas demostrativas no vigentes. */
+.nzer-home-v5 .n5-carousel-slide{
+  --nzer-accent:#ff7816;
+  --nzer-ink:#075b37;
+  --nzer-wash:#fffaf3;
+  --nzer-promo-a:#0c944b;
+  --nzer-promo-b:#006338;
+  --nzer-promo-c:#003e2b;
+  --nzer-ray:rgba(177,245,71,.22);
+}
+.nzer-home-v5 .n5-carousel-slide--desarrollo{
+  --nzer-accent:#ff7816;--nzer-wash:#f1ffe8;
+  --nzer-promo-a:#3abf32;--nzer-promo-b:#087b3b;--nzer-promo-c:#004b2f;
+  --nzer-ray:rgba(214,255,64,.33);
+}
+.nzer-home-v5 .n5-carousel-slide--care{
+  --nzer-accent:#e9660a;--nzer-wash:#fff0df;
+  --nzer-promo-a:#ff9a19;--nzer-promo-b:#e96b08;--nzer-promo-c:#953d07;
+  --nzer-ray:rgba(255,237,124,.29);
+}
+.nzer-home-v5 .n5-carousel-slide--psico{
+  --nzer-accent:#ba6a08;--nzer-wash:#fff5d5;
+  --nzer-promo-a:#f2bc35;--nzer-promo-b:#b97616;--nzer-promo-c:#73420c;
+  --nzer-ray:rgba(255,246,166,.3);
+}
+.nzer-home-v5 .n5-carousel-slide--store{
+  --nzer-accent:#d85722;--nzer-wash:#ffeddf;
+  --nzer-promo-a:#ec8442;--nzer-promo-b:#bd4e25;--nzer-promo-c:#763619;
+  --nzer-ray:rgba(255,202,109,.27);
+}
+/* Fondo contrastado y luminoso junto a la fotografía, sin teñirla. */
+.nzer-home-v5 .n5-carousel-slide,
+.nzer-home-v5 .n5-carousel-slide--care,
+.nzer-home-v5 .n5-carousel-slide--psico,
+.nzer-home-v5 .n5-carousel-slide--store{
+  background:var(--nzer-wash);
+}
+.nzer-home-v5 .n5-carousel-slide::before{
+  background:linear-gradient(90deg,var(--nzer-wash) 0%,var(--nzer-wash) 21%,transparent 56%);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-kicker,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker{
+  border-left-color:var(--nzer-accent);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-kicker strong,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker strong{
+  color:#075b37;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-orange,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-orange{
+  background:var(--nzer-accent)!important;color:#fff!important;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-cta .n5-primary{
+  background:var(--nzer-accent);border-color:var(--nzer-accent);
+  color:#fff;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-cta .n5-outline{
+  color:#075b37;border-color:var(--nzer-accent);
+}
+/* Estética de alto impacto: rayos radiales, núcleo iluminado y franja cálida. */
+.nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse at 54% 50%,rgba(255,255,255,.14) 0%,transparent 49%),
+    repeating-conic-gradient(from -9deg at 48% 48%,var(--nzer-ray) 0deg 8deg,transparent 8deg 23deg),
+    radial-gradient(ellipse at 68% 38%,var(--nzer-promo-a) 0%,var(--nzer-promo-b) 43%,var(--nzer-promo-c) 100%);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{
+  display:block;content:"";position:absolute;z-index:0;
+  inset:auto -5% -4px -5%;height:18%;border-radius:45% 0 0 0;
+  background:linear-gradient(12deg,#ff6d09 0%,#ffa02d 48%,#ffd06b 100%);
+  filter:none;pointer-events:none;
+  transform:rotate(-4deg);opacity:.96;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-art,
+.nzer-home-v5 .n5-carousel-slide .n5-promo-demo{
+  position:relative;z-index:1;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-art{
+  --promo-front:#ff9819;--promo-depth:#a54506;--promo-ink:#fff;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-detail,
+.nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{
+  color:#fffaf0;text-shadow:0 2px 5px rgba(36,25,8,.5);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-claim{
+  background:linear-gradient(180deg,#ff9221,#f36b06);
+  color:white;box-shadow:0 5px 0 #a5460a,0 10px 16px #25160a70;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-demo{
+  color:#fff9e8;text-shadow:0 1px 4px #342009;
+}
+/* Pantallas reducidas: conservar efecto de luz y legibilidad. */
+@media(max-width:780px){
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
+    background:
+      radial-gradient(ellipse at 54% 50%,rgba(255,255,255,.13) 0%,transparent 50%),
+      repeating-conic-gradient(from -9deg at 48% 48%,var(--nzer-ray) 0deg 8deg,transparent 8deg 23deg),
+      radial-gradient(ellipse at 65% 35%,var(--nzer-promo-a),var(--nzer-promo-b) 50%,var(--nzer-promo-c));
+  }
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{height:13%}
+}
+@media(prefers-reduced-motion:reduce){
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{animation:none}
+}
