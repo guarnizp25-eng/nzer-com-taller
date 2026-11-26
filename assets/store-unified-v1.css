@@ -342,3 +342,33 @@
  .nzer-store-unified .nzer-christmas-discount{animation:none}
  .nzer-store-unified .nzer-christmas-slide{transition:none}
 }
+
+/* NZER STORE: efecto retrato sobresaliente: cabeza por encima del marco orgánico */
+.nzer-store-unified .nzer-christmas-left:before{
+ top:19%;
+ height:67%;
+ left:1.5%;
+ width:48%;
+}
+.nzer-store-unified .nzer-christmas-boy{
+ left:2.5%;
+ bottom:10%;
+ height:88%;
+ width:47%;
+ object-position:center 19%;
+ border-radius:49% 51% 45% 55% / 43% 46% 54% 57%;
+ z-index:3;
+ transform:rotate(-4deg);
+}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-left:before{
+  left:2%;top:18%;width:47%;height:68%;border-width:7px;
+ }
+ .nzer-store-unified .nzer-christmas-boy{
+  left:3%;bottom:10%;width:45%;height:87%;
+ }
+}
+@media(max-width:420px){
+ .nzer-store-unified .nzer-christmas-left:before{top:19%;height:67%}
+ .nzer-store-unified .nzer-christmas-boy{bottom:10%;height:86%}
+}
