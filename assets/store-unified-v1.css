@@ -400,3 +400,21 @@
  .nzer-store-unified .nzer-christmas-left:before{top:28%;height:60%}
  .nzer-store-unified .nzer-christmas-boy{bottom:7%;height:93%}
 }
+
+/* Retrato verdaderamente fuera del marco tras eliminar el fondo claro con canvas. */
+.nzer-store-unified .nzer-christmas-boy.nzer-boy-is-cutout{
+ border-radius:0!important;
+ mix-blend-mode:normal!important;
+ object-fit:contain!important;
+ object-position:center bottom!important;
+ transform:none!important;
+ left:-0.5%;bottom:4%;width:52%;height:102%;
+ z-index:4;filter:none;
+}
+.nzer-store-unified .nzer-christmas-left:before{
+ top:25%;height:65%;background:#fff9ef;
+}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-boy.nzer-boy-is-cutout{left:-1%;bottom:4%;width:51%;height:101%}
+ .nzer-store-unified .nzer-christmas-left:before{top:24%;height:65%}
+}
