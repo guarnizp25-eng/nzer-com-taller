@@ -336,21 +336,32 @@ const active=document.querySelector('.filter.active')?.dataset.category||'all';
 const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
 const sidebar=document.getElementById('nzstoreFilters');
 const chosen=name=>sidebar?[...sidebar.querySelectorAll('input[name="'+name+'"]:checked')].map(x=>x.value):[];
-const categories=chosen('nzstore-category'),prices=chosen('nzstore-price'),materials=chosen('nzstore-material');
+const categories=chosen('nzstore-category'),prices=chosen('nzstore-price'),materials=chosen('nzstore-material'),ages=chosen('nzstore-age');
+// Solo para explorar el catálogo. NO son edades recomendadas ni verificadas.
+// Sin candidatos validados para bebés de 0–12 meses.
+const exploratoryAges={
+ '1-2':['rainbow','cubes','ridecar'],
+ '2-3':['rainbow','cubes','ridecar','activity','abacus','shapes','animals','fruits'],
+ '3-5':['woodblocks','truck','ridecar','activity','abacus','rainbow','cubes','animals','fruits','shapes','hammer','toolbox','train','track','balance'],
+ '6-8':['magnet','builder','truck','excavator','toolbox','track','garage','train','woodblocks','crane','balance','hammer']
+};
 let selected=NZER_PRODUCTS.filter(p=>{
  if(active!=='all'&&p.category!==active)return false;
  const name=p.name.toLocaleLowerCase('es');
  if(categories.length&&!categories.some(cat=>cat===p.category||(cat==='rompecabezas'&&name.includes('rompecabezas'))||(cat==='herramientas'&&(name.includes('herramienta')||name.includes('martillo')))))return false;
  if(prices.length){const price=demoPrice(p);if(!prices.some(range=>range==='0-30'?price<30:range==='30-60'?price>=30&&price<60:range==='60-100'?price>=60&&price<100:price>=100))return false;}
  if(materials.includes('madera')&&!name.includes('madera'))return false;
+ if(ages.length&&!ages.some(age=>(exploratoryAges[age]||[]).includes(p.id)))return false;
  return !term||[p.name,p.desc,p.categoryLabel].join(' ').toLocaleLowerCase('es').includes(term);
 });
 const order=document.getElementById('productSort')?.value||'featured';
 const headline=document.getElementById('nzstoreResultsTitle');
 const description=document.getElementById('nzstoreResultsDescription');
-const filtering=categories.length>0||prices.length>0||materials.length>0||!!term;
+const filtering=categories.length>0||prices.length>0||materials.length>0||ages.length>0||!!term;
 if(headline)headline.textContent=filtering?'Resultados de tu búsqueda':'Juguetes destacados';
-if(description)description.textContent=filtering?'Productos que coinciden con los filtros elegidos. Puedes combinar categorías, precios y búsqueda.':'Explora los juguetes destacados de NZER y utiliza los filtros para encontrar lo que buscas.';
+if(description)description.textContent=ages.length
+ ?'Selección exploratoria por etapa, no una recomendación de edad ni seguridad. Verifica siempre edad mínima, piezas pequeñas y advertencias del fabricante antes de comprar o usar.'
+ :filtering?'Productos que coinciden con los filtros elegidos. Puedes combinar categorías, precios y búsqueda.':'Explora los juguetes destacados de NZER y utiliza los filtros para encontrar lo que buscas.';
 if(order==='featured'){
  const featuredIds=['woodblocks','truck','toolbox','ridecar','abacus','animals'];
  selected.sort((a,b)=>{
@@ -368,7 +379,7 @@ const productPath=root.dataset.productPath||'producto/index.html';
 root.innerHTML=selected.map(p=>'<article class="product-card">'+imgProduct(p)+
 '<div class="product-body"><span class="product-meta">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+
 '</p><div class="product-bottom"><b class="price">'+demoPriceMarkup(p)+'</b><button class="add-btn" type="button" data-add="'+p.id+'">+ Agregar</button></div>'+
-'<a class="product-link" href="'+productPath+'?id='+p.id+'">Ver producto →</a></div></article>').join('')||'<div class="empty">No encontramos productos con ese filtro.</div>';
+'<a class="product-link" href="'+productPath+'?id='+p.id+'">Ver producto →</a></div></article>').join('')||'<div class="empty">No encontramos productos con esos filtros. Prueba otra etapa o limpia los filtros. Las edades de uso siguen pendientes de verificación.</div>';
 root.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.add)))}
 function renderDetail(){const target=document.getElementById('productDetail');if(!target)return;
 const id=new URLSearchParams(window.location.search).get('id')||'magnet';
