@@ -1,0 +1,45 @@
+/* NZER NOSOTROS · V2 · identidad visual de Inicio, Nunito y escenas ilustrativas */
+.nz-about-page{font-family:'Nunito',Arial,sans-serif;color:#0a4931;background:#fff}
+.nz-about-page button,.nz-about-page input,.nz-about-page a,.nz-about-page h1,.nz-about-page h2,.nz-about-page h3,.nz-about-page p{font-family:'Nunito',Arial,sans-serif}
+.nz-about *{box-sizing:border-box}
+.nz-about-shell{width:min(1320px,calc(100% - 44px));margin:auto}
+.nz-about-hero{position:relative;background:radial-gradient(circle at -2% 4%,#dff4d2 0 90px,transparent 92px),radial-gradient(circle at 104% 75%,#e6f6d8 0 160px,transparent 161px),linear-gradient(110deg,#fffdf8,#fff9ef);padding:45px 0 44px;overflow:hidden}
+.nz-about-hero-grid{display:grid;grid-template-columns:minmax(0,48%) minmax(0,52%);align-items:center;gap:25px}
+.nz-about-intro{min-width:0;padding-right:13px}
+.nz-about-crumb{font-size:14px;font-weight:850;color:#0c6540;margin-bottom:22px}
+.nz-about-crumb a{color:#148552;text-decoration:none}
+.nz-about-overline{display:inline-block;color:#bd6423;font-size:13px;font-weight:1000;letter-spacing:1.25px;margin-bottom:11px}
+.nz-about-hero h1{font-size:clamp(38px,4vw,65px);font-weight:1000;line-height:1.08;letter-spacing:-1.9px;color:#06452c;margin:0 0 22px}
+.nz-about-hero h1 span{display:block;width:fit-content;background:#f67813;border-radius:20px 25px 18px 22px;color:white;padding:7px 17px 12px;transform:rotate(-1deg);font-size:.77em;letter-spacing:-1.3px}
+.nz-about-intro>p{font-size:clamp(17px,1.65vw,21px);line-height:1.55;color:#244f3b;max-width:610px;margin:0 0 27px;padding-left:18px;border-left:5px solid #badf87}
+.nz-about-pills{display:flex;flex-wrap:wrap;gap:12px}
+.nz-about-pills span{display:inline-flex;align-items:center;gap:8px;padding:10px 17px;background:#eaf5da;border-radius:35px;font-weight:950;font-size:15px;color:#065037}
+.nz-about-pills i{font-style:normal;color:#f07817;font-size:23px}
+.nz-about-photo{margin:0;position:relative;overflow:hidden;border-radius:34px;background:#e5f0df;box-shadow:0 15px 31px #345d3414;min-width:0}
+.nz-about-photo img{display:block;width:100%;height:100%;object-fit:contain}
+.nz-about-photo-hero{height:385px}
+.nz-about-photo-group{height:345px}
+.nz-about-photo figcaption{position:absolute;bottom:9px;right:9px;left:9px;text-align:center;padding:6px 10px;border-radius:9px;background:#fffbe7e9;color:#50634a;font-size:10px;font-weight:850}
+.nz-about-identity{padding:60px 0 68px;background:#fff}
+.nz-about-identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:57px;align-items:center}
+.nz-about-identity-text{max-width:640px}
+.nz-about-tag{display:inline-flex;border-radius:30px;padding:8px 16px;background:#eaf6d8;color:#18513b;font-weight:1000;font-size:14px;letter-spacing:.5px}
+.nz-about h2{font-size:clamp(32px,3.25vw,48px);color:#06492f;line-height:1.13;letter-spacing:-1.2px;font-weight:1000;margin:16px 0 19px}
+.nz-about-identity-text p{font-size:17px;line-height:1.63;color:#3d5a4c;margin:0 0 13px}
+.nz-about-action{display:inline-flex;margin-top:15px;gap:12px;align-items:center;text-decoration:none;color:white!important;background:#05864c;border-radius:35px;padding:13px 25px;font-size:16px;font-weight:1000;box-shadow:0 5px 10px #0b5a2830}
+.nz-about-values{background:#f0f8eb;padding:65px 0 77px}
+.nz-about-section-title{text-align:center;max-width:800px;margin:0 auto 27px}
+.nz-about-section-title h2{margin:0 0 13px}
+.nz-about-section-title>p{font-size:17px;color:#526e5b}
+.nz-about-values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.nz-about-values-grid article{padding:28px;background:#fff;border:1px solid #deeadb;border-radius:20px}
+.nz-about-value-icon{display:grid;place-items:center;height:55px;width:55px;background:#e9f5df;border-radius:15px;font-size:31px;color:#f1791c;margin-bottom:15px}
+.nz-about-values-grid h3{font-size:23px;font-weight:1000;color:#075638;margin:0 0 9px}
+.nz-about-values-grid p{font-size:16px;line-height:1.55;color:#547361;margin:0}
+.nz-about-close{background:#075f3b;padding:55px 0;text-align:center;color:white}
+.nz-about-close h2{color:#fff;margin:0 0 10px}
+.nz-about-close p{color:#e8fae6;font-size:17px;margin:0 0 23px}
+.nz-about-close a{display:inline-block;margin:5px 6px;padding:12px 20px;background:#f17815;border-radius:30px;color:white;text-decoration:none;font-weight:900}
+.nz-about-close a+a{background:#fff;color:#075f3b}
+@media(max-width:900px){.nz-about-hero-grid,.nz-about-identity-grid{gap:22px}.nz-about-photo-hero{height:320px}.nz-about-photo-group{height:310px}.nz-about-hero h1{font-size:clamp(34px,4.2vw,46px)}.nz-about-pills span{font-size:12px;padding:8px 11px}}
+@media(max-width:650px){.nz-about-shell{width:calc(100% - 30px)}.nz-about-hero{padding:25px 0 29px}.nz-about-hero-grid,.nz-about-identity-grid{grid-template-columns:1fr}.nz-about-hero h1{font-size:39px}.nz-about-intro>p{font-size:17px}.nz-about-crumb{margin-bottom:12px}.nz-about-pills{gap:6px}.nz-about-pills span{font-size:12px;padding:7px 11px}.nz-about-photo-hero{height:270px}.nz-about-photo-group{height:255px}.nz-about-identity{padding:38px 0 44px}.nz-about-identity-text{order:1}.nz-about-photo-group{order:2}.nz-about-identity-text p{font-size:16px}.nz-about-values{padding:40px 0 48px}.nz-about-values-grid{grid-template-columns:1fr;gap:10px}.nz-about-values-grid article{padding:20px}.nz-about-close{padding:40px 0}}
