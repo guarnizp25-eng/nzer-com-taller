@@ -2,6 +2,7 @@
 (() => {
  'use strict';
  const root=document.getElementById('nzerSearch');
+ const base=root?.dataset.base||'';
  const input=document.getElementById('nzerSearchInput');
  const panel=document.getElementById('nzerSearchPanel');
  const overlay=document.getElementById('nzerSearchOverlay');
@@ -39,13 +40,13 @@
  const escapeText=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
  function links(title,items){
   if(!items.length)return '';
-  return '<section class="nzer-search-group"><h3>'+escapeText(title)+'</h3>'+items.map(item=>'<a href="'+item.href+'"><span aria-hidden="true">'+(item.icon||'⌕')+'</span><span>'+escapeText(item.label)+'</span></a>').join('')+'</section>';
+  return '<section class="nzer-search-group"><h3>'+escapeText(title)+'</h3>'+items.map(item=>'<a href="'+base+item.href+'"><span aria-hidden="true">'+(item.icon||'⌕')+'</span><span>'+escapeText(item.label)+'</span></a>').join('')+'</section>';
  }
  function productCards(items){
   if(!items.length)return '';
   return '<section class="nzer-search-group"><h3>Productos sugeridos · precios referenciales</h3>'+items.map(item=>{
    const picture=typeof art!=='undefined'?art[item.id]||'':'';
-   return '<a class="nzer-search-result" href="store/producto/index.html?id='+encodeURIComponent(item.id)+'">'+
+   return '<a class="nzer-search-result" href="'+base+'store/producto/index.html?id='+encodeURIComponent(item.id)+'">'+
     '<span class="nzer-search-result-art" aria-hidden="true">'+picture+'</span>'+
     '<span class="nzer-search-result-info"><b>'+escapeText(item.name)+'</b><small>S/ '+Number(item.price).toFixed(2)+' · Referencial</small></span></a>';
   }).join('')+'</section>';
