@@ -1,12 +1,39 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#087c3d"><meta name="description" content="NZER en La Joya, Arequipa. Desarrollo Infantil, CARE, PSICO NZER y juguetes educativos en NZER STORE."><title>NZER | Crecemos juntos — Desarrollo Infantil y Tienda</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home-v5.css"></head>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#087c3d"><meta name="description" content="NZER en La Joya, Arequipa. Desarrollo Infantil, CARE, PSICO NZER y juguetes educativos en NZER STORE."><title>NZER | Crecemos juntos — Desarrollo Infantil y Tienda</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/home-v5.css"><link rel="stylesheet" href="assets/home-drawer-v1.css"></head>
 <body class="nzer-home-v5">
 <header class="n5-header"><div class="n5-wrap n5-nav">
 <a class="n5-brand" href="index.html" aria-label="NZER, volver a inicio"><span class="n5-mark" aria-hidden="true">N</span><span><strong class="n5-brand-name">NZER</strong><span class="n5-brand-slogan">CRECEMOS JUNTOS</span></span></a>
 <div class="n5-brand-descriptor">Desarrollo infantil,<br>familias y experiencias<br>para crecer</div>
-<nav id="navLinks" class="n5-links" aria-label="Navegación principal"><a href="index.html" class="active" aria-current="page">⌂ Inicio</a><a href="desarrollo-infantil/index.html">🌱 Desarrollo Infantil</a><a href="care/index.html">CARE</a><a href="psico/index.html">PSICO</a><a href="store/index.html">Tienda</a><a href="aprende/index.html">Aprende</a><a href="nosotros/index.html">Nosotros</a></nav>
-<div class="n5-actions"><a class="n5-search" href="#n5-productos" aria-label="Ir a productos destacados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg></a><a class="n5-cart" href="store/carrito/index.html" aria-label="Abrir carrito de demostración"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.5 13.5h12.5l2-10H6"/></svg><span data-cart-count>0</span></a><a class="n5-family" href="aprende/index.html" title="Recursos para familias">♙ Familia NZER</a><button id="mobileToggle" class="n5-mobile" aria-label="Abrir menú" aria-expanded="false" type="button">☰</button></div>
+<button id="n5HomeMenuToggle" class="n5-menu-toggle" type="button" aria-controls="n5HomeDrawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Explora NZER</button><nav class="n5-home-shortcuts" aria-label="Accesos principales"><a class="active" href="index.html" aria-current="page">Inicio</a><a href="store/index.html">Tienda</a></nav>
+<div class="n5-actions"><a class="n5-search" href="#n5-productos" aria-label="Ir a productos destacados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg></a><a class="n5-cart" href="store/carrito/index.html" aria-label="Abrir carrito de demostración"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.5 13.5h12.5l2-10H6"/></svg><span data-cart-count>0</span></a><a class="n5-family" href="aprende/index.html" title="Recursos para familias">♙ Familia NZER</a></div>
 </div></header>
+<div id="n5HomeOverlay" class="n5-drawer-overlay" hidden></div>
+<aside id="n5HomeDrawer" class="n5-drawer" role="dialog" aria-modal="true" aria-labelledby="n5HomeDrawerTitle" hidden>
+  <div class="n5-drawer-header"><div><h2 id="n5HomeDrawerTitle">Explora NZER</h2><p>Servicios y experiencias para crecer</p></div><button type="button" id="n5HomeDrawerClose" class="n5-drawer-close" aria-label="Cerrar panel">×</button></div>
+  <div class="n5-drawer-content">
+    <section class="n5-drawer-group" aria-label="Servicios de NZER"><h3>Servicios NZER</h3>
+      <a href="desarrollo-infantil/index.html">🌱 Desarrollo Infantil</a>
+      <a href="care/index.html">💚 NZER CARE</a>
+      <a href="psico/index.html">🧠 PSICO NZER</a>
+      <a href="aprende/index.html">📚 Aprende</a>
+      <a href="nosotros/index.html">🏡 Nosotros</a>
+      <a href="contacto/index.html">✉️ Contacto</a>
+    </section>
+    <section class="n5-drawer-group" aria-label="Tienda por edades"><h3>Comprar por edades</h3>
+      <a href="store/index.html?age=0-12#comprar-por-edades">👶 0–12 meses</a>
+      <a href="store/index.html?age=1-2#comprar-por-edades">🧸 1–2 años</a>
+      <a href="store/index.html?age=2-3#comprar-por-edades">🚂 2–3 años</a>
+      <a href="store/index.html?age=3-5#comprar-por-edades">🎨 3–5 años</a>
+      <a href="store/index.html?age=6-8#comprar-por-edades">🚀 6–8 años</a>
+    </section>
+    <section class="n5-drawer-group" aria-label="Categorías de la tienda"><h3>Comprar por categoría</h3>
+      <a href="store/index.html?category=construccion#catalogo">🧩 Construcción</a>
+      <a href="store/index.html?category=carros#catalogo">🚗 Carros</a>
+      <a href="store/index.html?category=madera#catalogo">🌳 Madera didáctica</a>
+      <a href="store/index.html" class="n5-drawer-cta">Visitar NZER STORE →</a>
+    </section>
+  </div>
+</aside>
 <main>
 <section class="n5-hero" aria-label="Bienvenidos a NZER"><div class="n5-wrap n5-hero-inner">
 <div class="n5-hero-copy"><span class="n5-kicker">Centro de Desarrollo Infantil</span><h1>Un espacio integral para el <span class="n5-orange">desarrollo</span> de tu hijo.</h1><p>Programas, acompañamiento profesional y juguetes educativos que impulsan el aprendizaje, la creatividad y la autonomía.</p><div class="n5-hero-cta"><a class="n5-primary" href="desarrollo-infantil/index.html">Conoce nuestros programas →</a><a class="n5-outline" href="store/index.html">Explora la tienda →</a></div></div>
@@ -24,5 +51,5 @@
 </main>
 <footer class="n5-footer"><div class="n5-wrap n5-footer-row"><div><strong>NZER · CRECEMOS JUNTOS</strong><p>Cruce La Joya, Arequipa. Demostración pública sin datos privados de niños.</p></div><div class="n5-footer-links"><a href="desarrollo-infantil/index.html">Desarrollo Infantil</a><a href="care/index.html">CARE</a><a href="psico/index.html">PSICO</a><a href="store/index.html">Tienda</a><a href="aprende/index.html">Aprende</a><a href="nosotros/index.html">Nosotros</a><a href="contacto/index.html">Contacto</a></div></div></footer>
 <div class="n5-demo">✦ DEMOSTRACIÓN · IMÁGENES ILUSTRATIVAS</div><div class="toast n5-toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/app.js" defer></script><script src="assets/home-v5.js" defer></script>
+<script src="assets/app.js" defer></script><script src="assets/home-v5.js" defer></script><script src="assets/home-drawer-v1.js" defer></script>
 </body></html>
