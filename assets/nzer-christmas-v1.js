@@ -7,7 +7,7 @@ const counter=document.getElementById('nzerChristmasPosition');
 const dots=document.getElementById('nzerChristmasDots');
 const prev=document.getElementById('nzerChristmasPrev');
 const next=document.getElementById('nzerChristmasNext');
-const items=['magnet','train','activity','track','rainbow'].map(id=>NZER_PRODUCTS.find(p=>p.id===id)).filter(Boolean);
+const items=['activity','magnet','train','track','rainbow'].map(id=>NZER_PRODUCTS.find(p=>p.id===id)).filter(Boolean);
 if(!items.length)return;
 root.innerHTML=items.map((p,i)=>{
  const discount=typeof demoDiscount==='function'?demoDiscount(p):0;
