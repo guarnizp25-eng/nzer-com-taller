@@ -1,4 +1,4 @@
-/* NZER Inicio — carrusel de cuatro servicios, intervalo 5 segundos */
+/* NZER Inicio — carrusel continuo: 1 → 2 → 3 → 4 → 1 (cada 5 segundos) */
 (() => {
  'use strict';
  const root=document.getElementById('nzerHeroCarousel');
@@ -9,17 +9,22 @@
  const prev=document.getElementById('n5CarouselPrev');
  const next=document.getElementById('n5CarouselNext');
  if(slides.length!==4||dots.length!==4||!prev||!next)return;
- const interval=5000;
- const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let active=0,timer=null;
- function show(index,announce){
-  active=(index+slides.length)%slides.length;
+
+ const DELAY=5000;
+ let active=0;
+ let timer=null;
+
+ function render(index,announce=false){
+  active=((index%slides.length)+slides.length)%slides.length;
   slides.forEach((slide,i)=>{
-   const visible=i===active;
-   slide.classList.toggle('is-active',visible);
-   slide.setAttribute('aria-hidden',String(!visible));
-   if('inert' in slide)slide.inert=!visible;
-   slide.querySelectorAll('a').forEach(a=>{if(visible)a.removeAttribute('tabindex');else a.setAttribute('tabindex','-1')});
+   const selected=i===active;
+   slide.classList.toggle('is-active',selected);
+   slide.setAttribute('aria-hidden',String(!selected));
+   if('inert' in slide)slide.inert=!selected;
+   slide.querySelectorAll('a').forEach(a=>{
+    if(selected)a.removeAttribute('tabindex');
+    else a.setAttribute('tabindex','-1');
+   });
   });
   dots.forEach((dot,i)=>{
    dot.setAttribute('aria-current',String(i===active));
@@ -27,19 +32,32 @@
   });
   if(announce&&status)status.textContent='Mostrando: '+slides[active].dataset.n5Slide;
  }
- function stop(){if(timer!==null){window.clearInterval(timer);timer=null}}
- function start(){
-  stop();
-  if(document.hidden)return;
-  timer=window.setInterval(()=>show(active+1,false),interval);
+
+ function cancel(){
+  if(timer!==null){window.clearTimeout(timer);timer=null}
  }
- function navigate(i){show(i,true);start()}
+ function schedule(){
+  cancel();
+  if(document.hidden)return;
+  timer=window.setTimeout(()=>{
+   timer=null;
+   render((active+1)%slides.length);
+   schedule(); // Al terminar la cuarta, reinicia automáticamente desde la primera.
+  },DELAY);
+ }
+ function navigate(index){
+  render(index,true);
+  schedule();
+ }
+
  prev.addEventListener('click',()=>navigate(active-1));
  next.addEventListener('click',()=>navigate(active+1));
  dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
- // La rotación permanece activa aunque el cursor o el foco estén en la franja.
- // Los controles manuales reinician el intervalo para dar tiempo a leer la diapositiva.
- document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
- show(0,false);
- start();
+ document.addEventListener('visibilitychange',()=>{
+  if(document.hidden)cancel();
+  else schedule();
+ });
+
+ render(0);
+ schedule();
 })();
