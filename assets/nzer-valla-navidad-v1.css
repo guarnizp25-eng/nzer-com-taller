@@ -1,0 +1,53 @@
+/* NZER STORE / Valla navideña original V1. Componente independiente y editable. */
+.nzv-hero{--pine:#004c2d;--orange:#ff7b0b;--yellow:#ffd52d;position:relative;overflow:hidden;isolation:isolate;background:
+ radial-gradient(ellipse at 51% 50%,rgba(32,142,66,.85) 0,transparent 39%),
+ radial-gradient(circle at 10% 80%,#0c7540,transparent 45%),
+ linear-gradient(105deg,#034c2e 0%,#075b32 65%,#033b25 100%);color:white;font-family:'Nunito',Arial,sans-serif}
+.nzv-hero *{box-sizing:border-box}
+.nzv-hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(circle at 7% 12%,#ffedb6 0 3px,transparent 10px),
+ radial-gradient(circle at 21% 5%,#ffe17d 0 5px,transparent 13px),
+ radial-gradient(circle at 34% 12%,#fff0b4 0 4px,transparent 12px),
+ radial-gradient(circle at 52% 3%,#ffe7a2 0 6px,transparent 14px),
+ radial-gradient(circle at 71% 11%,#ffe7a2 0 5px,transparent 13px),
+ radial-gradient(circle at 91% 5%,#fff0b4 0 5px,transparent 14px),
+ linear-gradient(to bottom,transparent 0 83%,rgba(39,20,4,.4) 83% 100%);opacity:.9}
+.nzv-hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:15px;background:linear-gradient(#bf8242,#855020);pointer-events:none}
+.nzv-inner{width:min(1520px,100%);min-height:440px;margin:auto;padding:32px 40px 34px;display:grid;grid-template-columns:minmax(0,34%) minmax(0,38%) minmax(0,28%);align-items:center;gap:0}
+.nzv-story{position:relative;z-index:2;padding:10px 4px 10px 0}
+.nzv-kicker{display:inline-flex;align-items:center;gap:5px;font-size:20px;font-weight:1000;letter-spacing:1px;color:#fff}
+.nzv-kicker b{display:inline-block;border-radius:12px;padding:8px 12px;background:#ff8a14;box-shadow:0 5px 0 #bd550c;font-size:15px}
+.nzv-story h1{font-size:clamp(37px,3.55vw,61px);line-height:1.02;font-weight:1000;letter-spacing:-1.7px;margin:23px 0 19px;text-shadow:0 4px 7px #002a2073}
+.nzv-story h1 span,.nzv-story h1 strong{display:block}
+.nzv-story h1 strong{position:relative;z-index:1;width:fit-content;max-width:100%;font-size:.86em;color:white;letter-spacing:-1.8px;background:#f77d0e;padding:6px 14px 10px;border-radius:16px 29px 13px 23px;transform:rotate(-2deg);box-shadow:0 5px 0 #b94b0a}
+.nzv-story p{max-width:340px;font-size:clamp(14px,1.15vw,18px);font-weight:750;line-height:1.38;margin:0 0 26px;color:#f4ffee}
+.nzv-cta{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(#ff9015,#f06706);color:white!important;text-decoration:none;border:2px solid #ffe3a4;border-radius:50px;padding:12px 20px;font-size:15px;font-weight:950;box-shadow:0 5px 0 #9d490b,0 8px 18px #002f2455;transition:transform .2s}
+.nzv-cta:hover{transform:translateY(-3px)}
+.nzv-stage{position:relative;height:395px;min-width:0;isolation:isolate;display:grid;place-items:center}
+.nzv-stage-glow{position:absolute;inset:2% -4% 10%;z-index:-1;background:radial-gradient(ellipse,#e5d35c66 0%,#ffd26d2c 32%,transparent 66%);pointer-events:none}
+.nzv-product-image{position:absolute;inset:4% 0 13%;z-index:2;display:flex;justify-content:center;align-items:center;transition:opacity .28s,transform .38s}
+.nzv-product-image.is-switching{opacity:0;transform:translateY(9px) scale(.96)}
+.nzv-product-image .nzer-product-visual{width:100%;height:100%;position:relative;display:block}
+.nzv-product-image .nzer-product-visual>svg{display:none}
+.nzv-product-image .nzer-product-visual>.nzer-product-original{opacity:1;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;mask-image:radial-gradient(ellipse 67% 64% at center,#000 58%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 67% 64% at center,#000 58%,transparent 100%);filter:drop-shadow(0 10px 10px #0006)}
+.nzv-pedestal{position:absolute;left:2%;right:2%;bottom:12%;height:65px;border-radius:50%;z-index:1;border:3px solid #f4bf70;background:linear-gradient(#f0b36b,#955218);box-shadow:0 12px 16px #001c1655,0 0 18px #efaa4c55}
+.nzv-switch{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:center;gap:17px}
+.nzv-switch button{cursor:pointer;border:0}
+.nzv-switch>button{height:32px;width:32px;border-radius:50%;background:#fff;color:#074c2c;font-size:27px;line-height:1;display:grid;place-items:center;padding:0 0 5px;box-shadow:0 3px 10px #0005}
+.nzv-dots{display:flex;gap:8px;align-items:center}
+.nzv-dots button{width:10px;height:10px;border-radius:50%;background:#fff9d5;border:1px solid white;padding:0}
+.nzv-dots button[aria-current="true"]{background:#ff8a1a;outline:2px solid #fff;transform:scale(1.2)}
+.nzv-deal{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:64px 8px 10px;min-height:385px}
+.nzv-xmas{position:absolute;top:17px;left:50%;transform:translateX(-50%) rotate(-4deg);white-space:nowrap;background:#a73e17;border:3px solid #e59c3c;color:#fff;border-radius:12px;padding:11px 13px;box-shadow:0 7px 0 #4f2b12,0 10px 15px #0005;font-size:17px;font-weight:950;letter-spacing:.3px}
+.nzv-deal h2{font-size:clamp(20px,2.1vw,31px);line-height:1.14;font-weight:1000;color:#fff;margin:8px 0;max-width:350px;text-shadow:0 3px 7px #002b207a}
+.nzv-old-price{font-size:clamp(15px,1.3vw,20px);text-decoration:line-through;text-decoration-color:#f34a3b;text-decoration-thickness:3px;color:#f2e8db}
+.nzv-discount{display:inline-grid;place-items:center;background:linear-gradient(#f72a3c,#c70b1d);border:3px solid #fff;color:white;border-radius:60px;font-weight:1000;font-size:clamp(30px,3.3vw,53px);padding:7px 22px;line-height:1.1;box-shadow:0 0 0 3px #e51f32,0 8px 13px #0005;animation:nzv-pulse 1.8s ease-in-out infinite}
+@keyframes nzv-pulse{0%,100%{transform:scale(1)}37%{transform:scale(1.16)}60%{transform:scale(1.02)}80%{transform:scale(1.1)}}
+.nzv-new-price{display:inline-block;background:#ffe02d;border-radius:60px;color:#ba2118;padding:6px 20px;font-size:clamp(26px,2.8vw,42px);font-weight:1000;line-height:1.13;box-shadow:0 5px 0 #d2a12c}
+.nzv-product-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;padding:12px 18px;border:2px solid #b1e7a1;border-radius:50px;color:white!important;background:#007a3e;font-size:13px;font-weight:950;text-decoration:none;box-shadow:0 4px 9px #001e1555}
+.nzv-foot{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px max(22px,calc((100vw - 1460px)/2)) 21px;color:#f6e8c6;font-size:10px}
+.nzv-foot a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-size:12px;font-weight:850}
+@media(max-width:1050px){.nzv-inner{padding:25px 24px 32px;grid-template-columns:35% 36% 29%}.nzv-stage{height:340px}.nzv-deal{min-height:340px}.nzv-story h1{font-size:clamp(31px,3.6vw,44px)}.nzv-xmas{font-size:13px}.nzv-deal h2{font-size:20px}}
+@media(max-width:730px){.nzv-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:28px 15px;gap:12px}.nzv-story{grid-column:1/-1;text-align:center}.nzv-story h1{font-size:clamp(35px,8vw,54px);margin:14px auto}.nzv-story h1 strong{margin:auto}.nzv-story p{margin:0 auto 18px}.nzv-kicker{font-size:18px}.nzv-stage{height:280px}.nzv-product-image{inset:4% 0 15%}.nzv-deal{min-height:280px;padding:50px 0 0}.nzv-xmas{top:4px;font-size:10px;padding:9px}.nzv-deal h2{font-size:clamp(15px,3.6vw,22px)}.nzv-discount{font-size:clamp(23px,5vw,33px);padding:6px 12px}.nzv-new-price{font-size:clamp(20px,4.5vw,29px)}.nzv-product-link{font-size:10px;padding:9px}.nzv-foot{padding:5px 15px 19px}}
+@media(max-width:420px){.nzv-inner{gap:4px;padding:20px 9px 25px}.nzv-story h1{font-size:36px}.nzv-stage{height:230px}.nzv-deal{min-height:230px}.nzv-xmas{font-size:9px}.nzv-deal h2{font-size:15px}.nzv-discount{font-size:22px}.nzv-new-price{font-size:19px;padding:5px 8px}.nzv-old-price{font-size:13px}.nzv-stage .nzv-pedestal{height:40px}.nzv-foot{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.nzv-discount{animation:none}.nzv-product-image,.nzv-cta{transition:none}}
