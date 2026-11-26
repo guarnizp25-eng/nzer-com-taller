@@ -1,0 +1,46 @@
+[
+  {
+    "id": "shape",
+    "name": "Juego de encaje",
+    "category": "juguetes",
+    "categoryLabel": "Juguetes educativos",
+    "price": 49,
+    "desc": "Piezas de formas y colores. Referencia visual de un producto educativo.",
+    "bg": "#f4e8d9",
+    "tag": "DESCUBRE Y APRENDE",
+    "ages": "Verificar edad recomendada del fabricante"
+  },
+  {
+    "id": "rainbow",
+    "name": "Arcoíris de madera",
+    "category": "juguetes",
+    "categoryLabel": "Juguetes educativos",
+    "price": 69,
+    "desc": "Piezas para construir y explorar formas. Artículo ilustrativo.",
+    "bg": "#eaf3e4",
+    "tag": "JUEGO CREATIVO",
+    "ages": "Verificar edad recomendada del fabricante"
+  },
+  {
+    "id": "book",
+    "name": "Mi primer cuento",
+    "category": "cuentos",
+    "categoryLabel": "Cuentos y libros",
+    "price": 35,
+    "desc": "Libro ilustrado pensado para compartir momentos de lectura.",
+    "bg": "#fff0dc",
+    "tag": "LECTURA EN FAMILIA",
+    "ages": "Verificar edad recomendada del fabricante"
+  },
+  {
+    "id": "bag",
+    "name": "Mochila infantil",
+    "category": "accesorios",
+    "categoryLabel": "Accesorios infantiles",
+    "price": 59,
+    "desc": "Accesorio infantil para acompañar aventuras cotidianas.",
+    "bg": "#e5edf4",
+    "tag": "ACCESORIOS",
+    "ages": "Verificar edad recomendada del fabricante"
+  }
+]
