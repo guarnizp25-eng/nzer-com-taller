@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="520" viewBox="0 0 700 520" role="img" aria-label="Ilustración de actividades NZER sin fondo"><g><g transform="translate(80 82) scale(1.03)">
+  <ellipse cx="121" cy="372" rx="99" ry="19" fill="#6D4736" opacity=".12"/>
+  <path d="M61 223Q80 191 122 190Q167 191 190 229L205 352H39L53 264Z" fill="#EF8936"/>
+  <path d="M78 239L36 305" stroke="#EF8936" stroke-width="39" stroke-linecap="round"/>
+  <path d="M172 240L225 302" stroke="#EF8936" stroke-width="39" stroke-linecap="round"/>
+  <ellipse cx="124" cy="123" rx="91" ry="98" fill="#57361E"/>
+  <ellipse cx="124" cy="141" rx="69" ry="80" fill="#E5AD82"/>
+  <path d="M55 112Q42 43 118 27Q205 20 194 117Q171 70 139 71Q110 107 55 112" fill="#57361E"/>
+  <ellipse cx="99" cy="151" rx="5" ry="6" fill="#473225"/><ellipse cx="151" cy="151" rx="5" ry="6" fill="#473225"/>
+  <path d="M107 186Q125 202 145 183" stroke="#AA6651" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M95 219Q121 248 150 219" fill="#F7CFAC"/>
+  </g><g transform="translate(365 103) scale(0.88)">
+  <ellipse cx="121" cy="372" rx="99" ry="19" fill="#6D4736" opacity=".12"/>
+  <path d="M61 223Q80 191 122 190Q167 191 190 229L205 352H39L53 264Z" fill="#EB843A"/>
+  <path d="M78 239L36 305" stroke="#EB843A" stroke-width="39" stroke-linecap="round"/>
+  <path d="M172 240L225 302" stroke="#EB843A" stroke-width="39" stroke-linecap="round"/>
+  <ellipse cx="124" cy="123" rx="91" ry="98" fill="#493027"/>
+  <ellipse cx="124" cy="141" rx="69" ry="80" fill="#E5AD82"/>
+  <path d="M55 112Q42 43 118 27Q205 20 194 117Q171 70 139 71Q110 107 55 112" fill="#493027"/>
+  <ellipse cx="99" cy="151" rx="5" ry="6" fill="#473225"/><ellipse cx="151" cy="151" rx="5" ry="6" fill="#473225"/>
+  <path d="M107 186Q125 202 145 183" stroke="#AA6651" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M95 219Q121 248 150 219" fill="#F7CFAC"/>
+  </g><g transform="translate(245 339)"><rect width="60" height="57" rx="7" fill="#F4C845"/><rect x="65" y="-39" width="65" height="96" rx="7" fill="#69B88C"/><rect x="135" y="12" width="68" height="45" rx="7" fill="#EE8534"/><path d="M62 -39L97 -80L133 -39" fill="#F57F30"/><circle cx="29" cy="-19" r="21" fill="#F47E2B"/></g></g></svg>
