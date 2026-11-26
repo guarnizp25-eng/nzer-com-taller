@@ -50,3 +50,49 @@
  .nzer-store-unified .nzer-campaign-inner{padding:30px 0 37px}
  .nzer-store-unified .nzer-campaign-buttons{gap:9px}
 }
+
+/* Banner NZER STORE: niño que señala + escaparate navideño de cinco juguetes */
+.nzer-store-unified .nzer-christmas-hero{display:grid;grid-template-columns:48% 52%;min-height:480px;overflow:hidden;background:#075b35;color:white;isolation:isolate}
+.nzer-store-unified .nzer-christmas-left{position:relative;min-width:0;min-height:480px;background:linear-gradient(130deg,#073c29,#0c7646);overflow:hidden}
+.nzer-store-unified .nzer-christmas-boy{position:absolute;bottom:0;right:0;width:70%;height:92%;object-fit:contain;object-position:center bottom;z-index:1;mix-blend-mode:normal;border:0}
+.nzer-store-unified .nzer-christmas-left:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#073c29 1%,#073c29ee 24%,transparent 61%);z-index:1}
+.nzer-store-unified .nzer-christmas-left-copy{position:absolute;z-index:2;left:max(25px,calc((100vw - 1330px)/2));top:24%;width:54%;max-width:430px}
+.nzer-store-unified .nzer-christmas-brand{font-size:12px;font-weight:900;color:#fdd18b;letter-spacing:2px}
+.nzer-store-unified .nzer-christmas-left h1{font:900 clamp(29px,3.2vw,52px)/1.06 'Nunito',sans-serif;letter-spacing:-.9px;margin:16px 0 24px;color:#fff}
+.nzer-store-unified .nzer-christmas-left h1 strong{color:#ffc72d;font-weight:900}
+.nzer-store-unified .nzer-christmas-left-copy>a{display:inline-flex;align-items:center;gap:8px;background:#ff7414;color:#fff;border-radius:11px;padding:12px 17px;font-size:12px;font-weight:900;box-shadow:0 5px 15px #002f2166}
+.nzer-store-unified .nzer-christmas-right{min-width:0;position:relative;padding:36px clamp(24px,4vw,64px) 22px;background:linear-gradient(132deg,#fff5e7,#fffdf6);color:#17452e;border-left:6px solid #e97818}
+.nzer-store-unified .nzer-christmas-heading{text-align:center}
+.nzer-store-unified .nzer-christmas-eyebrow{font-size:11px;letter-spacing:2.2px;font-weight:900;color:#ae6736}
+.nzer-store-unified .nzer-christmas-heading h2{font:900 clamp(21px,2vw,30px)/1.16 'Nunito',sans-serif;color:#085e35;margin:8px 0 15px}
+.nzer-store-unified .nzer-christmas-rotator{position:relative;min-height:280px}
+.nzer-store-unified .nzer-christmas-slide{position:absolute;inset:0;display:grid;grid-template-columns:51% 49%;align-items:center;gap:9px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .55s ease,transform .55s ease,visibility .55s}
+.nzer-store-unified .nzer-christmas-slide.is-active{opacity:1;visibility:visible;transform:translateY(0)}
+.nzer-store-unified .nzer-christmas-product-photo{width:100%;height:250px;min-width:0;display:grid;place-items:center}
+.nzer-store-unified .nzer-christmas-product-photo .nzer-product-visual{width:100%;height:100%;display:block}
+.nzer-store-unified .nzer-christmas-product-photo img{object-fit:contain!important}
+.nzer-store-unified .nzer-christmas-product-info{padding:10px 7px}
+.nzer-store-unified .nzer-christmas-product-info>span{font-size:9px;font-weight:900;letter-spacing:.6px;color:#ba783d}
+.nzer-store-unified .nzer-christmas-product-info h3{font:900 clamp(17px,1.7vw,23px)/1.14 'Nunito',sans-serif;margin:10px 0;color:#0b5935}
+.nzer-store-unified .nzer-christmas-price{color:#ed690e;font:900 23px 'Nunito',sans-serif}
+.nzer-store-unified .nzer-christmas-product-info>a{display:inline-flex;margin-top:11px;font-weight:900;color:white;background:#078747;padding:10px 14px;border-radius:9px;font-size:11px}
+.nzer-store-unified .nzer-christmas-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;font-weight:800;color:#688471;border-top:1px solid #eadcca;padding-top:8px}
+.nzer-store-unified .nzer-christmas-footer a{color:#d65c0a}
+.nzer-store-unified .nzer-christmas-disclaimer{font-size:9px;color:#8a857b;line-height:1.5;margin:8px 0 0}
+@media(max-width:1080px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:47% 53%}
+ .nzer-store-unified .nzer-christmas-left-copy{left:24px;width:65%}
+ .nzer-store-unified .nzer-christmas-boy{width:77%}
+ .nzer-store-unified .nzer-christmas-right{padding-inline:25px}
+}
+@media(max-width:720px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:1fr}
+ .nzer-store-unified .nzer-christmas-left{min-height:330px}
+ .nzer-store-unified .nzer-christmas-left-copy{left:20px;top:20%;width:53%}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(26px,6.5vw,40px)}
+ .nzer-store-unified .nzer-christmas-boy{width:69%;height:100%;right:-4%}
+ .nzer-store-unified .nzer-christmas-right{border-left:0;border-top:5px solid #e97818;padding:20px 18px}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:235px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:205px}
+}
+@media(prefers-reduced-motion:reduce){.nzer-store-unified .nzer-christmas-slide{transition:none}}
