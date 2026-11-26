@@ -95,3 +95,7 @@
  .nzer-home-v5 .ne-card-art img{object-position:center center}
  .nzer-home-v5 .ne-card-photo-note{font-size:9px;padding:4px 6px;max-width:95%;text-align:right}
 }
+
+/* NZER CARE: composición de aula grupal, integrada en la tarjeta. */
+.nzer-home-v5 .ne-care .ne-card-art img{object-fit:cover!important;object-position:center 48%!important;filter:none!important}
+.nzer-home-v5 .ne-care .ne-card-photo-note{max-width:calc(100% - 18px);font-size:9px;line-height:1.25}
