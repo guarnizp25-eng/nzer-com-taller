@@ -61,4 +61,24 @@ ageCta?.addEventListener('click',e=>{
  if(!ageSection)return;
  e.preventDefault();ageSection.scrollIntoView({behavior:'smooth',block:'start'});
 });
+
+/* Enlaces entrantes desde el menú corporativo de Inicio */
+const params=new URLSearchParams(window.location.search);
+const incomingAge={
+ '0-12':'0–12 meses','1-2':'1–2 años','2-3':'2–3 años',
+ '3-5':'3–5 años','6-8':'6–8 años'
+}[params.get('age')];
+if(incomingAge){
+ // No inventar compatibilidades por edad: solo resaltar la etapa seleccionada.
+ ageButtons.forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.nzerAge===incomingAge)));
+ if(ageResult){
+  ageResult.hidden=false;
+  ageResult.textContent='Seleccionaste '+incomingAge+'. Aún no tenemos productos con edades recomendadas verificadas por sus fabricantes. Puedes explorar todo el catálogo mientras incorporamos las fichas correspondientes.';
+ }
+}
+const incomingCategory=params.get('category');
+if(['construccion','carros','madera'].includes(incomingCategory)){
+ const filter=Array.from(document.querySelectorAll('.filter[data-category]')).find(btn=>btn.dataset.category===incomingCategory);
+ if(filter)filter.click();
+}
 })();
