@@ -3,6 +3,7 @@
 (function(){
 'use strict';
 const featuredIds=['woodblocks','truck','toolbox','ridecar','abacus','animals'];
+const productUrl=id=>(document.body.classList.contains('nzer-store-unified')?'producto/':'store/producto/')+'index.html?id='+encodeURIComponent(id);
 const cartIcon='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.5 13.5h12.5l2-10H6"/></svg>';
 function display(p){
 return '<article class="n5-product">'+
