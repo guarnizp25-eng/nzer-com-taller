@@ -59,3 +59,43 @@
 .nzer-checkout-page .nzc-bottom-note{margin-top:20px;border:1px solid #f0d9aa;border-radius:14px;background:#fffaef;padding:16px 19px;color:#876235;font-size:13px;line-height:1.5}
 @media(max-width:960px){.nzer-checkout-page .nzc-layout{grid-template-columns:minmax(0,1fr)}.nzer-checkout-page .nzc-summary{position:static}.nzer-checkout-page .nzc-main{padding:24px 0 55px}}
 @media(max-width:600px){.nzer-checkout-page .nzc-container{width:calc(100% - 26px)}.nzer-checkout-page .nzc-hero{padding:25px 0}.nzer-checkout-page .nzc-hero h1{font-size:36px}.nzer-checkout-page .nzc-hero p{font-size:15px}.nzer-checkout-page .nzc-panel-header,.nzer-checkout-page .nzc-panel-inner,.nzer-checkout-page .nzc-summary .nzc-panel-inner{padding:16px}.nzer-checkout-page .nzc-panel-header h2{font-size:21px}.nzer-checkout-page .cart-item{padding:14px}.nzer-checkout-page .cart-item .cart-product-ident{flex:1 1 100%}.nzer-checkout-page .nzc-step{font-size:11px;padding:7px 9px}}
+
+/* NZER CHECKOUT V2 · identificación moderna, guest checkout y resumen limpio */
+.nzer-checkout-page .nzc-hero{padding:29px 0 32px;background:linear-gradient(110deg,#f0f9ed,#fbf5e9)}
+.nzer-checkout-page .nzc-hero h1{font-size:clamp(38px,4.1vw,52px)}
+.nzer-checkout-page .nzc-main{background:#fcfdfa}
+.nzer-checkout-page .nzc-layout{grid-template-columns:minmax(0,1.58fr) minmax(315px,.92fr)}
+.nzer-checkout-page .nzc-panel{border-color:#dae6db;box-shadow:0 8px 24px #24462e0b}
+.nzer-checkout-page .nzc-panel-header h2{font-size:24px}
+.nzer-checkout-page .nzc-section-number{display:block;color:#b86d2b;font-size:11px;font-weight:1000;letter-spacing:1.25px;margin-bottom:8px}
+.nzer-checkout-page .nzc-optional-tag{font-size:10px;color:#37744c;background:#eaf6e7;border-radius:20px;padding:8px 11px;font-weight:1000;white-space:nowrap}
+.nzer-checkout-page .nzc-identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.nzer-checkout-page .nzc-identity-choice{display:flex;flex-direction:column;align-items:flex-start;padding:22px;border-radius:17px;border:1.5px solid #d7e7da;background:linear-gradient(155deg,#fff,#f7fbf5);min-width:0}
+.nzer-checkout-page .nzc-identity-choice h3{font-size:21px;line-height:1.2;margin:14px 0 9px;color:#085136;font-weight:1000}
+.nzer-checkout-page .nzc-identity-choice p{font-size:13px;color:#667e6b;line-height:1.55;min-height:65px;flex:1;margin:0 0 17px}
+.nzer-checkout-page .nzc-identity-illustration{display:grid;place-items:center;width:53px;height:53px;border-radius:17px;background:#e6f4e2;color:#0b7d4c}
+.nzer-checkout-page .nzc-identity-illustration svg{width:28px;height:28px}
+.nzer-checkout-page .nzc-identity-guest{background:linear-gradient(145deg,#eff9eb,#fff);border-color:#a7d1af}
+.nzer-checkout-page .nzc-identity-choice button{width:100%;min-height:45px;border-radius:11px;font-size:14px;font-weight:950;cursor:pointer;transition:background .2s}
+.nzer-checkout-page .nzc-outline-btn{border:1px solid #a8cfb6;background:white;color:#086040}
+.nzer-checkout-page .nzc-outline-btn:hover{background:#eaf7ed}
+.nzer-checkout-page .nzc-guest-btn{border:1px solid #07874d;background:#07874d;color:#fff}
+.nzer-checkout-page .nzc-guest-btn:hover{background:#066c3e}
+.nzer-checkout-page .nzc-guest-btn[aria-pressed=true]{background:#065a37;border-color:#065a37}
+.nzer-checkout-page .nzc-identity-caption{font-size:11px;font-weight:750;color:#718475;margin-top:10px}
+.nzer-checkout-page .nzc-identity-feedback{font-size:13px;font-weight:800;color:#126f47;line-height:1.45}
+.nzer-checkout-page .nzc-identity-feedback:not(:empty){margin-top:16px;padding:12px 14px;border-radius:11px;background:#edf8ea;border:1px solid #cde8cf}
+.nzer-checkout-page .nzc-summary-intro{font-size:13px;line-height:1.5;color:#71816f;margin:8px 0 23px}
+.nzer-checkout-page .nzc-summary .nzc-sumrow{margin:14px 0}
+.nzer-checkout-page .nzc-summary .nzc-total{margin-top:20px}
+.nzer-checkout-page .nzc-checkout-btn{padding:17px 19px;font-size:16px;border-radius:13px;box-shadow:0 5px 12px #da72292a}
+.nzer-checkout-page .nzc-cart-items .cart-item{gap:14px}
+.nzer-checkout-page .nzc-steps{margin-top:22px}
+@media(max-width:960px){.nzer-checkout-page .nzc-layout{grid-template-columns:1fr}}
+@media(max-width:600px){
+ .nzer-checkout-page .nzc-identity-grid{grid-template-columns:1fr}
+ .nzer-checkout-page .nzc-identity-choice{padding:19px}
+ .nzer-checkout-page .nzc-identity-choice p{min-height:0}
+ .nzer-checkout-page .nzc-optional-tag{font-size:9px}
+ .nzer-checkout-page .nzc-panel-header{gap:7px}
+}
