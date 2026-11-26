@@ -104,3 +104,63 @@
 @media(prefers-reduced-motion:reduce){
   .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{animation:none}
 }
+
+/* V2: el color de cada servicio también domina el lado izquierdo.
+   Contraste blanco sobre fondos intensos; centro fotográfico conservado. */
+.nzer-home-v5 .n5-carousel-slide--desarrollo{
+  --nzer-left:#086b39;--nzer-left-hi:#199b4c;
+}
+.nzer-home-v5 .n5-carousel-slide--care{
+  --nzer-left:#ab4209;--nzer-left-hi:#ed7610;
+}
+.nzer-home-v5 .n5-carousel-slide--psico{
+  --nzer-left:#86500c;--nzer-left-hi:#d49320;
+}
+.nzer-home-v5 .n5-carousel-slide--store{
+  --nzer-left:#8d391e;--nzer-left-hi:#dd6935;
+}
+.nzer-home-v5 .n5-carousel-slide,
+.nzer-home-v5 .n5-carousel-slide--care,
+.nzer-home-v5 .n5-carousel-slide--psico,
+.nzer-home-v5 .n5-carousel-slide--store{
+  background:var(--nzer-left,#086b39);
+}
+.nzer-home-v5 .n5-carousel-slide::before{
+  display:block;
+  background:
+    radial-gradient(ellipse at 6% 15%,rgba(255,255,255,.18),transparent 32%),
+    linear-gradient(101deg,
+      var(--nzer-left-hi,#199b4c) 0%,
+      var(--nzer-left,#086b39) 26%,
+      var(--nzer-left,#086b39) 32%,
+      transparent 50%);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy{
+  position:relative;z-index:4;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy h1,
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy>p,
+.nzer-home-v5 .n5-carousel-slide .n5-kicker strong,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker strong,
+.nzer-home-v5 .n5-carousel-slide .n5-kicker small{
+  color:#fffef6;
+  text-shadow:0 2px 6px rgba(19,37,23,.25);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-kicker,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker{
+  border-left-color:#ffe0a0;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-orange{
+  background:#ff7816!important;
+  color:#fff!important;
+  text-shadow:0 1px 2px rgba(76,31,9,.24);
+}
+@media(max-width:780px){
+  .nzer-home-v5 .n5-carousel-slide::before{display:none}
+  .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{
+    background:linear-gradient(130deg,var(--nzer-left-hi,#199b4c),var(--nzer-left,#086b39));
+    padding:22px 16px 18px;
+    margin:0 -16px;
+    width:calc(100% + 32px);
+  }
+}
