@@ -24,7 +24,7 @@ const start=()=>{
  function play(){
   pause();
   if(!document.hidden&&!reduced.matches&&!root.matches(':hover')&&!root.matches(':focus-within'))
-   timer=setInterval(()=>display(index+1),5000);
+   timer=setInterval(()=>display(index+1),3000);
  }
  document.getElementById('nzpromoPrev')?.addEventListener('click',()=>{display(index-1);play();});
  document.getElementById('nzpromoNext')?.addEventListener('click',()=>{display(index+1);play();});
