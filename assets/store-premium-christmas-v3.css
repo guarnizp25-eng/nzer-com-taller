@@ -1,0 +1,224 @@
+/* NZER STORE · Escenario Navidad V3. Franja de beneficios eliminada. */
+.nzer-store-unified .nzer-christmas-hero{
+ position:relative;isolation:isolate;display:grid;grid-template-columns:37% 63%;
+ min-height:485px;overflow:hidden;
+ background:
+ radial-gradient(circle at 44% 5%,#fff2ac 0 3px,transparent 9px),
+ radial-gradient(circle at 30% 8%,#f4c756 0 3px,transparent 11px),
+ radial-gradient(circle at 62% 4%,#ffdf80 0 4px,transparent 12px),
+ radial-gradient(circle at 77% 10%,#ffe8a3 0 4px,transparent 13px),
+ radial-gradient(ellipse at 53% 50%,#146e3d 0%,transparent 57%),
+ linear-gradient(115deg,#002e1c,#075b34 51%,#02391f 100%);
+ color:#fff;
+}
+.nzer-store-unified .nzer-christmas-hero:before{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:linear-gradient(0deg,rgba(89,40,10,.24) 0 13%,transparent 13% 100%),
+ repeating-linear-gradient(90deg,transparent 0 19%,#ffffff08 20%,transparent 21% 39%);
+}
+.nzer-store-unified .nzer-christmas-hero:after{
+ content:"";position:absolute;bottom:0;left:0;right:0;height:23px;
+ z-index:0;pointer-events:none;background:linear-gradient(#a76b33,#75401b);
+ border-radius:0;transform:none;
+}
+.nzer-store-unified .nzer-christmas-left{
+ position:relative;z-index:2;display:flex;align-items:center;min-height:485px;
+ padding:57px 8px 62px max(28px,calc((100vw - 1350px)/2));
+ background:transparent;overflow:visible;
+}
+.nzer-store-unified .nzer-christmas-left:before,
+.nzer-store-unified .nzer-christmas-left:after{display:none!important;content:none!important}
+.nzer-store-unified .nzer-christmas-left-copy{
+ position:relative;left:auto;top:auto;width:100%;max-width:510px;
+ text-shadow:none;pointer-events:auto;
+}
+.nzer-store-unified .nzer-christmas-brand{
+ display:inline-block;border-radius:99px;background:#f8a813;color:#074a28;
+ padding:10px 17px;letter-spacing:.6px;font-size:13px;
+}
+.nzer-store-unified .nzer-christmas-left h1{
+ font:1000 clamp(34px,3.6vw,58px)/1.08 'Nunito',Arial,sans-serif;
+ color:#fff;letter-spacing:-1.4px;margin:19px 0 22px;
+ text-shadow:0 4px 8px #002c2077;
+}
+.nzer-store-unified .nzer-christmas-left h1 strong{
+ display:inline;color:#fff;background:#f47d13;box-shadow:0 5px 0 #ad4b0f;
+ border-radius:19px 28px 12px 22px;padding:0 10px 6px;font:inherit;
+ font-size:.87em;white-space:normal;letter-spacing:-1.1px;transform:rotate(-2deg);
+}
+.nzer-store-unified .nzer-christmas-tagline{
+ color:#fff4dd;font-size:clamp(13px,1.2vw,17px);font-weight:750;
+ max-width:320px;line-height:1.35;margin:0 0 24px;
+}
+.nzer-store-unified .nzer-christmas-ctas{display:flex;flex-wrap:wrap;gap:10px}
+.nzer-store-unified .nzer-christmas-ctas a{
+ min-height:45px;display:inline-flex;align-items:center;border-radius:99px;
+ padding:12px 19px;font-size:12px;font-weight:900;transition:transform .2s;
+}
+.nzer-store-unified .nzer-christmas-offers-cta{
+ color:#fff;background:linear-gradient(#fc8a12,#e65b0b);
+ box-shadow:0 5px 0 #a94913,0 6px 16px #0005;
+}
+.nzer-store-unified .nzer-christmas-age-cta{color:#fff;border:1px solid #fffa;background:#00623988}
+.nzer-store-unified .nzer-christmas-ctas a:hover{transform:translateY(-2px)}
+.nzer-store-unified .nzer-premium-lights{
+ position:absolute;top:0;left:0;right:0;height:65px;z-index:1;
+ pointer-events:none;filter:drop-shadow(0 0 7px #ffd95a);
+ background:
+ radial-gradient(circle at 10% 34%,#ffe681 0 5px,transparent 7px),
+ radial-gradient(circle at 29% 18%,#ffcb64 0 5px,transparent 8px),
+ radial-gradient(circle at 53% 42%,#ffea99 0 6px,transparent 9px),
+ radial-gradient(circle at 78% 19%,#ffe7a4 0 5px,transparent 9px),
+ radial-gradient(circle at 95% 37%,#ffe7a4 0 5px,transparent 9px);
+}
+.nzer-store-unified .nzer-premium-star{
+ position:absolute;top:10%;right:8%;color:#ffc83f;font-size:45px;
+ transform:rotate(12deg);z-index:2;text-shadow:0 4px 13px #0005;
+}
+.nzer-store-unified .nzer-christmas-right{
+ position:relative;z-index:2;align-self:stretch;
+ display:flex;flex-direction:column;justify-content:center;
+ margin:0;padding:25px max(30px,calc((100vw - 1490px)/2)) 20px 2px;
+ min-height:485px;border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+.nzer-store-unified .nzer-christmas-heading{
+ position:absolute;z-index:5;right:7%;top:18px;text-align:right;
+ pointer-events:none;
+}
+.nzer-store-unified .nzer-christmas-eyebrow{
+ display:inline-block;margin:0;padding:11px 18px;transform:rotate(-5deg);
+ color:#fff;background:linear-gradient(155deg,#a64112,#5c270e);
+ border:3px solid #ef9e39;border-radius:17px;
+ box-shadow:0 5px 0 #49250e,0 7px 19px #0006;
+ font:1000 19px/1.1 'Nunito',Arial,sans-serif;
+ letter-spacing:0;
+}
+.nzer-store-unified .nzer-christmas-hidden-heading{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.nzer-store-unified .nzer-christmas-carousel-controls{
+ display:grid;grid-template-columns:28px minmax(0,1fr) 28px;
+ align-items:center;gap:0;
+}
+.nzer-store-unified .nzer-christmas-arrow{
+ width:29px;height:43px;border-radius:99px;
+ border:2px solid white;background:#ffffffee;color:#0a4b2d;
+ padding:0 0 5px;font-size:31px;z-index:9;cursor:pointer;
+ box-shadow:0 4px 13px #0004;
+}
+.nzer-store-unified .nzer-christmas-arrow:hover{background:#ffdb45}
+.nzer-store-unified .nzer-christmas-rotator{position:relative;min-height:354px}
+.nzer-store-unified .nzer-christmas-slide{
+ grid-template-columns:minmax(0,56%) minmax(0,44%);
+ gap:0;transform:translateX(14px);
+ transition:opacity .55s,transform .55s,visibility .55s;
+}
+.nzer-store-unified .nzer-christmas-slide.is-active{transform:translateX(0)}
+.nzer-store-unified .nzer-christmas-product-photo{
+ position:relative;height:336px;display:grid;place-items:center;padding:14px 0 35px;
+ background:transparent;border-radius:0;overflow:visible;
+}
+.nzer-store-unified .nzer-christmas-product-photo:before{
+ content:"";position:absolute;left:2%;right:2%;bottom:15px;height:63px;
+ background:linear-gradient(#d49b54,#8d521f);
+ border:3px solid #edc27d;border-radius:50%;
+ box-shadow:0 14px 19px #0005,0 0 18px #f7bb5177;z-index:0;
+}
+.nzer-store-unified .nzer-christmas-product-photo .nzer-product-visual{
+ position:relative;z-index:2;width:100%;height:100%;
+}
+.nzer-store-unified .nzer-christmas-product-photo img{
+ object-fit:contain!important;mix-blend-mode:multiply;
+}
+.nzer-store-unified .nzer-christmas-product-info{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ text-align:center;min-width:0;min-height:304px;
+ padding:40px 15px 14px;
+ color:#085231;background:linear-gradient(130deg,#fffdf8,#fff3dc);
+ border:4px solid #f5a32c;
+ border-radius:32% 22% 30% 20% / 17% 16% 22% 24%;
+ box-shadow:0 10px 20px #0004;
+}
+.nzer-store-unified .nzer-christmas-product-info>span{
+ color:#a36a35;font-size:9px;font-weight:900;
+}
+.nzer-store-unified .nzer-christmas-product-info h3{
+ color:#07472e;font:1000 clamp(16px,1.6vw,25px)/1.14 'Nunito',Arial,sans-serif;
+ margin:10px 0;
+}
+.nzer-store-unified .nzer-christmas-offer-line{justify-content:center;gap:8px;margin:8px 0 4px}
+.nzer-store-unified .nzer-christmas-offer-line del{color:#8e918e;font-size:13px}
+.nzer-store-unified .nzer-christmas-discount{
+ display:inline-grid;place-items:center;background:#e81726;color:#fff;
+ font:1000 clamp(21px,2.4vw,35px)/1 'Nunito',Arial,sans-serif;
+ border:3px solid white;border-radius:100px;padding:8px 15px;
+ box-shadow:0 0 0 2px #e41625,0 7px 14px #a9003a55;
+ animation:nzer-v3-pulse 1.7s ease-in-out infinite;
+}
+@keyframes nzer-v3-pulse{
+ 0%,100%{transform:scale(1)}
+ 38%{transform:scale(1.2)}
+ 58%{transform:scale(1.04)}
+ 80%{transform:scale(1.13)}
+}
+.nzer-store-unified .nzer-christmas-price{
+ background:#ffe031;color:#c71912;border-radius:99px;
+ font:1000 clamp(20px,2vw,31px)/1.2 'Nunito',Arial,sans-serif;
+ padding:6px 15px;margin:9px 0 0;
+}
+.nzer-store-unified .nzer-christmas-product-info>a{
+ margin:10px 0 0;padding:9px 12px;background:#087a43;color:#fff;
+ border-radius:99px;font-size:11px;
+}
+.nzer-store-unified .nzer-christmas-footer{
+ margin:0 0 4px;padding:0;gap:8px;border:0;
+ display:flex;align-items:center;justify-content:center;color:#e3e9df;
+}
+.nzer-store-unified .nzer-christmas-dots{display:flex;gap:9px}
+.nzer-store-unified .nzer-christmas-dot{
+ height:11px;width:11px;border-radius:50%;padding:0;
+ background:#e7eadf;border:1px solid #fff;
+}
+.nzer-store-unified .nzer-christmas-dot.is-active{background:#fe8b1c;outline:2px solid #fff}
+.nzer-store-unified .nzer-christmas-footer a{color:#fff9d3;font-size:11px;font-weight:900}
+.nzer-store-unified .nzer-christmas-disclaimer{
+ color:#ffffffbd;font-size:9px;text-align:center;margin:8px 0 0;
+}
+.nzer-store-unified .nzer-premium-gift{position:absolute;right:-7px;bottom:2px;font-size:34px;z-index:5;pointer-events:none}
+@media(max-width:1100px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:38% 62%}
+ .nzer-store-unified .nzer-christmas-left{padding-left:18px}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(33px,3.9vw,47px)}
+ .nzer-store-unified .nzer-christmas-product-photo{height:300px}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:320px}
+ .nzer-store-unified .nzer-christmas-product-info{padding:31px 9px 12px}
+}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:1fr;min-height:0}
+ .nzer-store-unified .nzer-christmas-left{min-height:0;padding:45px 23px 25px}
+ .nzer-store-unified .nzer-christmas-left-copy{text-align:center;max-width:none}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(35px,8vw,58px)}
+ .nzer-store-unified .nzer-christmas-tagline{margin:0 auto 24px}
+ .nzer-store-unified .nzer-christmas-ctas{justify-content:center}
+ .nzer-store-unified .nzer-christmas-right{min-height:0;padding:38px 14px 38px}
+ .nzer-store-unified .nzer-christmas-heading{top:6px;right:9%}
+ .nzer-store-unified .nzer-christmas-eyebrow{font-size:14px}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:290px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:273px}
+ .nzer-store-unified .nzer-christmas-product-info{min-height:262px}
+}
+@media(max-width:430px){
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(31px,8vw,40px)}
+ .nzer-store-unified .nzer-christmas-slide{grid-template-columns:50% 50%}
+ .nzer-store-unified .nzer-christmas-carousel-controls{grid-template-columns:21px minmax(0,1fr) 21px}
+ .nzer-store-unified .nzer-christmas-arrow{width:22px;height:35px;font-size:23px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:230px;padding:4px 0 27px}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:244px}
+ .nzer-store-unified .nzer-christmas-product-info{min-height:226px;padding:22px 5px 12px}
+ .nzer-store-unified .nzer-christmas-product-info h3{font-size:14px}
+ .nzer-store-unified .nzer-christmas-discount{font-size:19px;padding:6px 8px}
+ .nzer-store-unified .nzer-christmas-price{font-size:20px;padding:4px 9px}
+ .nzer-store-unified .nzer-christmas-product-info>a{font-size:9px;padding:7px 9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-store-unified .nzer-christmas-discount{animation:none}
+ .nzer-store-unified .nzer-christmas-slide{transition:none}
+}
