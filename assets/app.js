@@ -300,13 +300,22 @@ s+=sq(37,149,167,13,'#CDA270',4);break;
 default:s+=cr(120,105,65,'#f70');}
 return toySvg(s,id);}
 const art=Object.fromEntries(NZER_PRODUCTS.map(p=>[p.id,toyArt(p.id)]));
+/* Fotografías originales NZER STORE: se muestran al subir los archivos.
+   Mientras un archivo no exista, permanece la ilustración anterior. */
+const NZER_PRODUCT_PHOTO_ROOT=new URL('productos-originales/',document.querySelector('script[src*="assets/app.js"]')?.src||document.baseURI).href;
+function productArtwork(p){
+ const path=NZER_PRODUCT_PHOTO_ROOT+encodeURIComponent(p.id)+'.webp';
+ return '<span class="nzer-product-visual">'+art[p.id]+
+  '<img class="nzer-product-original" src="'+path+'" alt="Imagen conceptual original de '+p.name.replace(/"/g,'&quot;')+'" loading="lazy" decoding="async" onload="this.classList.add(\'is-loaded\')" onerror="this.remove()"></span>';
+}
+
 function getCart(){try{const v=JSON.parse(localStorage.getItem(CART_KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch(e){return {}}}
 function saveCart(cart){try{localStorage.setItem(CART_KEY,JSON.stringify(cart))}catch(e){}updateCartBadge()}
 function countCart(){return Object.values(getCart()).reduce((sum,v)=>sum+(Number.isInteger(v)&&v>0?v:0),0)}
 function updateCartBadge(){document.querySelectorAll('[data-cart-count]').forEach(x=>x.textContent=countCart())}
 function money(n){return 'S/ '+Number(n).toFixed(0)}
 function toast(message){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window.nzerToast);window.nzerToast=setTimeout(()=>el.classList.remove('show'),2800)}
-function imgProduct(p){return '<div class="product-image" style="background:'+p.bg+'"><span class="product-label">'+p.categoryLabel+'</span>'+art[p.id]+'</div>'}
+function imgProduct(p){return '<div class="product-image" style="background:'+p.bg+'"><span class="product-label">'+p.categoryLabel+'</span>'+productArtwork(p)+'</div>'}
 function addToCart(id){const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;const c=getCart();c[id]=Math.min(99,(Number(c[id])||0)+1);saveCart(c);toast('Producto referencial agregado al carrito de demostración')}
 function renderShop(){const root=document.getElementById('productGrid');if(!root)return;
 const active=document.querySelector('.filter.active')?.dataset.category||'all';
@@ -338,7 +347,7 @@ function renderCart(){const root=document.getElementById('cartItems');if(!root)r
 const c=getCart();
 const entries=Object.entries(c).filter(([id,qty])=>NZER_PRODUCTS.some(p=>p.id===id)&&Number.isInteger(qty)&&qty>0);
 if(!entries.length){root.innerHTML='<div class="empty"><div class="emoji">🛍️</div><h3>Tu carrito está vacío</h3><p>Visita nuestro catálogo de demostración.</p><p style="margin-top:18px"><a class="btn forest" href="../index.html">Ir al catálogo →</a></p></div>'}
-else{root.innerHTML=entries.map(([id,qty])=>{const p=NZER_PRODUCTS.find(x=>x.id===id);return '<div class="cart-item"><div class="cart-product-ident"><div class="cart-thumb" style="background:'+p.bg+'">'+art[id]+'</div><div><b>'+p.name+'</b><p>'+money(p.price)+' por unidad</p></div></div><div class="qty"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Disminuir cantidad">−</button><b>'+qty+'</b><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad">+</button></div><b>'+money(p.price*qty)+'</b></div>'}).join('')}
+else{root.innerHTML=entries.map(([id,qty])=>{const p=NZER_PRODUCTS.find(x=>x.id===id);return '<div class="cart-item"><div class="cart-product-ident"><div class="cart-thumb" style="background:'+p.bg+'">'+productArtwork(p)+'</div><div><b>'+p.name+'</b><p>'+money(p.price)+' por unidad</p></div></div><div class="qty"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Disminuir cantidad">−</button><b>'+qty+'</b><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad">+</button></div><b>'+money(p.price*qty)+'</b></div>'}).join('')}
 root.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>{const d=Number(b.dataset.delta),old=getCart(),k=b.dataset.qty;old[k]=Math.max(0,Math.min(99,(old[k]||0)+d));saveCart(old);renderCart()}));
 const total=entries.reduce((sum,[id,qty])=>sum+NZER_PRODUCTS.find(x=>x.id===id).price*qty,0);
 document.querySelectorAll('[data-subtotal]').forEach(x=>x.textContent=money(total));
