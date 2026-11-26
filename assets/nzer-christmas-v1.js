@@ -21,12 +21,11 @@
   slides.forEach((slide,j)=>{const on=active===j;slide.classList.toggle('is-active',on);slide.setAttribute('aria-hidden',String(!on));if(on)slide.removeAttribute('inert');else slide.setAttribute('inert','');});
   if(counter)counter.textContent=(active+1)+' de '+slides.length;
  }
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
  let timer=null;
  function start(){if(!timer)timer=window.setInterval(()=>show(active+1),3000)}
  function stop(){if(timer){window.clearInterval(timer);timer=null}}
- root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',start);
- root.addEventListener('focusin',stop);root.addEventListener('focusout',()=>{if(!root.contains(document.activeElement))start()});
+ root.addEventListener('focusin',stop);
+ root.addEventListener('focusout',()=>{if(!root.contains(document.activeElement))start()});
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
- start();
+ if(!document.hidden)start();
 })();
