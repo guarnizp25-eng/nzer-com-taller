@@ -1,0 +1,41 @@
+/* NZER INICIO · expansión institucional V1: secciones bajo portada */
+.nzer-home-v5 .nzer-expanded{--ne-green:#075d39;--ne-deep:#08432f;--ne-orange:#ed7517;--ne-cream:#fffaf2;color:var(--ne-deep)}
+.nzer-home-v5 .nzer-expanded .ne-wrap{width:min(1300px,calc(100% - 48px));margin:0 auto}
+.nzer-home-v5 .nzer-expanded .ne-eyebrow{display:inline-block;font-size:12px;letter-spacing:1.65px;font-weight:950;color:#bd6730;margin-bottom:10px}
+.nzer-home-v5 .nzer-expanded h2{font-size:clamp(29px,3.1vw,43px);line-height:1.13;font-weight:1000;letter-spacing:-.6px;color:#075a39;margin:0 0 13px}
+.nzer-home-v5 .nzer-expanded p{line-height:1.7;color:#577466;font-size:16px;margin:0}
+.nzer-home-v5 .ne-service-section{padding:66px 0 77px;background:#fff}
+.nzer-home-v5 .ne-intro{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
+.nzer-home-v5 .ne-intro>div{max-width:750px}
+.nzer-home-v5 .ne-intro>a{color:#087a45;font-size:14px;font-weight:900;text-decoration:none;white-space:nowrap}
+.nzer-home-v5 .ne-services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.nzer-home-v5 .ne-card{display:flex;flex-direction:column;overflow:hidden;min-width:0;border-radius:20px;background:#f8fbf6;border:1px solid #d9e9db;box-shadow:0 8px 25px #194d3110;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.nzer-home-v5 .ne-card:hover{transform:translateY(-4px);box-shadow:0 15px 32px #194d3120}
+.nzer-home-v5 .ne-card-art{position:relative;min-height:155px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e8f2e4}
+.nzer-home-v5 .ne-card-art:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;top:35%;left:52%;background:#ffffff3c}
+.nzer-home-v5 .ne-card-art .ne-card-monogram{position:relative;font:1000 66px Nunito,Arial,sans-serif;letter-spacing:-4px;color:#fff;text-shadow:0 7px 15px #06462c3b}
+.nzer-home-v5 .ne-care .ne-card-art{background:linear-gradient(140deg,#0a7e4d,#075332)}
+.nzer-home-v5 .ne-desarrollo .ne-card-art{background:linear-gradient(140deg,#e66f19,#ad4817)}
+.nzer-home-v5 .ne-psico .ne-card-art{background:linear-gradient(140deg,#b77736,#6b431e)}
+.nzer-home-v5 .ne-store .ne-card-art{background:linear-gradient(140deg,#0b6548,#db8030)}
+.nzer-home-v5 .ne-card-body{padding:22px 21px 23px;display:flex;flex-direction:column;gap:10px;flex:1}
+.nzer-home-v5 .ne-card-body small{font-size:11px;letter-spacing:1.1px;font-weight:950;color:#a25d2c}
+.nzer-home-v5 .ne-card-body h3{font-size:24px;line-height:1.2;font-weight:1000;margin:0;color:#074d32}
+.nzer-home-v5 .ne-card-body p{font-size:14px;line-height:1.55;flex:1}
+.nzer-home-v5 .ne-card-link{display:inline-flex;gap:6px;align-items:center;color:#087845;font-size:14px;font-weight:950;margin-top:8px}
+.nzer-home-v5 .ne-values-section{background:#eef7ec;padding:66px 0 72px}
+.nzer-home-v5 .ne-values-head{max-width:800px;text-align:center;margin:0 auto 27px}
+.nzer-home-v5 .ne-value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.nzer-home-v5 .ne-value{background:white;padding:29px;border-radius:19px;border:1px solid #dce8db}
+.nzer-home-v5 .ne-value-number{display:inline-grid;place-items:center;width:45px;height:45px;border-radius:14px;background:#ecf8e9;font-weight:1000;font-size:21px;color:#087c46;margin-bottom:14px}
+.nzer-home-v5 .ne-value h3{font-size:21px;color:#075634;margin:0 0 8px}
+.nzer-home-v5 .ne-value p{font-size:14px}
+.nzer-home-v5 .ne-family-section{padding:65px 0;background:#fff}
+.nzer-home-v5 .ne-family-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:25px;background:linear-gradient(106deg,#075b39,#0a7645);border-radius:23px;padding:38px 43px;color:#fff}
+.nzer-home-v5 .ne-family-panel .ne-eyebrow{color:#ffcc8f}
+.nzer-home-v5 .ne-family-panel h2{color:#fff;margin-bottom:9px}
+.nzer-home-v5 .ne-family-panel p{color:#e6f6e9;max-width:710px;font-size:15px}
+.nzer-home-v5 .ne-family-panel a{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:49px;padding:12px 23px;border-radius:30px;background:#f57916;color:#fff;text-decoration:none;font-size:14px;font-weight:950;white-space:nowrap}
+.nzer-home-v5 .n5-next{padding-top:46px;padding-bottom:46px}
+@media(max-width:960px){.nzer-home-v5 .ne-services{grid-template-columns:repeat(2,minmax(0,1fr))}.nzer-home-v5 .ne-family-panel{grid-template-columns:1fr}.nzer-home-v5 .ne-value-grid{gap:10px}.nzer-home-v5 .ne-value{padding:22px}}
+@media(max-width:620px){.nzer-home-v5 .nzer-expanded .ne-wrap{width:calc(100% - 30px)}.nzer-home-v5 .ne-service-section,.nzer-home-v5 .ne-values-section,.nzer-home-v5 .ne-family-section{padding:41px 0}.nzer-home-v5 .ne-intro{display:block}.nzer-home-v5 .ne-intro>a{display:inline-block;margin-top:15px}.nzer-home-v5 .ne-services{gap:10px}.nzer-home-v5 .ne-card-art{min-height:103px}.nzer-home-v5 .ne-card-art .ne-card-monogram{font-size:48px}.nzer-home-v5 .ne-card-body{padding:15px;gap:7px}.nzer-home-v5 .ne-card-body h3{font-size:19px}.nzer-home-v5 .ne-card-body p{font-size:12px;line-height:1.5}.nzer-home-v5 .ne-card-link{font-size:12px}.nzer-home-v5 .ne-value-grid{grid-template-columns:1fr}.nzer-home-v5 .ne-family-panel{padding:28px 23px}.nzer-home-v5 .ne-family-panel a{white-space:normal}}
