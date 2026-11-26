@@ -39,3 +39,44 @@
 .nzer-home-v5 .n5-next{padding-top:46px;padding-bottom:46px}
 @media(max-width:960px){.nzer-home-v5 .ne-services{grid-template-columns:repeat(2,minmax(0,1fr))}.nzer-home-v5 .ne-family-panel{grid-template-columns:1fr}.nzer-home-v5 .ne-value-grid{gap:10px}.nzer-home-v5 .ne-value{padding:22px}}
 @media(max-width:620px){.nzer-home-v5 .nzer-expanded .ne-wrap{width:calc(100% - 30px)}.nzer-home-v5 .ne-service-section,.nzer-home-v5 .ne-values-section,.nzer-home-v5 .ne-family-section{padding:41px 0}.nzer-home-v5 .ne-intro{display:block}.nzer-home-v5 .ne-intro>a{display:inline-block;margin-top:15px}.nzer-home-v5 .ne-services{gap:10px}.nzer-home-v5 .ne-card-art{min-height:103px}.nzer-home-v5 .ne-card-art .ne-card-monogram{font-size:48px}.nzer-home-v5 .ne-card-body{padding:15px;gap:7px}.nzer-home-v5 .ne-card-body h3{font-size:19px}.nzer-home-v5 .ne-card-body p{font-size:12px;line-height:1.5}.nzer-home-v5 .ne-card-link{font-size:12px}.nzer-home-v5 .ne-value-grid{grid-template-columns:1fr}.nzer-home-v5 .ne-family-panel{padding:28px 23px}.nzer-home-v5 .ne-family-panel a{white-space:normal}}
+
+/* NZER: Quienes somos, experiencias reales del servicio y reseñas sin datos ficticios */
+.nzer-home-v5 .ne-about-section{padding:70px 0 60px;background:#fff}
+.nzer-home-v5 .ne-about-layout{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
+.nzer-home-v5 .ne-about-text{max-width:610px}
+.nzer-home-v5 .ne-about-text h2 span{color:#e9791e}
+.nzer-home-v5 .ne-about-text p+p{margin-top:14px}
+.nzer-home-v5 .ne-text-link{display:inline-block;margin-top:20px;color:#087c49;font-weight:900;font-size:15px;text-decoration:underline;text-underline-offset:5px}
+.nzer-home-v5 .ne-about-visual{position:relative;overflow:hidden;border-radius:24px;background:#e7f5e9;min-height:310px;display:flex;align-items:center;justify-content:center}
+.nzer-home-v5 .ne-about-visual img{width:100%;height:345px;object-fit:contain}
+.nzer-home-v5 .ne-about-visual>span{position:absolute;bottom:9px;left:10px;right:10px;text-align:center;background:#fffde5e8;border-radius:8px;color:#657361;padding:5px 8px;font-size:10px;font-weight:750}
+.nzer-home-v5 .ne-experiences-section{padding:70px 0 75px;background:#fffdf8}
+.nzer-home-v5 .ne-experiences-head{max-width:830px;margin-bottom:26px}
+.nzer-home-v5 .ne-experiences-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.nzer-home-v5 .ne-experience{background:white;border-radius:20px;overflow:hidden;border:1px solid #e1e9de;box-shadow:0 6px 23px #164a2b0a}
+.nzer-home-v5 .ne-experience-photo{position:relative;background:#f0f6ed;height:235px;overflow:hidden}
+.nzer-home-v5 .ne-experience-photo img{width:100%;height:100%;object-fit:contain}
+.nzer-home-v5 .ne-experience-photo>span{position:absolute;bottom:10px;right:10px;font-size:10px;background:#fffdf2;padding:5px 8px;border-radius:7px;color:#587060}
+.nzer-home-v5 .ne-experience-body{padding:22px}
+.nzer-home-v5 .ne-experience-body>span{font-size:11px;letter-spacing:1.2px;font-weight:950;color:#bc712c}
+.nzer-home-v5 .ne-experience-body h3{font-size:23px;color:#075837;margin:8px 0}
+.nzer-home-v5 .ne-experience-body p{font-size:14px}
+.nzer-home-v5 .ne-reviews-section{padding:70px 0 76px;background:#f6fbf4}
+.nzer-home-v5 .ne-reviews-heading{max-width:850px;margin-bottom:28px}
+.nzer-home-v5 .ne-reviews-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:20px}
+.nzer-home-v5 .ne-reviews-status,.nzer-home-v5 .ne-review-draft{background:#fff;border:1px solid #dfebe0;border-radius:22px;padding:30px;min-width:0}
+.nzer-home-v5 .ne-stars-symbol{display:block;color:#df9c31;font-size:32px;letter-spacing:3px;margin-bottom:14px}
+.nzer-home-v5 .ne-reviews-layout h3{font-size:24px;color:#075333;line-height:1.2;margin:0 0 12px}
+.nzer-home-v5 .ne-reviews-layout p{font-size:14px;line-height:1.6}
+.nzer-home-v5 .ne-reviews-layout .ne-reviews-small{font-size:12px;margin-top:20px;color:#7e887c}
+.nzer-home-v5 .ne-rating-selector{display:flex;gap:8px;margin:13px 0}
+.nzer-home-v5 .ne-rating-selector button{background:transparent;border:0;cursor:pointer;color:#d99b2a;font-size:36px;line-height:1.2;padding:2px}
+.nzer-home-v5 .ne-rating-selector button:focus-visible{outline:2px solid #087a4a;border-radius:5px}
+.nzer-home-v5 .ne-review-draft label{display:block;color:#075537;font-weight:900;font-size:14px;margin-bottom:8px}
+.nzer-home-v5 .ne-review-draft textarea{width:100%;border-radius:12px;border:1px solid #bbd3c0;padding:13px;resize:vertical;min-height:90px;font:15px 'DM Sans',Arial,sans-serif;color:#154b35}
+.nzer-home-v5 .ne-review-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px}
+.nzer-home-v5 .ne-review-actions button{cursor:pointer;border:0;background:#087c49;color:white;border-radius:10px;padding:12px 19px;font-size:14px;font-weight:900}
+.nzer-home-v5 .ne-review-actions a{color:#087c49;font-size:14px;font-weight:900}
+.nzer-home-v5 .ne-review-feedback{min-height:22px;margin-top:11px!important;font-size:13px!important}
+@media(max-width:850px){.nzer-home-v5 .ne-about-layout{gap:26px}.nzer-home-v5 .ne-experiences-grid{gap:10px}.nzer-home-v5 .ne-experience-photo{height:170px}.nzer-home-v5 .ne-experience-body{padding:17px}.nzer-home-v5 .ne-experience-body h3{font-size:20px}}
+@media(max-width:620px){.nzer-home-v5 .ne-about-section,.nzer-home-v5 .ne-experiences-section,.nzer-home-v5 .ne-reviews-section{padding:42px 0}.nzer-home-v5 .ne-about-layout,.nzer-home-v5 .ne-reviews-layout{grid-template-columns:1fr}.nzer-home-v5 .ne-about-visual{min-height:190px}.nzer-home-v5 .ne-about-visual img{height:230px}.nzer-home-v5 .ne-experiences-grid{grid-template-columns:1fr}.nzer-home-v5 .ne-experience-photo{height:220px}.nzer-home-v5 .ne-reviews-status,.nzer-home-v5 .ne-review-draft{padding:22px}}
