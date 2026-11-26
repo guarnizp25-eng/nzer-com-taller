@@ -418,3 +418,42 @@
  .nzer-store-unified .nzer-christmas-boy.nzer-boy-is-cutout{left:-1%;bottom:4%;width:51%;height:101%}
  .nzer-store-unified .nzer-christmas-left:before{top:24%;height:65%}
 }
+
+/* V12 — Portada sin fotografía infantil: foco en marca, mensaje y juguetes. */
+.nzer-store-unified .nzer-christmas-hero{
+ grid-template-columns:42% 58%;
+ min-height:450px;
+ background:radial-gradient(ellipse at 30% -20%,#139a54 0%,transparent 62%),linear-gradient(115deg,#006c3d,#075e36 63%,#198342);
+}
+.nzer-store-unified .nzer-christmas-left{
+ display:flex;align-items:center;justify-content:center;
+ min-height:450px;overflow:hidden;isolation:auto;
+ padding:36px 22px 36px max(30px,calc((100vw - 1330px)/2));
+}
+.nzer-store-unified .nzer-christmas-left:before,
+.nzer-store-unified .nzer-christmas-left:after,
+.nzer-store-unified .nzer-christmas-boy{display:none!important;content:none!important}
+.nzer-store-unified .nzer-christmas-left-copy{
+ position:relative;left:auto;top:auto;width:100%;max-width:580px;
+ margin:0;pointer-events:auto;z-index:2;
+}
+.nzer-store-unified .nzer-christmas-brand{font-size:12px}
+.nzer-store-unified .nzer-christmas-left h1{
+ margin:21px 0 30px;
+ font-size:clamp(42px,4.3vw,71px);
+ line-height:1.13;
+}
+.nzer-store-unified .nzer-christmas-left h1 strong{font-size:.8em;white-space:nowrap}
+.nzer-store-unified .nzer-christmas-right{margin-left:0}
+@media(max-width:1150px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:41% 59%}
+ .nzer-store-unified .nzer-christmas-left{padding-left:24px}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(33px,3.8vw,52px)}
+}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:1fr}
+ .nzer-store-unified .nzer-christmas-left{min-height:240px;padding:35px 22px}
+ .nzer-store-unified .nzer-christmas-left-copy{width:100%;max-width:none;text-align:center}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(35px,9vw,54px);margin:13px 0 24px}
+ .nzer-store-unified .nzer-christmas-left h1 strong{white-space:normal}
+}
