@@ -21,7 +21,7 @@
    slide.classList.toggle('is-active',selected);
    slide.setAttribute('aria-hidden',String(!selected));
    if('inert' in slide)slide.inert=!selected;
-   slide.querySelectorAll('a').forEach(a=>{
+   slide.querySelectorAll('a, button').forEach(a=>{
     if(selected)a.removeAttribute('tabindex');
     else a.setAttribute('tabindex','-1');
    });
