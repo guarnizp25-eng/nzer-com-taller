@@ -1,0 +1,30 @@
+/* NZER STORE - botón flotante de WhatsApp en pruebas
+   Número de destino y mensaje se configuran en el enlace de cada página.
+   No afecta NZER CARE, PSICO, Desarrollo Infantil ni el Inicio.
+*/
+.nzer-store-has-whatsapp .nzer-wa-float{
+ position:fixed;right:24px;bottom:24px;z-index:110;
+ width:60px;height:60px;border-radius:50%;
+ background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
+ box-shadow:0 7px 22px rgba(5,72,29,.32);
+ border:3px solid #fff;outline-offset:4px;
+ transition:transform .18s ease,box-shadow .18s ease;
+ text-decoration:none;
+}
+.nzer-store-has-whatsapp .nzer-wa-float svg{width:35px;height:35px;display:block;fill:currentColor}
+.nzer-store-has-whatsapp .nzer-wa-float:hover{
+ transform:translateY(-3px) scale(1.04);
+ box-shadow:0 11px 28px rgba(5,72,29,.38);
+}
+.nzer-store-has-whatsapp .nzer-wa-float:focus-visible{
+ outline:3px solid #087a44;
+}
+.nzer-store-has-whatsapp .toast{bottom:101px;right:20px}
+@media (max-width:600px){
+ .nzer-store-has-whatsapp .nzer-wa-float{right:16px;bottom:17px;width:58px;height:58px}
+ .nzer-store-has-whatsapp .nzer-wa-float svg{width:34px;height:34px}
+ .nzer-store-has-whatsapp .toast{bottom:88px;right:12px;left:12px}
+}
+@media (prefers-reduced-motion:reduce){
+ .nzer-store-has-whatsapp .nzer-wa-float{transition:none}
+}
