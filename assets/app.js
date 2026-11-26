@@ -342,7 +342,7 @@ const counter=document.getElementById('productCount');if(counter)counter.textCon
 const productPath=root.dataset.productPath||'producto/index.html';
 root.innerHTML=selected.map(p=>'<article class="product-card">'+imgProduct(p)+
 '<div class="product-body"><span class="product-meta">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+
-'</p><div class="product-bottom"><b class="price">'+money(p.price)+'</b><button class="add-btn" type="button" data-add="'+p.id+'">+ Agregar</button></div>'+
+'</p><div class="product-bottom"><b class="price">'+demoPriceMarkup(p)+'</b><button class="add-btn" type="button" data-add="'+p.id+'">+ Agregar</button></div>'+
 '<a class="product-link" href="'+productPath+'?id='+p.id+'">Ver producto →</a></div></article>').join('')||'<div class="empty">No encontramos productos con ese filtro.</div>';
 root.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.add)))}
 function renderDetail(){const target=document.getElementById('productDetail');if(!target)return;
@@ -350,7 +350,7 @@ const id=new URLSearchParams(window.location.search).get('id')||'magnet';
 const p=NZER_PRODUCTS.find(x=>x.id===id);
 if(!p){target.innerHTML='<div class="empty"><h3>Producto no encontrado</h3><a class="btn forest" href="../index.html">Volver al catálogo</a></div>';return}
 document.title=p.name+' · NZER STORE';
-target.innerHTML='<div class="detail-pic" style="background:'+p.bg+'">'+productArtwork(p)+'</div><div class="detail-info"><span class="badge">'+p.categoryLabel+'</span><h1>'+p.name+'</h1><p>'+p.desc+'</p><div class="price">'+money(p.price)+'</div>'+
+target.innerHTML='<div class="detail-pic" style="background:'+p.bg+'">'+productArtwork(p)+'</div><div class="detail-info"><span class="badge">'+p.categoryLabel+'</span><h1>'+p.name+'</h1><p>'+p.desc+'</p><div class="price">'+demoPriceMarkup(p)+'</div>'+
 '<p>Precio referencial en soles. Producto e ilustración de ejemplo, sin stock ni proveedor confirmado.</p><div class="detail-actions"><button type="button" class="btn primary" data-detail-add="'+p.id+'">Agregar al carrito</button><a href="../carrito/index.html" class="btn outline">Ver mi carrito →</a></div>'+
 '<div class="note">🧸 '+p.ages+'. No hay pedidos ni pagos habilitados en este catálogo.</div></div>';
 target.querySelector('[data-detail-add]').addEventListener('click',()=>addToCart(p.id))}
