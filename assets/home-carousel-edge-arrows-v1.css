@@ -53,3 +53,21 @@
  .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev::before,
  .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next::before{width:15px;height:15px;border-width:4px}
 }
+
+/* Descuentos NZER: pulso suave del porcentaje, sin mover el panel. */
+.nzer-home-v5 .n5-carousel-slide .n5-promo-value{
+  display:inline-block;
+  transform-origin:center center;
+  animation:nzer-discount-pulse 2.7s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes nzer-discount-pulse{
+  0%,100%{transform:scale(1)}
+  45%{transform:scale(1.095)}
+}
+@media(prefers-reduced-motion:reduce){
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-value{
+    animation:none;
+    will-change:auto;
+  }
+}
