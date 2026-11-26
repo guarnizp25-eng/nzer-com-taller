@@ -80,3 +80,18 @@
 .nzer-home-v5 .ne-review-feedback{min-height:22px;margin-top:11px!important;font-size:13px!important}
 @media(max-width:850px){.nzer-home-v5 .ne-about-layout{gap:26px}.nzer-home-v5 .ne-experiences-grid{gap:10px}.nzer-home-v5 .ne-experience-photo{height:170px}.nzer-home-v5 .ne-experience-body{padding:17px}.nzer-home-v5 .ne-experience-body h3{font-size:20px}}
 @media(max-width:620px){.nzer-home-v5 .ne-about-section,.nzer-home-v5 .ne-experiences-section,.nzer-home-v5 .ne-reviews-section{padding:42px 0}.nzer-home-v5 .ne-about-layout,.nzer-home-v5 .ne-reviews-layout{grid-template-columns:1fr}.nzer-home-v5 .ne-about-visual{min-height:190px}.nzer-home-v5 .ne-about-visual img{height:230px}.nzer-home-v5 .ne-experiences-grid{grid-template-columns:1fr}.nzer-home-v5 .ne-experience-photo{height:220px}.nzer-home-v5 .ne-reviews-status,.nzer-home-v5 .ne-review-draft{padding:22px}}
+
+/* Home expanded v3: fotografie editorial realista, sin recuadros de números. */
+.nzer-home-v5 .ne-card-art{height:220px;min-height:220px;display:block;background:#e8f1e4;position:relative;overflow:hidden}
+.nzer-home-v5 .ne-card-art::before{display:none!important}
+.nzer-home-v5 .ne-card-art img{display:block;width:100%;height:100%;object-fit:contain;object-position:center 40%;filter:drop-shadow(0 6px 13px #0d3b2330)}
+.nzer-home-v5 .ne-care .ne-card-art{background:linear-gradient(135deg,#e1f5d9,#b6dfc7)}
+.nzer-home-v5 .ne-desarrollo .ne-card-art{background:linear-gradient(135deg,#fce5cb,#ffeecb)}
+.nzer-home-v5 .ne-psico .ne-card-art{background:linear-gradient(135deg,#fff0d6,#eecdb0)}
+.nzer-home-v5 .ne-store .ne-card-art{background:linear-gradient(135deg,#e3f4dc,#f8eed2)}
+.nzer-home-v5 .ne-card-photo-note{position:absolute;bottom:9px;right:9px;left:9px;max-width:max-content;margin-left:auto;padding:5px 9px;color:#345b42;background:#fffdf1ed;border-radius:6px;font-size:10px;font-weight:800}
+@media(max-width:620px){
+ .nzer-home-v5 .ne-card-art{height:155px;min-height:155px}
+ .nzer-home-v5 .ne-card-art img{object-position:center center}
+ .nzer-home-v5 .ne-card-photo-note{font-size:9px;padding:4px 6px;max-width:95%;text-align:right}
+}
