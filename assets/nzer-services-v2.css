@@ -1,0 +1,58 @@
+/* NZER KIDS · Sistema visual común para Desarrollo Infantil, CARE y PSICO · V1 */
+.nzer-home-v5.nzs-service-page{font-family:'Nunito',Arial,sans-serif;background:#fff;color:#0c4932}
+.nzs-service-page .nzs-main *{box-sizing:border-box}
+.nzs-service-page .nzs-wrap{width:min(1330px,calc(100% - 44px));margin-inline:auto}
+.nzs-service-page .nzs-hero{position:relative;overflow:hidden;padding:39px 0 44px;isolation:isolate;background:linear-gradient(115deg,#fff9ef 0%,#f2f9eb 55%,#eaf3dd 100%)}
+.nzs-service-page .nzs-hero:before{content:"";position:absolute;z-index:-1;width:440px;height:440px;border-radius:50%;left:-230px;top:-230px;background:#d6eebf5a}
+.nzs-service-page .nzs-hero:after{content:"";position:absolute;z-index:-1;width:340px;height:340px;border-radius:50%;right:-150px;bottom:-190px;background:#ecbd8a52}
+.nzs-service-page .nzs-hero-grid{display:grid;grid-template-columns:48% minmax(0,52%);align-items:center;gap:23px}
+.nzs-service-page .nzs-hero-copy{position:relative;z-index:2;padding:18px 0}
+.nzs-service-page .nzs-crumb{font-size:13px;color:#3b7854;font-weight:850;margin:0 0 22px}
+.nzs-service-page .nzs-crumb a{color:#0b7547;text-decoration:none}
+.nzs-service-page .nzs-kicker{display:inline-block;color:#b46a2b;letter-spacing:1.4px;font-size:13px;font-weight:1000;margin-bottom:12px}
+.nzs-service-page .nzs-hero h1{font-size:clamp(38px,4.25vw,67px);line-height:1.04;letter-spacing:-1.8px;font-weight:1000;color:#064a31;margin:0 0 21px}
+.nzs-service-page .nzs-hero h1 strong{color:#f16c12;font-weight:1000}
+.nzs-service-page .nzs-hero-copy>p{font-size:clamp(17px,1.45vw,20px);line-height:1.58;color:#426850;max-width:590px;margin:0 0 24px}
+.nzs-service-page .nzs-hero-actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center}
+.nzs-service-page .nzs-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:1000;text-align:center;min-height:47px;padding:12px 21px;border-radius:28px;text-decoration:none!important}
+.nzs-service-page .nzs-btn-primary{color:#fff!important;background:#f47913;box-shadow:0 5px 13px #d4692d42}
+.nzs-service-page .nzs-btn-secondary{color:#075638!important;background:#fff;border:1px solid #bfd8b5}
+.nzs-service-page .nzs-hero-photo{position:relative;align-self:stretch;display:flex;min-height:350px;justify-content:center;align-items:center;background:radial-gradient(circle at 66% 42%,#d2eccf,#e9f5de 70%);border-radius:31px;overflow:hidden}
+.nzs-service-page .nzs-hero-photo img{display:block;width:100%;height:100%;min-height:350px;object-fit:contain;object-position:center}
+.nzs-service-page .nzs-photo-caption{position:absolute;left:12px;bottom:12px;right:12px;border-radius:9px;background:#fffcebdc;padding:7px 10px;color:#607354;font-size:10px;font-weight:850;text-align:center}
+.nzs-service-page .nzs-chip{display:inline-block;border-radius:24px;background:#e9f6de;color:#07613a;font-weight:900;font-size:13px;padding:9px 14px;margin:0 0 16px}
+.nzs-service-page .nzs-section{padding:68px 0}
+.nzs-service-page .nzs-section-alt{background:#f7fbf3}
+.nzs-service-page .nzs-section-heading{max-width:850px;margin:0 auto 29px;text-align:center}
+.nzs-service-page .nzs-section-heading h2,.nzs-service-page .nzs-feature-text h2{font-size:clamp(31px,3.1vw,46px);font-weight:1000;line-height:1.13;letter-spacing:-.85px;color:#075338;margin:0 0 14px}
+.nzs-service-page .nzs-section-heading p,.nzs-service-page .nzs-feature-text p{font-size:17px;line-height:1.6;color:#557262;margin:0}
+.nzs-service-page .nzs-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.nzs-service-page .nzs-card{min-width:0;background:#fff;border:1px solid #deeadb;border-radius:21px;overflow:hidden;box-shadow:0 6px 20px #153c2510}
+.nzs-service-page .nzs-card-visual{height:173px;background:linear-gradient(140deg,#eaf5df,#f7e6d1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.nzs-service-page .nzs-card-visual img{height:100%;width:100%;object-fit:contain}
+.nzs-service-page .nzs-card-visual .nzs-visual-symbol{font-size:53px;color:#12804d;font-weight:1000}
+.nzs-service-page .nzs-card-copy{padding:23px}
+.nzs-service-page .nzs-card-copy .nzs-card-kicker{color:#b96a2d;font-size:11px;font-weight:1000;letter-spacing:1.2px}
+.nzs-service-page .nzs-card h3{font-size:23px;font-weight:1000;color:#074d32;margin:8px 0 10px;line-height:1.2}
+.nzs-service-page .nzs-card p{font-size:15px;line-height:1.6;color:#577060;margin:0}
+.nzs-service-page .nzs-feature{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.nzs-service-page .nzs-feature-media{position:relative;overflow:hidden;border-radius:25px;background:#e4f2e2;min-height:320px}
+.nzs-service-page .nzs-feature-media img{display:block;width:100%;height:325px;object-fit:contain}
+.nzs-service-page .nzs-feature-text .nzs-kicker{margin-bottom:10px}
+.nzs-service-page .nzs-feature-text p+p{margin-top:15px}
+.nzs-service-page .nzs-feature-list{margin:18px 0 23px;padding:0;list-style:none;display:grid;gap:10px}
+.nzs-service-page .nzs-feature-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1c5b3c;font-weight:850}
+.nzs-service-page .nzs-feature-list li:before{content:"✓";display:grid;place-items:center;background:#e1f5d8;color:#07804b;border-radius:50%;width:24px;height:24px;flex-shrink:0;font-weight:1000}
+.nzs-service-page .nzs-disclaimer{max-width:1330px;margin:0 auto 45px;padding:17px 20px;background:#fff6e5;border:1px solid #edd5b0;border-radius:13px;color:#77552d;font-size:13px;line-height:1.5}
+.nzs-service-page .nzs-bottom{background:#07583c;color:white;padding:48px 0}
+.nzs-service-page .nzs-bottom-layout{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nzs-service-page .nzs-bottom h2{font-size:clamp(27px,2.8vw,39px);color:white;margin:0 0 10px;line-height:1.2}
+.nzs-service-page .nzs-bottom p{color:#e1f4e9;font-size:16px;margin:0}
+.nzs-service-page .nzs-bottom .nzs-btn{background:#f27a19;color:white!important;flex-shrink:0}
+.nzs-service-page.nzs-care .nzs-hero{background:linear-gradient(115deg,#f5faee,#e5f5de)}
+.nzs-service-page.nzs-care .nzs-hero-photo{background:#ddf2db}
+.nzs-service-page.nzs-psico .nzs-hero{background:linear-gradient(110deg,#fffaf1,#f4ebdf)}
+.nzs-service-page.nzs-psico .nzs-hero-photo{background:#f8eade}
+.nzs-service-page.nzs-psico .nzs-btn-primary{background:#cc7139}
+@media(max-width:900px){.nzs-service-page .nzs-hero-grid{grid-template-columns:1fr 1fr;gap:12px}.nzs-service-page .nzs-hero h1{font-size:clamp(35px,4.3vw,50px)}.nzs-service-page .nzs-hero-photo,.nzs-service-page .nzs-hero-photo img{min-height:300px}.nzs-service-page .nzs-cards{gap:10px}.nzs-service-page .nzs-card-copy{padding:17px}.nzs-service-page .nzs-card h3{font-size:20px}.nzs-service-page .nzs-feature{gap:22px}}
+@media(max-width:650px){.nzs-service-page .nzs-wrap{width:calc(100% - 30px)}.nzs-service-page .nzs-hero{padding:24px 0 27px}.nzs-service-page .nzs-hero-grid,.nzs-service-page .nzs-feature{grid-template-columns:1fr}.nzs-service-page .nzs-hero-copy{padding:0}.nzs-service-page .nzs-crumb{margin-bottom:13px}.nzs-service-page .nzs-hero h1{font-size:39px;letter-spacing:-1px}.nzs-service-page .nzs-hero-copy>p{font-size:16px}.nzs-service-page .nzs-hero-photo,.nzs-service-page .nzs-hero-photo img{min-height:235px}.nzs-service-page .nzs-hero-photo img{height:260px}.nzs-service-page .nzs-section{padding:43px 0}.nzs-service-page .nzs-cards{grid-template-columns:1fr}.nzs-service-page .nzs-card{display:grid;grid-template-columns:120px 1fr}.nzs-service-page .nzs-card-visual{height:100%;min-height:125px}.nzs-service-page .nzs-card-copy{padding:17px}.nzs-service-page .nzs-card h3{font-size:19px}.nzs-service-page .nzs-card p{font-size:14px}.nzs-service-page .nzs-feature-media{min-height:200px}.nzs-service-page .nzs-feature-media img{height:240px}.nzs-service-page .nzs-bottom-layout{display:block}.nzs-service-page .nzs-bottom .nzs-btn{margin-top:21px}.nzs-service-page .nzs-disclaimer{margin:0 15px 25px}}
