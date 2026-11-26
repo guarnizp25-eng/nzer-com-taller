@@ -1,0 +1,70 @@
+/* NZER Inicio — Header comercial y buscador inteligente V1 */
+.nzer-home-v5 .n5-nav{height:auto;min-height:84px;display:flex;gap:12px;align-items:center;justify-content:flex-start}
+.nzer-home-v5 .n5-menu-toggle{flex:none}
+.nzer-home-v5 .n5-brand{flex:none;margin-right:0;min-width:105px}
+.nzer-home-v5 .n5-brand-descriptor{display:none}
+.nzer-home-v5 .n5-home-shortcuts{display:flex;align-items:center;gap:2px;margin-left:0;flex:none}
+.nzer-home-v5 .n5-home-shortcuts a{padding:10px 11px}
+.nzer-home-v5 .n5-actions{margin-left:0;flex:none;gap:8px}
+.nzer-home-v5 .n5-search{display:none!important}
+.nzer-home-v5 .n5-family{padding:11px 13px;font-size:11px}
+.nzer-home-v5 .nzer-search{position:relative;flex:1 1 400px;min-width:190px;max-width:720px;margin:0 8px 0 10px;z-index:65}
+.nzer-home-v5 .nzer-search-form{position:relative;display:flex;align-items:center;min-height:48px;border:1.5px solid #bddbc9;border-radius:14px;background:#fafff9;box-shadow:0 3px 11px #0a563516;transition:border-color .15s,box-shadow .15s}
+.nzer-home-v5 .nzer-search-form:focus-within{background:#fff;border-color:#099553;box-shadow:0 0 0 3px #0b985016}
+.nzer-home-v5 .nzer-search-icon{width:21px;height:21px;color:#147449;margin:0 11px 0 15px;flex-shrink:0}
+.nzer-home-v5 .nzer-search-input{appearance:none;border:none;background:transparent;outline:none!important;box-shadow:none!important;color:#184c34;font:600 13px 'DM Sans',sans-serif;min-width:0;flex:1;height:46px;padding:0}
+.nzer-home-v5 .nzer-search-input::placeholder{color:#748e7c}
+.nzer-home-v5 .nzer-search-clear{display:none;border:0;background:transparent;color:#6b8572;padding:7px 11px;font-size:19px;line-height:1}
+.nzer-home-v5 .nzer-search-clear.is-visible{display:inline-flex}
+.nzer-home-v5 .nzer-search-panel[hidden]{display:none}
+.nzer-home-v5 .nzer-search-panel{position:absolute;top:calc(100% + 8px);left:0;width:min(680px,90vw);background:#fff;border:1px solid #dfebdf;border-radius:16px;box-shadow:0 25px 60px #032c1c36;max-height:min(600px,calc(100vh - 125px));overflow:auto;padding:18px;z-index:80}
+.nzer-home-v5 .nzer-search-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}
+.nzer-home-v5 .nzer-search-panel-head strong{font-size:12px;color:#0a6237}
+.nzer-home-v5 .nzer-search-panel-head button{font-size:11px;color:#557362;background:transparent;border:0;text-decoration:underline}
+.nzer-home-v5 .nzer-search-sections{display:grid;grid-template-columns:1fr 1.55fr;gap:17px}
+.nzer-home-v5 .nzer-search-group{min-width:0}
+.nzer-home-v5 .nzer-search-group h3{color:#eb6c16;font-size:10px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;margin:3px 0 9px}
+.nzer-home-v5 .nzer-search-group a,.nzer-home-v5 .nzer-search-group button{width:100%;display:flex;gap:9px;align-items:center;text-align:left;padding:9px 10px;border:0;background:#fff;border-radius:10px;color:#315a42;font-size:12px;font-weight:700}
+.nzer-home-v5 .nzer-search-group a:hover,.nzer-home-v5 .nzer-search-group button:hover,.nzer-home-v5 .nzer-search-group a:focus-visible{background:#eef9ef}
+.nzer-home-v5 .nzer-search-group .nzer-search-result{gap:11px;border-bottom:1px solid #f2f4ef;border-radius:8px}
+.nzer-home-v5 .nzer-search-result-art{width:50px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:9px;background:#eff7ef;overflow:hidden}
+.nzer-home-v5 .nzer-search-result-art svg{width:100%;height:100%}
+.nzer-home-v5 .nzer-search-result-info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.nzer-home-v5 .nzer-search-result-info b{font-size:11px;color:#1e5038;font-weight:900;line-height:1.35}
+.nzer-home-v5 .nzer-search-result-info small{font-size:11px;color:#e96c15;font-weight:900}
+.nzer-home-v5 .nzer-search-noresults{padding:15px 10px;color:#607b6c;font-size:12px;line-height:1.5}
+.nzer-home-v5 .nzer-search-overlay[hidden]{display:none}
+.nzer-home-v5 .nzer-search-overlay{position:fixed;inset:0;background:#061a0d55;z-index:60}
+.nzer-home-v5.nzer-search-is-open .n5-header{z-index:70}
+@media(max-width:1200px){
+ .nzer-home-v5 .n5-nav{gap:7px}
+ .nzer-home-v5 .nzer-search{margin:0 3px;flex-basis:300px}
+ .nzer-home-v5 .n5-family{display:none}
+ .nzer-home-v5 .n5-brand-name{font-size:27px}
+}
+@media(max-width:860px){
+ .nzer-home-v5 .n5-nav{min-height:0;padding:10px 0;display:grid;grid-template-columns:auto auto 1fr auto;gap:9px}
+ .nzer-home-v5 .n5-menu-toggle{grid-column:1}
+ .nzer-home-v5 .n5-brand{grid-column:2}
+ .nzer-home-v5 .n5-home-shortcuts{grid-column:3;justify-content:flex-end}
+ .nzer-home-v5 .n5-actions{grid-column:4}
+ .nzer-home-v5 .nzer-search{grid-column:1/-1;grid-row:2;width:100%;max-width:none;margin:2px 0 0;min-width:0;flex:auto}
+ .nzer-home-v5 .nzer-search-panel{width:100%}
+ .nzer-home-v5 .n5-home-shortcuts a{padding:9px;font-size:11px}
+}
+@media(max-width:540px){
+ .nzer-home-v5 .n5-nav{grid-template-columns:auto 1fr auto}
+ .nzer-home-v5 .n5-menu-toggle{grid-column:1;font-size:11px}
+ .nzer-home-v5 .n5-brand{grid-column:2}
+ .nzer-home-v5 .n5-home-shortcuts{display:none}
+ .nzer-home-v5 .n5-actions{grid-column:3}
+ .nzer-home-v5 .n5-brand-name{font-size:22px}
+ .nzer-home-v5 .nzer-search{grid-row:2}
+ .nzer-home-v5 .nzer-search-sections{grid-template-columns:1fr;gap:10px}
+ .nzer-home-v5 .nzer-search-panel{padding:12px;max-height:65vh}
+ .nzer-home-v5 .nzer-search-group a{padding:9px 8px}
+ .nzer-home-v5 .nzer-search-input{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-home-v5 .nzer-search-form{transition:none}
+}
