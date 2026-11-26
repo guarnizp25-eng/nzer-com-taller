@@ -223,7 +223,7 @@ const NZER_PRODUCTS = [
 ];
 /* Promociones ilustrativas, no vigentes y sin transacciones reales.
    El precio mostrado en fichas, carrito y catálogo es siempre coherente. */
-const NZER_DEMO_OFFERS=Object.freeze({magnet:20,track:15,activity:25,rainbow:30});
+const NZER_DEMO_OFFERS=Object.freeze({magnet:20,train:20,track:15,activity:25,rainbow:30});
 function demoDiscount(p){return NZER_DEMO_OFFERS[p.id]||0}
 function demoPrice(p){return Math.round(p.price*(100-demoDiscount(p)))/100}
 function demoPriceMarkup(p){
