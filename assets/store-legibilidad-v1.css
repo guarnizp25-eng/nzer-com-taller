@@ -1,0 +1,43 @@
+/* NZER STORE legibilidad V1: tipografía comercial y fotos WebP */
+.nzer-store-unified .nzer-age-browser{padding:34px 36px!important;max-width:1320px!important;border-radius:22px!important}
+.nzer-store-unified .nzer-age-browser .eyebrow{font-size:14px!important;letter-spacing:.08em!important;font-weight:900!important}
+.nzer-store-unified .nzer-age-browser h2{font-size:clamp(30px,3.2vw,43px)!important;line-height:1.2!important;margin:8px 0 10px!important}
+.nzer-store-unified .nzer-age-browser p{font-size:17px!important;line-height:1.65!important;max-width:1030px!important}
+.nzer-store-unified .nzer-age-choices{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:22px!important}
+.nzer-store-unified .nzer-age-choices button{font-size:16px!important;font-weight:900!important;min-height:51px!important;padding:12px 20px!important;line-height:1.3!important;border-radius:14px!important;cursor:pointer}
+.nzer-store-unified .shop-container{padding-top:50px!important}
+.nzer-store-unified .shop-container .section-heading .eyebrow{font-size:14px!important;font-weight:900!important}
+.nzer-store-unified .shop-container .section-heading h2{font-size:clamp(30px,3.1vw,43px)!important;line-height:1.16!important}
+.nzer-store-unified .shop-container .section-heading p{font-size:16px!important;line-height:1.6!important}
+.nzer-store-unified .shop-tools{gap:20px!important;padding:16px 19px!important}
+.nzer-store-unified .shop-tools .filters{gap:12px!important}
+.nzer-store-unified .shop-tools .filter{font-size:16px!important;font-weight:900!important;min-height:50px!important;padding:12px 20px!important;line-height:1.25!important;cursor:pointer}
+.nzer-store-unified .shop-tools .search{font-size:16px!important;min-height:50px!important;padding:12px 15px!important}
+.nzer-store-unified .shop-tools select,.nzer-store-unified #productSort{font-size:16px!important;min-height:50px!important;padding:10px 14px!important}
+.nzer-store-unified .shop-container .products{gap:20px!important}
+.nzer-store-unified .product-card .product-body{padding:20px!important}
+.nzer-store-unified .product-card .product-body h3{font-size:20px!important;line-height:1.3!important}
+.nzer-store-unified .product-card .product-body p{font-size:14px!important;line-height:1.5!important}
+.nzer-store-unified .product-card .product-label{font-size:12px!important;padding:9px 12px!important}
+.nzer-store-unified .product-card .price{font-size:23px!important}
+.nzer-store-unified .product-card .add-btn{font-size:14px!important;min-height:42px!important}
+.nzer-store-unified .product-card .product-link{font-size:14px!important}
+.nzer-store-unified .product-card .product-image{height:245px!important;background:#f8faf7!important}
+.nzer-store-unified .product-image .nzer-product-visual.nzer-photographic-only{display:block;width:100%;height:100%}
+.nzer-store-unified .product-image .nzer-product-visual.nzer-photographic-only img.nzer-product-original{opacity:1!important;position:relative!important;width:100%!important;height:100%!important;object-fit:contain!important;background:transparent!important;mix-blend-mode:normal!important}
+@media(max-width:850px){
+ .nzer-store-unified .nzer-age-browser{padding:24px 18px!important}
+ .nzer-store-unified .shop-tools .filter,.nzer-store-unified .nzer-age-choices button{font-size:14px!important;min-height:46px!important;padding:11px 14px!important}
+ .nzer-store-unified .shop-tools .search,.nzer-store-unified #productSort{font-size:15px!important}
+ .nzer-store-unified .product-card .product-image{height:195px!important}
+ .nzer-store-unified .product-card .product-body h3{font-size:17px!important}
+}
+@media(max-width:480px){
+ .nzer-store-unified .shop-container .section-heading h2{font-size:29px!important}
+ .nzer-store-unified .shop-tools{padding:14px 12px!important}
+ .nzer-store-unified .shop-tools .filters{gap:8px!important}
+ .nzer-store-unified .shop-tools .filter{font-size:14px!important;padding:10px 12px!important}
+ .nzer-store-unified .product-card .product-image{height:160px!important}
+ .nzer-store-unified .product-card .product-body{padding:13px!important}
+ .nzer-store-unified .product-card .product-body h3{font-size:16px!important}
+}
