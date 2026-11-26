@@ -78,3 +78,62 @@
 @media(max-width:480px){
  .nzer-home-v5 .n5-carousel-slide .n5-hero-photo{height:190px;object-position:50% 50%}
 }
+
+
+/* Identidad de cada franja: nombre principal legible y resaltado ajustado */
+.nzer-home-v5 .n5-carousel-slide .n5-kicker{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  background:transparent;
+  padding:0 0 0 14px;
+  margin-bottom:15px;
+  border-radius:0;
+  border-left:4px solid #ff7416;
+  color:#075f36;
+  max-width:100%;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-kicker strong{
+  display:block;
+  color:#075f36;
+  font-family:'Nunito',Arial,sans-serif;
+  font-size:clamp(22px,2.1vw,31px);
+  font-weight:1000;
+  line-height:1.1;
+  letter-spacing:-.5px;
+  text-transform:uppercase;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-kicker small{
+  display:block;
+  color:#436c52;
+  font-family:'DM Sans',Arial,sans-serif;
+  font-size:12px;
+  font-weight:800;
+  line-height:1.3;
+  letter-spacing:0;
+  text-transform:none;
+}
+.nzer-home-v5 .n5-carousel-slide--care .n5-kicker{border-left-color:#ed801d}
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker{border-left-color:#873aca}
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker strong{color:#71309d}
+.nzer-home-v5 .n5-carousel-slide--store .n5-kicker{border-left-color:#ff7416}
+.nzer-home-v5 .n5-carousel-slide .n5-orange{
+  font-size:.84em;
+  letter-spacing:-.025em;
+  padding:0 .045em;
+  line-height:1;
+  border-radius:.11em;
+  box-shadow:none;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+.nzer-home-v5 .n5-products-section{
+  padding-top:24px;
+}
+@media(max-width:780px){
+  .nzer-home-v5 .n5-carousel-slide .n5-kicker{margin-bottom:12px;padding-left:10px}
+  .nzer-home-v5 .n5-carousel-slide .n5-kicker strong{font-size:clamp(20px,5.1vw,27px)}
+  .nzer-home-v5 .n5-carousel-slide .n5-kicker small{font-size:11px}
+  .nzer-home-v5 .n5-carousel-slide .n5-orange{font-size:.86em;padding:0 .04em}
+}
