@@ -221,6 +221,17 @@ const NZER_PRODUCTS = [
     "ages": "Verificar edad recomendada y advertencias del fabricante"
   }
 ];
+/* Promociones ilustrativas, no vigentes y sin transacciones reales.
+   El precio mostrado en fichas, carrito y catálogo es siempre coherente. */
+const NZER_DEMO_OFFERS=Object.freeze({magnet:20,track:15,activity:25,rainbow:30});
+function demoDiscount(p){return NZER_DEMO_OFFERS[p.id]||0}
+function demoPrice(p){return Math.round(p.price*(100-demoDiscount(p)))/100}
+function demoPriceMarkup(p){
+ const d=demoDiscount(p);
+ return (d?'<span class="nzer-demo-price-before">'+money(p.price)+'</span> ':'')+
+  '<span class="nzer-demo-price-now">'+money(demoPrice(p))+'</span>'+
+  (d?'<small class="nzer-demo-price-label">−'+d+'% · simulación</small>':'');
+}
 const CART_KEY='nzer_store_demo_cart_2026';
 const COLORS=['#FF831E','#12A96B','#18ACF3','#FFD042','#E34B65','#9651E8','#F15D34'];
 const sq=(x,y,w,h,color,r=8,stroke='none',sw=0)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+r+'" fill="'+color+'" stroke="'+stroke+'" stroke-width="'+sw+'"/>';
@@ -313,7 +324,7 @@ function getCart(){try{const v=JSON.parse(localStorage.getItem(CART_KEY)||'{}');
 function saveCart(cart){try{localStorage.setItem(CART_KEY,JSON.stringify(cart))}catch(e){}updateCartBadge()}
 function countCart(){return Object.values(getCart()).reduce((sum,v)=>sum+(Number.isInteger(v)&&v>0?v:0),0)}
 function updateCartBadge(){document.querySelectorAll('[data-cart-count]').forEach(x=>x.textContent=countCart())}
-function money(n){return 'S/ '+Number(n).toFixed(0)}
+function money(n){return 'S/ '+Number(n).toFixed(2)}
 function toast(message){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window.nzerToast);window.nzerToast=setTimeout(()=>el.classList.remove('show'),2800)}
 function imgProduct(p){return '<div class="product-image" style="background:'+p.bg+'"><span class="product-label">'+p.categoryLabel+'</span>'+productArtwork(p)+'</div>'}
 function addToCart(id){const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;const c=getCart();c[id]=Math.min(99,(Number(c[id])||0)+1);saveCart(c);toast('Producto referencial agregado al carrito de demostración')}
@@ -322,8 +333,8 @@ const active=document.querySelector('.filter.active')?.dataset.category||'all';
 const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
 let selected=NZER_PRODUCTS.filter(p=>(active==='all'||p.category===active)&&(!term||[p.name,p.desc,p.categoryLabel].join(' ').toLocaleLowerCase('es').includes(term)));
 const order=document.getElementById('productSort')?.value||'featured';
-if(order==='price-asc')selected.sort((a,b)=>a.price-b.price);
-if(order==='price-desc')selected.sort((a,b)=>b.price-a.price);
+if(order==='price-asc')selected.sort((a,b)=>demoPrice(a)-demoPrice(b));
+if(order==='price-desc')selected.sort((a,b)=>demoPrice(b)-demoPrice(a));
 if(order==='name')selected.sort((a,b)=>a.name.localeCompare(b.name,'es'));
 const isHome=!document.getElementById('catalogo');
 if(isHome)selected=selected.slice(0,4);
@@ -347,9 +358,9 @@ function renderCart(){const root=document.getElementById('cartItems');if(!root)r
 const c=getCart();
 const entries=Object.entries(c).filter(([id,qty])=>NZER_PRODUCTS.some(p=>p.id===id)&&Number.isInteger(qty)&&qty>0);
 if(!entries.length){root.innerHTML='<div class="empty"><div class="emoji">🛍️</div><h3>Tu carrito está vacío</h3><p>Visita nuestro catálogo de demostración.</p><p style="margin-top:18px"><a class="btn forest" href="../index.html">Ir al catálogo →</a></p></div>'}
-else{root.innerHTML=entries.map(([id,qty])=>{const p=NZER_PRODUCTS.find(x=>x.id===id);return '<div class="cart-item"><div class="cart-product-ident"><div class="cart-thumb" style="background:'+p.bg+'">'+productArtwork(p)+'</div><div><b>'+p.name+'</b><p>'+money(p.price)+' por unidad</p></div></div><div class="qty"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Disminuir cantidad">−</button><b>'+qty+'</b><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad">+</button></div><b>'+money(p.price*qty)+'</b></div>'}).join('')}
+else{root.innerHTML=entries.map(([id,qty])=>{const p=NZER_PRODUCTS.find(x=>x.id===id);return '<div class="cart-item"><div class="cart-product-ident"><div class="cart-thumb" style="background:'+p.bg+'">'+productArtwork(p)+'</div><div><b>'+p.name+'</b><p>'+money(demoPrice(p))+' por unidad</p></div></div><div class="qty"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Disminuir cantidad">−</button><b>'+qty+'</b><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad">+</button></div><b>'+money(demoPrice(p)*qty)+'</b></div>'}).join('')}
 root.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>{const d=Number(b.dataset.delta),old=getCart(),k=b.dataset.qty;old[k]=Math.max(0,Math.min(99,(old[k]||0)+d));saveCart(old);renderCart()}));
-const total=entries.reduce((sum,[id,qty])=>sum+NZER_PRODUCTS.find(x=>x.id===id).price*qty,0);
+const total=entries.reduce((sum,[id,qty])=>sum+demoPrice(NZER_PRODUCTS.find(x=>x.id===id))*qty,0);
 document.querySelectorAll('[data-subtotal]').forEach(x=>x.textContent=money(total));
 document.querySelectorAll('[data-order-count]').forEach(x=>x.textContent=entries.reduce((sum,[,q])=>sum+q,0))}
 function init(){const toggle=document.getElementById('mobileToggle'),nav=document.getElementById('navLinks');
