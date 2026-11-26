@@ -1,0 +1,57 @@
+/* Carrusel corporativo NZER V1: solo franja principal de Inicio */
+.nzer-home-v5 .n5-hero.n5-carousel{position:relative;overflow:hidden;min-height:375px;background:#fbfff4}
+.nzer-home-v5 .n5-carousel-slide{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .65s ease,visibility .65s ease;background:linear-gradient(90deg,#fffefa 0%,#f8fff0 48%,#b5e590 100%)}
+.nzer-home-v5 .n5-carousel-slide.is-active{position:relative;opacity:1;visibility:visible;pointer-events:auto;z-index:1}
+.nzer-home-v5 .n5-carousel-slide--care{background:linear-gradient(90deg,#fff9ef 0%,#fff8e8 45%,#ffb862 100%)}
+.nzer-home-v5 .n5-carousel-slide--psico{background:linear-gradient(90deg,#fffdfa 0%,#faf4ff 46%,#e2c4f8 100%)}
+.nzer-home-v5 .n5-carousel-slide--store{background:linear-gradient(90deg,#fffef7 0%,#fff9e7 45%,#ffc56a 100%)}
+.nzer-home-v5 .n5-carousel-slide::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#fffefa 0%,#fffefaf6 27%,#fffefad5 37%,transparent 63%)}
+.nzer-home-v5 .n5-carousel-slide--care::before{background:linear-gradient(90deg,#fff9ef 0%,#fff9eff6 30%,#fff9efc9 43%,transparent 65%)}
+.nzer-home-v5 .n5-carousel-slide--psico::before{background:linear-gradient(90deg,#fffdfa 0%,#fffdfff2 28%,#fffdfacb 43%,transparent 65%)}
+.nzer-home-v5 .n5-carousel-slide--store::before{background:linear-gradient(90deg,#fffef7 0%,#fffef7f5 30%,#fffef7d5 43%,transparent 65%)}
+.nzer-home-v5 .n5-carousel-slide::after{display:none}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-photo{z-index:0;object-position:center;mask-image:linear-gradient(90deg,transparent 0%,#000 28%)}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-inner{z-index:2;min-height:390px}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy{width:min(45%,610px);padding:32px 0 49px}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy>p{max-width:465px}
+.nzer-home-v5 .n5-carousel-slide .n5-orange{
+ display:inline;white-space:normal;
+ background:#ff7515;color:white;padding:0 .10em;
+ border-radius:.17em;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone
+}
+.nzer-home-v5 .n5-carousel-slide--psico .n5-orange{background:#873aca}
+.nzer-home-v5 .n5-carousel-slide--store .n5-orange{background:#ff7515}
+.nzer-home-v5 .n5-carousel-slide--care .n5-orange{background:#e97512}
+.nzer-home-v5 .n5-carousel-controls{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;z-index:10;width:min(1520px,calc(100% - 72px));display:flex;align-items:center;justify-content:center;gap:12px;pointer-events:none}
+.nzer-home-v5 .n5-carousel-dots{display:flex;align-items:center;gap:9px;pointer-events:auto;padding:6px 10px;border-radius:100px;background:#ffffffed;box-shadow:0 4px 16px #123f272b}
+.nzer-home-v5 .n5-carousel-dot{width:11px;height:11px;min-width:11px;min-height:11px;cursor:pointer;border-radius:50%;border:1px solid #0b7b40;background:#fff;padding:0;transition:width .2s ease,background .2s ease}
+.nzer-home-v5 .n5-carousel-dot[aria-current="true"]{width:28px;border-radius:100px;background:#0a8d46}
+.nzer-home-v5 .n5-carousel-prev,.nzer-home-v5 .n5-carousel-next{pointer-events:auto;display:grid;place-items:center;width:32px;height:32px;border:1px solid #c1dccb;background:#ffffffed;border-radius:50%;color:#08683a;font-weight:900;font-size:20px;box-shadow:0 4px 16px #123f2726}
+.nzer-home-v5 .n5-carousel-prev:hover,.nzer-home-v5 .n5-carousel-next:hover{background:#e6f7e6}
+.nzer-home-v5 .n5-carousel-status{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media(max-width:1130px){
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{width:49%}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-inner{min-height:375px}
+ .nzer-home-v5 .n5-carousel-controls{width:calc(100% - 46px)}
+}
+@media(max-width:780px){
+ .nzer-home-v5 .n5-hero.n5-carousel{min-height:0}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-inner{min-height:0;display:flex;flex-direction:column;align-items:stretch}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{width:100%;padding:30px 0 13px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-photo{position:relative;width:calc(100% + 32px);height:225px;margin:0 -16px;inset:auto;mask-image:none;object-position:center 43%}
+ .nzer-home-v5 .n5-carousel-slide::before{display:none}
+ .nzer-home-v5 .n5-carousel-slide .n5-image-note{bottom:47px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero h1{font-size:clamp(34px,8vw,47px)}
+ .nzer-home-v5 .n5-carousel-controls{width:calc(100% - 32px);bottom:8px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta{margin-bottom:9px}
+}
+@media(max-width:480px){
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-photo{height:190px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{padding:25px 0 9px}
+ .nzer-home-v5 .n5-carousel-slide .n5-image-note{font-size:7px}
+ .nzer-home-v5 .n5-carousel-slide h1{font-size:clamp(33px,8.8vw,42px);line-height:1.06}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-home-v5 .n5-carousel-slide,.nzer-home-v5 .n5-carousel-dot{transition:none}
+}
