@@ -3,7 +3,7 @@
  'use strict';
  const stage=document.getElementById('nzv-product-image');
  if(!stage||typeof NZER_PRODUCTS==='undefined'||typeof productArtwork!=='function')return;
- const ids=['builder','activity','magnet','train','rainbow'];
+ const ids=['activity','magnet','train','track','rainbow'];
  const products=ids.map(id=>NZER_PRODUCTS.find(p=>p.id===id)).filter(Boolean);
  if(!products.length)return;
  const el=id=>document.getElementById(id);
