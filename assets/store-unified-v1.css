@@ -1,0 +1,25 @@
+/* Encabezado y vitrina de NZER STORE alineados con Inicio */
+.nzer-store-unified{--n5green:#087c3d;background:#fff}
+.nzer-store-unified .n5-header{position:sticky;top:0;z-index:90;background:#fff}
+.nzer-store-unified .n5-nav{min-height:72px;height:auto}
+.nzer-store-unified .n5-header .n5-cart svg{width:26px;height:26px}
+.nzer-store-unified .n5-header .n5-home-shortcuts a.active{background:#088a43;color:#fff}
+.nzer-store-unified .n5-menu-toggle{color:#08723d}
+.nzer-store-unified #nzerSearchOverlay{z-index:65}
+.nzer-store-unified #nzerStoreOverlay{z-index:110}
+.nzer-store-unified #nzerStoreDrawer{z-index:111}
+.nzer-store-unified #n5-featured,.nzer-store-unified #n5-offers{min-height:140px}
+.nzer-store-unified .n5-products-section{padding:25px 0 30px}
+.nzer-store-unified .n5-products-section .n5-wrap,.nzer-store-unified .n5-offers-section .n5-wrap{width:min(1320px,calc(100% - 48px))}
+.nzer-store-unified #comprar-por-edades,.nzer-store-unified #catalogo{scroll-margin-top:90px}
+.nzer-store-unified .nzer-campaign-hero{background:linear-gradient(110deg,#052e1e,#087d44)}
+.nzer-store-unified .nzer-campaign-visual{width:59%}
+.nzer-store-unified .nzer-campaign-visual img{object-fit:contain;object-position:center bottom;background:transparent}
+.nzer-store-unified .nzer-campaign-visual:after{background:linear-gradient(90deg,#062a1e 0%,#062a1ea3 12%,transparent 49%)}
+@media(max-width:780px){
+ .nzer-store-unified .n5-header .n5-nav{min-height:65px}
+ .nzer-store-unified .n5-products-section .n5-wrap,.nzer-store-unified .n5-offers-section .n5-wrap{width:calc(100% - 32px)}
+ .nzer-store-unified .nzer-campaign-visual{width:100%}
+ .nzer-store-unified .nzer-campaign-visual img{object-fit:contain;object-position:center bottom}
+ .nzer-store-unified .nzer-campaign-visual:after{background:linear-gradient(180deg,#063a2bca,transparent 65%)}
+}
