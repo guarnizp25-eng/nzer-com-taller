@@ -11,6 +11,21 @@ return '<article class="n5-product">'+
 '<div class="n5-product-body"><a href="store/producto/index.html?id='+encodeURIComponent(p.id)+'"><h3 class="n5-product-name">'+p.name+'</h3></a>'+
 '<div class="n5-product-bottom"><span class="n5-product-price">S/ '+Number(p.price).toFixed(2)+'</span>'+
 '<button class="n5-product-buy" type="button" data-n5-add="'+p.id+'" aria-label="Agregar '+p.name+' al carrito">'+cartIcon+'</button></div></div></article>';}
+function renderOffers(){
+ const root=document.getElementById('n5-offers');
+ if(!root||typeof NZER_PRODUCTS==='undefined'||typeof demoDiscount!=='function')return;
+ const products=NZER_PRODUCTS.filter(p=>demoDiscount(p)>0).sort((a,b)=>demoDiscount(b)-demoDiscount(a));
+ root.innerHTML=products.map(p=>
+  '<article class="n5-offer-card">'+
+  '<a class="n5-offer-photo" href="store/producto/index.html?id='+encodeURIComponent(p.id)+'" aria-label="Conocer '+p.name+'">'+
+  productArtwork(p)+'<span class="n5-offer-badge">−'+demoDiscount(p)+'%</span></a>'+
+  '<div class="n5-offer-info"><span class="n5-offer-category">'+p.categoryLabel+'</span>'+
+  '<a href="store/producto/index.html?id='+encodeURIComponent(p.id)+'"><h3>'+p.name+'</h3></a>'+
+  '<div class="n5-offer-prices"><del>S/ '+p.price.toFixed(2)+'</del><strong>S/ '+demoPrice(p).toFixed(2)+'</strong></div>'+
+  '<p>Precio promocional simulado</p>'+
+  '<a class="n5-offer-link" href="store/producto/index.html?id='+encodeURIComponent(p.id)+'">Ver producto →</a>'+
+  '</div></article>').join('');
+}
 function render(category){
 const root=document.getElementById('n5-featured');if(!root)return;
 if(typeof NZER_PRODUCTS==='undefined'||typeof art==='undefined')return;
@@ -23,6 +38,7 @@ root.querySelectorAll('button[data-n5-add]').forEach(btn=>btn.addEventListener('
 function init(){
 const root=document.getElementById('n5-featured');if(!root)return;
 render('all');
+renderOffers();
 const train=document.getElementById('n5-train');
 if(train&&typeof art!=='undefined')train.innerHTML=art.train||'';
 document.querySelectorAll('[data-n5-category]').forEach(btn=>btn.addEventListener('click',()=>{
