@@ -315,9 +315,12 @@ const art=Object.fromEntries(NZER_PRODUCTS.map(p=>[p.id,toyArt(p.id)]));
    Mientras un archivo no exista, permanece la ilustración anterior. */
 const NZER_PRODUCT_PHOTO_ROOT=new URL('productos-originales/',document.querySelector('script[src*="assets/app.js"]')?.src||document.baseURI).href;
 function productArtwork(p){
+ // Solo archivos fotográficos WebP del repositorio: sin ilustraciones SVG superpuestas.
+ // Son imágenes conceptuales de catálogo y no certifican inventario físico.
  const path=NZER_PRODUCT_PHOTO_ROOT+encodeURIComponent(p.id)+'.webp';
- return '<span class="nzer-product-visual">'+art[p.id]+
-  '<img class="nzer-product-original" src="'+path+'" alt="Imagen conceptual original de '+p.name.replace(/"/g,'&quot;')+'" loading="lazy" decoding="async" onload="this.classList.add(\'is-loaded\')" onerror="this.remove()"></span>';
+ const label=String(p.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+ return '<span class="nzer-product-visual nzer-photographic-only">'+
+  '<img class="nzer-product-original is-loaded" src="'+path+'" alt="Fotografía ilustrativa de '+label+'" loading="lazy" decoding="async"></span>';
 }
 
 function getCart(){try{const v=JSON.parse(localStorage.getItem(CART_KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch(e){return {}}}
