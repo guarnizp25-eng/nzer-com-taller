@@ -334,7 +334,17 @@ function addToCart(id){const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;con
 function renderShop(){const root=document.getElementById('productGrid');if(!root)return;
 const active=document.querySelector('.filter.active')?.dataset.category||'all';
 const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
-let selected=NZER_PRODUCTS.filter(p=>(active==='all'||p.category===active)&&(!term||[p.name,p.desc,p.categoryLabel].join(' ').toLocaleLowerCase('es').includes(term)));
+const sidebar=document.getElementById('nzstoreFilters');
+const chosen=name=>sidebar?[...sidebar.querySelectorAll('input[name="'+name+'"]:checked')].map(x=>x.value):[];
+const categories=chosen('nzstore-category'),prices=chosen('nzstore-price'),materials=chosen('nzstore-material');
+let selected=NZER_PRODUCTS.filter(p=>{
+ if(active!=='all'&&p.category!==active)return false;
+ const name=p.name.toLocaleLowerCase('es');
+ if(categories.length&&!categories.some(cat=>cat===p.category||(cat==='rompecabezas'&&name.includes('rompecabezas'))||(cat==='herramientas'&&(name.includes('herramienta')||name.includes('martillo')))))return false;
+ if(prices.length){const price=demoPrice(p);if(!prices.some(range=>range==='0-30'?price<30:range==='30-60'?price>=30&&price<60:range==='60-100'?price>=60&&price<100:price>=100))return false;}
+ if(materials.includes('madera')&&!name.includes('madera'))return false;
+ return !term||[p.name,p.desc,p.categoryLabel].join(' ').toLocaleLowerCase('es').includes(term);
+});
 const order=document.getElementById('productSort')?.value||'featured';
 if(order==='price-asc')selected.sort((a,b)=>demoPrice(a)-demoPrice(b));
 if(order==='price-desc')selected.sort((a,b)=>demoPrice(b)-demoPrice(a));
