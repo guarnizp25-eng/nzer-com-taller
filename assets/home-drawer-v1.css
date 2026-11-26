@@ -42,3 +42,17 @@
  .nzer-home-v5 .n5-brand-slogan{font-size:8px}
  .nzer-home-v5 .n5-mark{height:42px;width:42px;font-size:26px}
 }
+
+/* Cabecera V2: menú corporativo ocupa el espacio del antiguo monograma N. */
+.nzer-home-v5 .n5-menu-toggle{background:#0a8e48;border-color:#0a8e48;color:#fff;min-height:49px;padding:12px 16px;box-shadow:0 5px 13px #08734029}
+.nzer-home-v5 .n5-menu-toggle:hover{background:#076f3a;color:#fff}
+.nzer-home-v5 .n5-brand{padding-left:5px}
+@media(max-width:780px){
+ .nzer-home-v5 .n5-menu-toggle{font-size:11px;padding:10px 12px;min-height:43px}
+}
+@media(max-width:460px){
+ .nzer-home-v5 .n5-menu-toggle{font-size:10px;gap:5px;padding:8px 9px}
+ .nzer-home-v5 .n5-menu-toggle svg{width:18px;height:18px}
+ .nzer-home-v5 .n5-brand-name{font-size:21px}
+ .nzer-home-v5 .n5-nav{gap:6px}
+}
