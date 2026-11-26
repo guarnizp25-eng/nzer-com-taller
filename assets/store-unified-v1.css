@@ -96,3 +96,76 @@
  .nzer-store-unified .nzer-christmas-product-photo{height:205px}
 }
 @media(prefers-reduced-motion:reduce){.nzer-store-unified .nzer-christmas-slide{transition:none}}
+
+/* V2 — una única composición editorial sin división rígida */
+.nzer-store-unified .nzer-christmas-hero{
+ position:relative;grid-template-columns:43% 57%;min-height:440px;
+ background:linear-gradient(107deg,#075d38 0%,#087642 38%,#bfdc9e 59%,#fff7e9 82%,#fff9ef 100%);
+}
+.nzer-store-unified .nzer-christmas-left{background:transparent;min-height:440px;overflow:visible;isolation:isolate}
+.nzer-store-unified .nzer-christmas-left:after{display:none}
+.nzer-store-unified .nzer-christmas-left:before{
+ content:"";position:absolute;
+ left:5%;top:9%;width:78%;height:82%;
+ border:9px solid #ff811e;
+ border-radius:54% 46% 58% 42% / 45% 57% 43% 55%;
+ background:linear-gradient(145deg,#ffb338 0%,#f48423 18%,#0d8048 19%,#0b6b43 90%);
+ box-shadow:0 0 0 7px rgba(255,202,64,.28),inset 0 0 30px rgba(6,43,31,.17),0 12px 36px rgba(10,65,35,.24);
+ transform:rotate(-8deg);
+ z-index:0;
+}
+.nzer-store-unified .nzer-christmas-boy{
+ left:1%;right:auto;bottom:3%;width:70%;height:87%;
+ object-fit:contain;object-position:center bottom;
+ mix-blend-mode:multiply;
+ z-index:1;
+ border-radius:49% 46% 56% 44% / 44% 57% 45% 56%;
+}
+.nzer-store-unified .nzer-christmas-left-copy{
+ left:66%;top:35%;width:82%;max-width:460px;
+ z-index:5;pointer-events:none;
+ text-shadow:0 2px 4px #06472e40;
+}
+.nzer-store-unified .nzer-christmas-left h1{font-size:clamp(28px,3.05vw,48px);margin:10px 0 18px}
+.nzer-store-unified .nzer-christmas-left-copy>a{pointer-events:auto;box-shadow:0 5px 17px #104b304d}
+.nzer-store-unified .nzer-christmas-right{
+ border:0;background:transparent;
+ padding:33px clamp(23px,4vw,60px) 24px clamp(45px,6vw,98px);
+}
+.nzer-store-unified .nzer-christmas-heading{text-align:center;padding-left:4%}
+.nzer-store-unified .nzer-christmas-rotator{min-height:285px}
+.nzer-store-unified .nzer-christmas-slide{
+ transform:translateX(23px) scale(.97);
+ transition:opacity .55s ease,transform .65s ease,visibility .55s;
+}
+.nzer-store-unified .nzer-christmas-slide.is-active{transform:translateX(0) scale(1)}
+.nzer-store-unified .nzer-christmas-product-photo{height:265px}
+.nzer-store-unified .nzer-christmas-footer{border-top:1px solid rgba(14,105,57,.17)}
+@media(max-width:1050px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:44% 56%}
+ .nzer-store-unified .nzer-christmas-left-copy{left:55%;width:88%;top:35%}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(27px,3.4vw,41px)}
+ .nzer-store-unified .nzer-christmas-boy{left:-2%;width:76%}
+ .nzer-store-unified .nzer-christmas-right{padding-left:52px;padding-right:20px}
+}
+@media(max-width:720px){
+ .nzer-store-unified .nzer-christmas-hero{
+  grid-template-columns:1fr;
+  background:linear-gradient(160deg,#08663b 0%,#12834b 43%,#e4eebc 65%,#fff7e9 100%);
+ }
+ .nzer-store-unified .nzer-christmas-left{min-height:320px}
+ .nzer-store-unified .nzer-christmas-left:before{
+  left:1%;top:6%;width:63%;height:87%;border-width:6px;
+ }
+ .nzer-store-unified .nzer-christmas-boy{left:0;width:65%;height:86%;bottom:2%}
+ .nzer-store-unified .nzer-christmas-left-copy{left:59%;top:25%;width:39%;max-width:none}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(23px,6vw,34px)}
+ .nzer-store-unified .nzer-christmas-left-copy>a{padding:9px 10px;font-size:10px}
+ .nzer-store-unified .nzer-christmas-right{padding:24px 19px 18px}
+ .nzer-store-unified .nzer-christmas-heading{padding:0}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:225px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:200px}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-store-unified .nzer-christmas-slide{transition:none;transform:none}
+}
