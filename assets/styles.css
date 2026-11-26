@@ -280,3 +280,9 @@ h1,h2,h3,h4{font-family:Nunito,sans-serif;line-height:1.14;letter-spacing:-.7px;
 @media(prefers-reduced-motion:reduce){
  .nzer-product-visual>.nzer-product-original{transition:none}
 }
+
+/* Precios promocionales de prueba: originales tachados y nuevos claramente identificados. */
+.nzer-demo-price-before{display:inline-block;font-size:.58em;font-weight:600;color:#87968b;text-decoration:line-through;margin-right:5px;vertical-align:middle}
+.nzer-demo-price-now{display:inline-block;color:#ed650d}
+.nzer-demo-price-label{display:block;font-size:10px;line-height:1.5;font-weight:800;color:#687d6b;white-space:normal}
+.product-bottom .price{line-height:1.3}
