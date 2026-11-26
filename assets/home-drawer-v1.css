@@ -56,3 +56,39 @@
  .nzer-home-v5 .n5-brand-name{font-size:21px}
  .nzer-home-v5 .n5-nav{gap:6px}
 }
+
+/* Cabecera V3 — Explora NZER integrado como navegación, sin recuadro ni color de fondo. */
+.nzer-home-v5 .n5-menu-toggle{
+ appearance:none;
+ background:transparent;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+ color:#176a3d;
+ padding:6px 2px;
+ margin:0;
+ min-height:0;
+ gap:8px;
+ font-size:14px;
+ line-height:1.2;
+ font-weight:800;
+}
+.nzer-home-v5 .n5-menu-toggle:hover{
+ background:transparent;
+ border-color:transparent;
+ box-shadow:none;
+ color:#e86c16;
+}
+.nzer-home-v5 .n5-menu-toggle:focus-visible{
+ outline:2px solid #e86c16;
+ outline-offset:5px;
+ background:transparent;
+}
+.nzer-home-v5 .n5-menu-toggle svg{width:21px;height:21px;flex-shrink:0}
+@media(max-width:780px){
+ .nzer-home-v5 .n5-menu-toggle{font-size:12px;padding:5px 1px;min-height:0;gap:6px}
+}
+@media(max-width:460px){
+ .nzer-home-v5 .n5-menu-toggle{font-size:11px;padding:4px 0;gap:5px}
+ .nzer-home-v5 .n5-menu-toggle svg{width:20px;height:20px}
+}
