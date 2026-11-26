@@ -346,6 +346,18 @@ let selected=NZER_PRODUCTS.filter(p=>{
  return !term||[p.name,p.desc,p.categoryLabel].join(' ').toLocaleLowerCase('es').includes(term);
 });
 const order=document.getElementById('productSort')?.value||'featured';
+const headline=document.getElementById('nzstoreResultsTitle');
+const description=document.getElementById('nzstoreResultsDescription');
+const filtering=categories.length>0||prices.length>0||materials.length>0||!!term;
+if(headline)headline.textContent=filtering?'Resultados de tu búsqueda':'Juguetes destacados';
+if(description)description.textContent=filtering?'Productos que coinciden con los filtros elegidos. Puedes combinar categorías, precios y búsqueda.':'Explora los juguetes destacados de NZER y utiliza los filtros para encontrar lo que buscas.';
+if(order==='featured'){
+ const featuredIds=['woodblocks','truck','toolbox','ridecar','abacus','animals'];
+ selected.sort((a,b)=>{
+  const ia=featuredIds.indexOf(a.id),ib=featuredIds.indexOf(b.id);
+  return (ia===-1?999:ia)-(ib===-1?999:ib);
+ });
+}
 if(order==='price-asc')selected.sort((a,b)=>demoPrice(a)-demoPrice(b));
 if(order==='price-desc')selected.sort((a,b)=>demoPrice(b)-demoPrice(a));
 if(order==='name')selected.sort((a,b)=>a.name.localeCompare(b.name,'es'));
