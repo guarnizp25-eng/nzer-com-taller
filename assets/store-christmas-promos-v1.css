@@ -40,3 +40,32 @@
 @media(max-width:850px){.nzer-store-unified .nzpromo-banner{height:285px}.nzer-store-unified .nzpromo-slide{grid-template-columns:58% 42%}.nzer-store-unified .nzpromo-copy{padding:22px 6% 30px 24px}.nzer-store-unified .nzpromo-copy h1,.nzer-store-unified .nzpromo-copy h2{font-size:clamp(27px,3.7vw,38px)}.nzer-store-unified .nzpromo-disc{width:80%;border-width:5px}.nzer-store-unified .nzpromo-ribbon{bottom:32px;font-size:9px}.nzer-store-unified .nzpromo-copy p{font-size:13px}}
 @media(max-width:620px){.nzer-store-unified .nzpromo-banner{width:calc(100% - 24px);height:385px;margin:11px auto 0;border-radius:19px}.nzer-store-unified .nzpromo-slide{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start}.nzer-store-unified .nzpromo-copy{padding:20px 17px 0}.nzer-store-unified .nzpromo-eyebrow{font-size:10px;margin-bottom:9px}.nzer-store-unified .nzpromo-copy h1,.nzer-store-unified .nzpromo-copy h2{font-size:30px;line-height:1.05;margin-bottom:8px}.nzer-store-unified .nzpromo-copy p{font-size:12px;line-height:1.4;margin-bottom:11px}.nzer-store-unified .nzpromo-cta{min-height:34px;padding:7px 15px;font-size:12px}.nzer-store-unified .nzpromo-creative{height:160px;padding:8px 10px 12px;align-self:end}.nzer-store-unified .nzpromo-disc{width:145px;height:145px;aspect-ratio:auto;border-width:4px;outline-width:2px}.nzer-store-unified .nzpromo-disc strong{font-size:46px}.nzer-store-unified .nzpromo-disc-top{font-size:8px}.nzer-store-unified .nzpromo-disc-bottom{font-size:9px}.nzer-store-unified .nzpromo-ribbon{bottom:23px;right:8%;font-size:8px;padding:6px}.nzer-store-unified .nzpromo-legal{left:15px;bottom:12px;font-size:8px;max-width:140px;line-height:1.2}.nzer-store-unified .nzpromo-controls{right:9px;bottom:9px;gap:6px}.nzer-store-unified .nzpromo-arrow{height:25px;width:25px}.nzer-store-unified .nzpromo-progress{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.nzer-store-unified .nzpromo-slide{transition:none}.nzer-store-unified .nzpromo-dots button{transition:none}}
+
+/* V2 · Franja publicitaria de borde a borde. El contenido mantiene un ancho legible. */
+.nzer-store-unified .nzpromo-banner{
+ width:100%!important;
+ max-width:none!important;
+ margin:0!important;
+ border-radius:0!important;
+ box-shadow:none!important;
+}
+.nzer-store-unified .nzpromo-slide{
+ padding-left:max(0px,calc((100vw - 1480px)/2));
+ padding-right:max(0px,calc((100vw - 1480px)/2));
+}
+.nzer-store-unified .nzpromo-controls{
+ right:max(22px,calc((100vw - 1440px)/2));
+}
+.nzer-store-unified .nzpromo-legal{
+ left:max(30px,calc((100vw - 1480px)/2 + 45px));
+}
+@media(max-width:620px){
+ .nzer-store-unified .nzpromo-banner{
+  width:100%!important;
+  margin:0!important;
+  border-radius:0!important;
+ }
+ .nzer-store-unified .nzpromo-slide{padding-left:0;padding-right:0}
+ .nzer-store-unified .nzpromo-controls{right:9px}
+ .nzer-store-unified .nzpromo-legal{left:15px}
+}
