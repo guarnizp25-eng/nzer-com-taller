@@ -7,7 +7,7 @@ const cartIcon='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stro
 function display(p){
 return '<article class="n5-product">'+
 '<a href="store/producto/index.html?id='+encodeURIComponent(p.id)+'" aria-label="Ver '+p.name+'">'+
-'<div class="n5-product-image">'+art[p.id]+'<span class="n5-product-tag">REFERENCIAL</span></div></a>'+
+'<div class="n5-product-image">'+productArtwork(p)+'<span class="n5-product-tag">REFERENCIAL</span></div></a>'+
 '<div class="n5-product-body"><a href="store/producto/index.html?id='+encodeURIComponent(p.id)+'"><h3 class="n5-product-name">'+p.name+'</h3></a>'+
 '<div class="n5-product-bottom"><span class="n5-product-price">S/ '+Number(p.price).toFixed(2)+'</span>'+
 '<button class="n5-product-buy" type="button" data-n5-add="'+p.id+'" aria-label="Agregar '+p.name+' al carrito">'+cartIcon+'</button></div></div></article>';}
