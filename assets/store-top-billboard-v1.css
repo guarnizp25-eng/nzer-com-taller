@@ -1,0 +1,16 @@
+/* NZER STORE · valla comercial permanente, sin falsas promociones */
+.nzer-store-unified .nzstore-top-billboard{width:calc(100% - 48px);max-width:1480px;min-height:230px;margin:18px auto 0;display:grid;grid-template-columns:minmax(0,48%) minmax(0,52%);align-items:center;overflow:hidden;isolation:isolate;border:1px solid #d9eacb;border-radius:24px;background:radial-gradient(circle at 67% 80%,#daebc4 0%,transparent 45%),linear-gradient(105deg,#f0f8e8,#e3f1d5);box-shadow:0 10px 30px #0b583111}
+.nzer-store-unified .nzstore-billboard-copy{padding:26px 22px 27px clamp(24px,4vw,60px);align-self:center}
+.nzer-store-unified .nzstore-billboard-kicker{display:inline-block;font-size:12px;font-weight:950;letter-spacing:1.25px;color:#0a7946;margin-bottom:10px}
+.nzer-store-unified .nzstore-top-billboard h1{font-family:Nunito,Arial,sans-serif;font-size:clamp(31px,3.15vw,49px);line-height:1.07;letter-spacing:-1.2px;margin:0 0 11px;color:#084d33;font-weight:1000}
+.nzer-store-unified .nzstore-top-billboard h1 strong{display:block;color:#e96c10}
+.nzer-store-unified .nzstore-top-billboard p{font-size:15px;color:#54735d;line-height:1.5;margin:0 0 16px;max-width:510px}
+.nzer-store-unified .nzstore-billboard-action{display:inline-flex;align-items:center;gap:12px;padding:12px 21px;border-radius:40px;background:#ee740e;color:#fff!important;text-decoration:none;font-size:15px;font-weight:950;box-shadow:0 5px 11px #ae571c3b}
+.nzer-store-unified .nzstore-billboard-action:hover{background:#d35f07}
+.nzer-store-unified .nzstore-billboard-gallery{padding:19px 26px 19px 8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;align-items:center;min-width:0}
+.nzer-store-unified .nzstore-billboard-item{display:flex;align-items:center;justify-content:center;min-width:0;height:174px;border:1px solid #e6ebe2;background:#fff;border-radius:14px;box-shadow:0 8px 19px #23572f12;padding:10px;overflow:hidden}
+.nzer-store-unified .nzstore-billboard-item:nth-child(2){height:198px}
+.nzer-store-unified .nzstore-billboard-item img{height:100%;width:100%;object-fit:contain}
+.nzer-store-unified .nzstore-commerce{margin-top:22px!important}
+@media(max-width:850px){.nzer-store-unified .nzstore-top-billboard{min-height:220px;grid-template-columns:54% 46%}.nzer-store-unified .nzstore-top-billboard h1{font-size:clamp(27px,3.7vw,35px)}.nzer-store-unified .nzstore-billboard-gallery{padding:15px 12px 15px 0;gap:6px}.nzer-store-unified .nzstore-billboard-item{height:135px;padding:5px}.nzer-store-unified .nzstore-billboard-item:nth-child(2){height:158px}}
+@media(max-width:620px){.nzer-store-unified .nzstore-top-billboard{width:calc(100% - 24px);grid-template-columns:1fr;min-height:0;margin:12px auto 0;border-radius:18px}.nzer-store-unified .nzstore-billboard-copy{padding:24px 20px 8px}.nzer-store-unified .nzstore-top-billboard h1{font-size:32px}.nzer-store-unified .nzstore-billboard-gallery{padding:9px 17px 18px;gap:8px}.nzer-store-unified .nzstore-billboard-item{height:100px}.nzer-store-unified .nzstore-billboard-item:nth-child(2){height:114px}.nzer-store-unified .nzstore-commerce{margin-top:14px!important}}
