@@ -372,3 +372,31 @@
  .nzer-store-unified .nzer-christmas-left:before{top:19%;height:67%}
  .nzer-store-unified .nzer-christmas-boy{bottom:10%;height:86%}
 }
+
+/* V10: marco BAJO la cabeza, retrato al frente (efecto fuera del círculo).
+   La capa de la foto queda delante del borde naranja y no recorta la cabeza. */
+.nzer-store-unified .nzer-christmas-left{overflow:visible}
+.nzer-store-unified .nzer-christmas-left:before{
+ left:1.5%;top:28%;width:48%;height:61%;
+ border-radius:53% 47% 46% 54% / 47% 44% 56% 53%;
+ transform:rotate(-6deg);z-index:0;
+}
+.nzer-store-unified .nzer-christmas-boy{
+ left:2%;bottom:7%;width:47%;height:93%;top:auto;
+ object-position:center 15%;
+ border-radius:44% 52% 47% 53% / 34% 43% 54% 55%;
+ transform:rotate(-4deg);z-index:4;
+}
+.nzer-store-unified .nzer-christmas-left-copy{z-index:5}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-left:before{
+  left:2%;top:27%;width:47%;height:62%;border-width:7px;
+ }
+ .nzer-store-unified .nzer-christmas-boy{
+  left:2%;bottom:7%;width:46%;height:93%;
+ }
+}
+@media(max-width:420px){
+ .nzer-store-unified .nzer-christmas-left:before{top:28%;height:60%}
+ .nzer-store-unified .nzer-christmas-boy{bottom:7%;height:93%}
+}
