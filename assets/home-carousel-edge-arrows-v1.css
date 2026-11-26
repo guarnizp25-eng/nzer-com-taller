@@ -1,0 +1,55 @@
+/* NZER: navegación lateral discreta del carrusel. Las flechas son puntas integradas, sin círculos. */
+.nzer-home-v5 .n5-hero.n5-carousel > .n5-carousel-controls{
+ position:absolute;
+ inset:0;
+ top:0;right:0;bottom:0;left:0;
+ width:100%;height:100%;
+ transform:none;
+ z-index:20;
+ display:block;
+ pointer-events:none;
+}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-dots{display:none!important}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev,
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next{
+ position:absolute;
+ top:50%;
+ width:48px;height:76px;
+ display:grid;place-items:center;
+ padding:0;margin:0;
+ transform:translateY(-50%);
+ background:transparent!important;
+ border:0!important;border-radius:0!important;
+ box-shadow:none!important;
+ font-size:0;color:transparent;
+ cursor:pointer;
+ pointer-events:auto;
+ transition:opacity .2s ease, transform .2s ease;
+ opacity:.86;
+}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev{left:8px}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next{right:8px}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev::before,
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next::before{
+ content:"";
+ width:19px;height:19px;
+ display:block;
+ border-top:5px solid #fff;
+ border-right:5px solid #fff;
+ border-radius:2px;
+ filter:drop-shadow(0 2px 3px rgba(0,0,0,.62));
+}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev::before{transform:rotate(-135deg)}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next::before{transform:rotate(45deg)}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev:hover,
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next:hover{opacity:1;transform:translateY(-50%) scale(1.12)}
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev:focus-visible,
+.nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next:focus-visible{outline:3px solid #fff;outline-offset:-5px;border-radius:10px!important}
+@media(max-width:780px){
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev,
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next{width:40px;height:60px;top:48%}
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev{left:0}
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next{right:0}
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-prev::before,
+ .nzer-home-v5 .n5-hero.n5-carousel .n5-carousel-next::before{width:15px;height:15px;border-width:4px}
+}
