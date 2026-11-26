@@ -30,17 +30,15 @@
  function stop(){if(timer!==null){window.clearInterval(timer);timer=null}}
  function start(){
   stop();
-  if(reduced||document.hidden)return;
+  if(document.hidden)return;
   timer=window.setInterval(()=>show(active+1,false),interval);
  }
  function navigate(i){show(i,true);start()}
  prev.addEventListener('click',()=>navigate(active-1));
  next.addEventListener('click',()=>navigate(active+1));
  dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
- root.addEventListener('mouseenter',stop);
- root.addEventListener('mouseleave',start);
- root.addEventListener('focusin',stop);
- root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget))start()});
+ // La rotación permanece activa aunque el cursor o el foco estén en la franja.
+ // Los controles manuales reinician el intervalo para dar tiempo a leer la diapositiva.
  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
  show(0,false);
  start();
