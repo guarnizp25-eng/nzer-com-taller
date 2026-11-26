@@ -53,3 +53,20 @@
  .nzer-store-unified .nzstore-toolbar .product-count{width:100%;text-align:right}
 }
 @media(max-width:360px){.nzer-store-unified .nzstore-results .products{grid-template-columns:1fr!important}}
+
+/* V3: escaparate principal comienza inmediatamente bajo encabezado. */
+.nzer-store-unified .nzstore-commerce{margin:20px auto 62px!important}
+.nzer-store-unified .nzstore-sidebar{top:88px;max-height:calc(100dvh - 102px)}
+.nzer-store-unified .nzstore-results .section-heading{margin:4px 0 17px!important}
+.nzer-store-unified .nzstore-results .section-heading h2{font-size:clamp(31px,2.8vw,44px)!important}
+.nzer-store-unified .nzstore-results .products{align-items:stretch}
+.nzer-store-unified .nzstore-results .product-card{transition:box-shadow .2s ease,transform .2s ease}
+.nzer-store-unified .nzstore-results .product-card:hover{transform:translateY(-3px);box-shadow:0 11px 26px #113a231b}
+.nzer-store-unified .nzstore-results .product-image{height:190px!important}
+.nzer-store-unified .nzstore-results .product-body h3{font-size:16px!important}
+@media(max-width:760px){
+ .nzer-store-unified .nzstore-commerce{margin:13px auto 44px!important}
+ .nzer-store-unified .nzstore-sidebar{top:0;max-height:100dvh}
+ .nzer-store-unified .nzstore-results .section-heading{margin:5px 0 15px!important}
+ .nzer-store-unified .nzstore-results .product-image{height:155px!important}
+}
