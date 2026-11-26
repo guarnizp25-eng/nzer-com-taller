@@ -23,3 +23,30 @@
  .nzer-store-unified .nzer-campaign-visual img{object-fit:contain;object-position:center bottom}
  .nzer-store-unified .nzer-campaign-visual:after{background:linear-gradient(180deg,#063a2bca,transparent 65%)}
 }
+
+/* Banner editorial, minimalista: solo el mensaje comercial y accesos útiles. */
+.nzer-store-unified .nzer-campaign-inner{padding-top:83px;padding-bottom:76px}
+.nzer-store-unified .nzer-campaign-copy{max-width:650px}
+.nzer-store-unified .nzer-campaign-headline{
+ font-family:'Nunito',Arial,sans-serif;
+ font-size:clamp(48px,5.15vw,79px);
+ font-weight:900;
+ line-height:1.055;
+ letter-spacing:-1.65px;
+ margin:0 0 35px;
+ text-shadow:none;
+}
+.nzer-store-unified .nzer-campaign-headline span,
+.nzer-store-unified .nzer-campaign-headline strong{font-weight:900}
+.nzer-store-unified .nzer-campaign-headline strong{color:#ffcb33}
+.nzer-store-unified .nzer-campaign-buttons{gap:12px}
+.nzer-store-unified .nzer-campaign-bottom{margin-top:21px}
+@media(max-width:920px){
+ .nzer-store-unified .nzer-campaign-headline{font-size:clamp(44px,6.3vw,64px);letter-spacing:-1.3px}
+ .nzer-store-unified .nzer-campaign-inner{padding-top:58px;padding-bottom:52px}
+}
+@media(max-width:680px){
+ .nzer-store-unified .nzer-campaign-headline{font-size:clamp(38px,10vw,57px);letter-spacing:-1px;margin:0 0 22px}
+ .nzer-store-unified .nzer-campaign-inner{padding:30px 0 37px}
+ .nzer-store-unified .nzer-campaign-buttons{gap:9px}
+}
