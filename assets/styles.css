@@ -286,3 +286,9 @@ h1,h2,h3,h4{font-family:Nunito,sans-serif;line-height:1.14;letter-spacing:-.7px;
 .nzer-demo-price-now{display:inline-block;color:#ed650d}
 .nzer-demo-price-label{display:block;font-size:10px;line-height:1.5;font-weight:800;color:#687d6b;white-space:normal}
 .product-bottom .price{line-height:1.3}
+
+/* Tipografía corporativa NZER — Nunito en todas las páginas y controles. */
+html body,
+html body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,select,textarea,label,li,summary,option,blockquote,figcaption,th,td){
+ font-family:'Nunito',Arial,sans-serif!important;
+}
