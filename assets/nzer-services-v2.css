@@ -62,3 +62,12 @@
 .nzs-service-page .nzs-card-visual img{height:100%;width:100%;object-fit:contain;display:block}
 .nzs-service-page .nzs-card-image-label{position:absolute;right:8px;bottom:8px;background:#fff9e8e8;color:#526951;border-radius:6px;padding:4px 7px;font-size:10px;font-weight:850}
 @media(max-width:650px){.nzs-service-page .nzs-card-visual{height:100%;min-height:130px}.nzs-service-page .nzs-card-image-label{font-size:8px;padding:4px}}
+
+/* NZER CARE V3: el centro es guardería con programa de desarrollo infantil.
+   Dar protagonismo visual a la interacción entre miss y niños. */
+.nzs-service-page.nzs-care .nzs-hero-photo{background:linear-gradient(135deg,#e8f4df,#d2ebd2)}
+.nzs-service-page.nzs-care .nzs-hero-photo img{object-fit:contain;object-position:center 40%;padding:2px 6px 22px}
+.nzs-service-page.nzs-care .nzs-card-visual{height:198px}
+.nzs-service-page.nzs-care .nzs-card-visual img{object-fit:contain;object-position:center}
+.nzs-service-page.nzs-care .nzs-hero-copy>p{font-size:clamp(17px,1.48vw,20px)}
+@media(max-width:650px){.nzs-service-page.nzs-care .nzs-card-visual{height:100%;min-height:128px}}
