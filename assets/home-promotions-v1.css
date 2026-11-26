@@ -1,89 +1,147 @@
-/* NZER Inicio: promociones de muestra por servicio, editables y NO vigentes */
+/* NZER — Promociones de ejemplo integradas en la escena.
+   Sin tarjetas, paneles de color ni fondos opacos sobre la fotografía. */
 .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
- position:absolute;z-index:5;right:clamp(13px,2.1vw,34px);
- top:50%;transform:translateY(-50%);
- width:clamp(210px,22vw,320px);
- display:grid;justify-items:center;pointer-events:none;
+  position:absolute;
+  z-index:5;
+  top:50%;
+  right:clamp(18px,3vw,52px);
+  transform:translateY(-49%);
+  width:clamp(205px,23vw,335px);
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  pointer-events:none;
+  filter:drop-shadow(0 8px 10px rgba(8,43,29,.25));
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{
- content:"";position:absolute;z-index:-1;
- inset:-55px -30px -50px -40px;
- border-radius:46% 0 0 46%;
- background:radial-gradient(ellipse at 58% 50%,#fff9e5d9 0%,#fff9e5a3 38%,#fff9e500 75%);
- filter:blur(9px);
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-58px -54px -48px -50px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,
+    rgba(255,251,230,.79) 0%,
+    rgba(255,247,223,.51) 38%,
+    rgba(255,246,225,.14) 67%,
+    rgba(255,246,225,0) 80%);
+  filter:blur(14px);
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-art{
- --promo-green:#06723d;--promo-green-dark:#004c2a;--promo-highlight:#ff8e1b;
- width:100%;position:relative;text-align:center;
- padding:18px 13px 17px;
- border-radius:32px 33px 37px 29px;
- background:linear-gradient(150deg,#129858 0%,var(--promo-green) 57%,var(--promo-green-dark) 100%);
- border:3px solid #d6f3b5;
- box-shadow:5px 7px 0 #034e2e,10px 13px 0 #f7b647,14px 20px 22px #092b1b65,inset 0 3px 8px #ffffff66;
- transform:rotate(-4deg);
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  position:relative;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:rotate(-4deg);
+  --promo-front:#ff8b13;
+  --promo-depth:#a93e00;
+  --promo-ink:#064e31;
 }
-.nzer-home-v5 .n5-carousel-slide .n5-promo-art::before{
- content:"";position:absolute;inset:8px 10px auto;height:34%;
- border-radius:24px;background:linear-gradient(#ffffff42,#ffffff00);pointer-events:none
-}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-art::before{display:none}
 .nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{
- display:block;color:#f9ffde;font:1000 12px 'Nunito',sans-serif;
- letter-spacing:1.7px;text-transform:uppercase;text-shadow:0 2px 1px #064726;
+  font:1000 clamp(14px,1.45vw,21px)/1.12 'Nunito',Arial,sans-serif;
+  letter-spacing:1.2px;
+  color:var(--promo-ink);
+  text-transform:uppercase;
+  text-shadow:0 2px 0 rgba(255,255,255,.87),0 4px 8px rgba(6,46,31,.18);
+  margin-bottom:3px;
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-value{
- display:block;white-space:nowrap;
- color:var(--promo-highlight);
- font:1000 clamp(74px,7.5vw,122px)/.96 'Nunito',Arial,sans-serif;
- letter-spacing:-7px;
- text-shadow:2px 3px 0 #fff5c6,4px 6px 0 #bb5408,7px 9px 10px #1a3d2182;
- margin:4px 0 7px;
+  display:block;
+  font:1000 clamp(80px,9.2vw,144px)/.90 'Nunito',Arial,sans-serif;
+  letter-spacing:-8px;
+  color:var(--promo-front);
+  white-space:nowrap;
+  margin:2px 0 0;
+  -webkit-text-stroke:2px #fff5d2;
+  paint-order:stroke fill;
+  text-shadow:
+    2px 3px 0 #fff3c6,
+    4px 5px 0 #e8690e,
+    6px 8px 0 var(--promo-depth),
+    9px 13px 12px rgba(45,38,14,.46);
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-off{
- display:block;color:#fff;
- font:1000 clamp(20px,2vw,29px)/1.07 'Nunito',sans-serif;
- text-transform:uppercase;text-shadow:0 3px 0 #003f29,0 6px 9px #002d23;
+  color:var(--promo-ink);
+  font:1000 clamp(22px,2.15vw,32px)/1.05 'Nunito',Arial,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:-.5px;
+  text-shadow:1px 2px 0 #fff8e2,2px 3px 0 #fff8e2,4px 6px 8px #16392542;
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{
- display:block;background:linear-gradient(165deg,#fffcef,#ffe5ad);
- border:2px solid #fff;border-radius:15px;color:#175837;
- font:900 clamp(14px,1.4vw,19px)/1.2 'Nunito',sans-serif;
- padding:9px 12px;margin:15px -5px -33px;
- box-shadow:0 5px 0 #c7964a,0 11px 13px #022d2060;
- transform:rotate(2deg);
+  display:block;
+  margin:9px 0 0;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  color:var(--promo-ink);
+  font:900 clamp(14px,1.5vw,20px)/1.22 'Nunito',Arial,sans-serif;
+  text-shadow:
+    1px 1px 0 #fff,
+    -1px -1px 0 #fff,
+    0 2px 3px #fff9ee,
+    0 4px 8px #164b2b3d;
+  transform:none;
+  box-shadow:none;
+  max-width:100%;
 }
 .nzer-home-v5 .n5-carousel-slide .n5-promo-demo{
- display:block;margin-top:49px;padding:7px 11px;
- background:#fffef1f5;border:1px solid #edc784;border-radius:99px;
- font:900 10px 'DM Sans',sans-serif;color:#825312;
- text-align:center;box-shadow:0 3px 12px #001b1519;
+  display:block;
+  margin-top:15px;
+  padding:4px 8px;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+  font:900 10px/1.25 'DM Sans',Arial,sans-serif;
+  color:#704715;
+  text-transform:uppercase;
+  text-shadow:0 1px 2px #fff,0 2px 5px #fff;
 }
 .nzer-home-v5 .n5-carousel-slide--psico .n5-promo-art{
- --promo-green:#6b3894;--promo-green-dark:#4e236d;--promo-highlight:#ffb633;
- border-color:#ecd8ff;box-shadow:5px 7px 0 #45235e,10px 13px 0 #f7b647,14px 20px 22px #2513346b,inset 0 3px 8px #ffffff66;
+  --promo-front:#ffa521;
+  --promo-depth:#774199;
+  --promo-ink:#572274;
 }
-.nzer-home-v5 .n5-carousel-slide--care .n5-promo-art{--promo-highlight:#ffd14b}
-.nzer-home-v5 .n5-carousel-slide--store .n5-promo-art{--promo-highlight:#ffb119}
-.nzer-home-v5 .n5-carousel-slide .n5-promo-zone{font-synthesis:none}
-@media(max-width:1190px){
- .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{width:210px;right:12px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:78px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-art{padding:14px 10px 16px}
+.nzer-home-v5 .n5-carousel-slide--care .n5-promo-art{
+  --promo-front:#ff9c19;
+}
+.nzer-home-v5 .n5-carousel-slide--store .n5-promo-art{
+  --promo-front:#ff8b0c;
+}
+@media(max-width:1200px){
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{width:clamp(170px,21vw,255px);right:14px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:clamp(66px,8.2vw,102px);letter-spacing:-5px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-off{font-size:clamp(18px,1.9vw,25px)}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{font-size:clamp(13px,1.35vw,18px)}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{font-size:14px}
 }
 @media(max-width:920px) and (min-width:781px){
- .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{width:155px;right:9px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:61px;letter-spacing:-4px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-off{font-size:16px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{font-size:9px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{font-size:12px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-demo{font-size:8px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{width:160px;right:8px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:63px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-off{font-size:16px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{font-size:12px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{font-size:11px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-demo{font-size:8px}
 }
 @media(max-width:780px){
- .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
-  position:relative;top:auto;right:auto;transform:none;
-  width:min(280px,calc(100% - 55px));margin:14px auto 65px;
- }
- .nzer-home-v5 .n5-carousel-slide .n5-promo-art{padding:15px 15px 20px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:88px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-demo{margin-top:48px}
- .nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{inset:-15px -25px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
+    position:relative;
+    top:auto;right:auto;transform:none;
+    width:min(290px,calc(100% - 40px));
+    margin:18px auto 62px;
+  }
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:94px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-off{font-size:25px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{font-size:16px}
+  .nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{inset:-23px -35px}
 }
