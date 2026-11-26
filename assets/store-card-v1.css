@@ -23,6 +23,8 @@
  .nzer-card-v1__photo:hover .nzer-card-v1__img-primary{opacity:0}
  .nzer-card-v1__photo:hover .nzer-card-v1__img-usage{opacity:1}
  .nzer-card-v1__photo:hover img{transform:scale(1.035)}
+ .nzer-card-v1__photo:hover .nzer-card-v1__view-label{font-size:0}
+ .nzer-card-v1__photo:hover .nzer-card-v1__view-label::after{content:'Escena de juego';font-size:10px}
 }
 .nzer-card-v1__view-label{position:absolute;bottom:10px;left:11px;border-radius:99px;background:#fffdf2f2;padding:6px 10px;font:800 10px 'DM Sans',sans-serif;color:#245c3b;box-shadow:0 3px 9px #1b53351f}
 .nzer-card-v1__switches{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
