@@ -1,0 +1,74 @@
+/* NZER STORE: tarjeta comercial V1. Estilos aislados de otras páginas. */
+.nzer-v1-lab{background:#fffdfa;padding:34px 0 50px;border-top:1px solid #edf1e7;border-bottom:1px solid #edf1e7}
+.nzer-v1-lab .nzer-v1-layout{display:grid;grid-template-columns:minmax(320px,510px) minmax(260px,1fr);gap:48px;align-items:center;max-width:1000px;margin:0 auto}
+.nzer-v1-lab .nzer-v1-intro{max-width:405px}
+.nzer-v1-lab .nzer-v1-kicker{font:900 11px 'DM Sans',sans-serif;color:#078e4c;letter-spacing:1.5px}
+.nzer-v1-lab .nzer-v1-intro h2{font:900 clamp(29px,3vw,39px)/1.14 'Nunito',sans-serif;letter-spacing:-.8px;color:#095b34;margin:12px 0}
+.nzer-v1-lab .nzer-v1-intro p{font:500 14px/1.8 'DM Sans',sans-serif;color:#587061;margin:0 0 16px}
+.nzer-v1-lab .nzer-v1-intro ul{list-style:none;display:grid;gap:13px;padding:0;margin:23px 0 0}
+.nzer-v1-lab .nzer-v1-intro li{display:flex;gap:11px;align-items:flex-start;color:#204e37;font-size:13px;font-weight:700;line-height:1.55}
+.nzer-v1-lab .nzer-v1-intro li span{width:26px;height:26px;border-radius:50%;background:#e4f9e5;color:#068b44;display:grid;place-items:center;flex:none;font-weight:900}
+.nzer-v1-lab .nzer-v1-notice{margin-top:25px;font-size:11px;color:#7b6e55;padding:13px 15px;background:#fff3dc;border:1px solid #f2dcac;border-radius:12px;line-height:1.7}
+.nzer-card-v1{background:#fff;border:1px solid #deebe1;border-radius:25px;box-shadow:0 18px 52px rgba(15,83,48,.12);overflow:hidden;max-width:510px;width:100%;margin:0 auto}
+.nzer-card-v1__visual{background:#f6f9f1;padding:15px 16px 10px}
+.nzer-card-v1__top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
+.nzer-card-v1__category{background:#e4f7df;border:1px solid #caeaca;padding:6px 12px;border-radius:99px;font:900 10px 'DM Sans',sans-serif;color:#18783d}
+.nzer-card-v1__brand{font:900 11px 'DM Sans',sans-serif;color:#0a8c45;letter-spacing:.6px}
+.nzer-card-v1__photo{display:block;border:0;padding:0;background:#e8eee7;position:relative;width:100%;aspect-ratio:1.36;overflow:hidden;border-radius:16px;cursor:pointer;outline-offset:4px}
+.nzer-card-v1__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .38s ease,transform .45s ease}
+.nzer-card-v1__photo .nzer-card-v1__img-usage{opacity:0}
+.nzer-card-v1__photo.is-usage .nzer-card-v1__img-primary{opacity:0}
+.nzer-card-v1__photo.is-usage .nzer-card-v1__img-usage{opacity:1}
+@media(hover:hover) and (pointer:fine){
+ .nzer-card-v1__photo:hover .nzer-card-v1__img-primary{opacity:0}
+ .nzer-card-v1__photo:hover .nzer-card-v1__img-usage{opacity:1}
+ .nzer-card-v1__photo:hover img{transform:scale(1.035)}
+}
+.nzer-card-v1__view-label{position:absolute;bottom:10px;left:11px;border-radius:99px;background:#fffdf2f2;padding:6px 10px;font:800 10px 'DM Sans',sans-serif;color:#245c3b;box-shadow:0 3px 9px #1b53351f}
+.nzer-card-v1__switches{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.nzer-card-v1__switches button{padding:9px 10px;border:1px solid #cae3d1;background:#fff;color:#326b46;border-radius:12px;font-size:11px;font-weight:800;transition:background .16s ease}
+.nzer-card-v1__switches button.is-active{background:#087d41;border-color:#087d41;color:#fff}
+.nzer-card-v1__body{padding:20px 21px 22px}
+.nzer-card-v1__body h3{font-size:22px;line-height:1.2;font-weight:900;color:#174b30;margin:0 0 4px}
+.nzer-card-v1__desc{font-size:12px;color:#688071;line-height:1.65}
+.nzer-card-v1__purchase{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:17px 0 13px;margin-top:9px;border-top:1px solid #ebf0e9}
+.nzer-card-v1__price{font:900 29px/1.1 'Nunito',sans-serif;letter-spacing:-.5px;color:#f46d16;white-space:nowrap}
+.nzer-card-v1__minor{font-size:10px;color:#7d8e80;display:block;margin-top:4px}
+.nzer-card-v1__qty{display:flex;align-items:center;gap:11px}
+.nzer-card-v1__qty button{width:38px;height:38px;border:1px solid #bcdcc7;background:#fff;color:#087d41;border-radius:11px;font-weight:900;font-size:20px}
+.nzer-card-v1__qty button:disabled{color:#a9bcb0;border-color:#e3ece5;background:#f8faf8;cursor:not-allowed}
+.nzer-card-v1__qty output{min-width:16px;font:900 15px 'DM Sans',sans-serif;text-align:center;color:#1e4530}
+.nzer-card-v1__subtotal{font-size:12px;color:#3c6751;margin:0 0 14px;display:flex;align-items:center;justify-content:space-between}
+.nzer-card-v1__subtotal strong{color:#0a6b3c;font-size:14px}
+.nzer-card-v1__add{background:#078743;border:1px solid #078743;width:100%;padding:15px 12px;font:900 14px 'DM Sans',sans-serif;border-radius:13px;color:#fff;box-shadow:0 6px 18px #0c713929}
+.nzer-card-v1__add:hover{background:#086c36}
+.nzer-card-v1__details{margin-top:10px;width:100%;padding:12px;background:#fff;border:1px solid #a9d6b5;border-radius:12px;font-size:12px;font-weight:900;color:#0b7441}
+.nzer-card-v1__details:hover{background:#f0fbf1}
+.nzer-card-v1__detail-panel{margin-top:11px;padding:14px 16px;background:#f8fcf7;border:1px solid #d9ebd7;border-radius:13px;color:#436650;font-size:12px;line-height:1.75}
+.nzer-card-v1__detail-panel[hidden]{display:none}
+.nzer-card-v1__detail-panel p{margin:7px 0 9px}
+.nzer-card-v1__detail-panel ul{margin:0;padding-left:17px}
+.nzer-card-v1__feedback{min-height:19px;margin-top:10px;font-size:11px;color:#087941;font-weight:900;line-height:1.5}
+.nzer-card-v1__fineprint{font-size:10px;color:#778e7c;margin-top:6px;line-height:1.5}
+@media(max-width:920px){
+ .nzer-v1-lab .nzer-v1-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:23px}
+}
+@media(max-width:700px){
+ .nzer-v1-lab{padding:27px 0 37px}
+ .nzer-v1-lab .nzer-v1-layout{grid-template-columns:1fr;gap:21px}
+ .nzer-v1-lab .nzer-v1-intro{max-width:none}
+ .nzer-v1-lab .nzer-v1-intro ul{grid-template-columns:1fr 1fr;gap:9px;margin:15px 0 0}
+ .nzer-v1-lab .nzer-v1-intro li{font-size:11px;gap:7px}
+ .nzer-v1-lab .nzer-v1-intro li span{width:22px;height:22px}
+}
+@media(max-width:460px){
+ .nzer-card-v1__body{padding:16px 15px 18px}
+ .nzer-card-v1__price{font-size:26px}
+ .nzer-v1-lab .nzer-v1-intro h2{font-size:30px}
+ .nzer-card-v1__photo{aspect-ratio:1.15}
+ .nzer-card-v1__visual{padding:13px 12px 11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-card-v1__photo img,.nzer-card-v1__switches button{transition:none}
+ .nzer-card-v1__photo:hover img{transform:none}
+}
