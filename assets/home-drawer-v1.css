@@ -92,3 +92,18 @@
  .nzer-home-v5 .n5-menu-toggle{font-size:11px;padding:4px 0;gap:5px}
  .nzer-home-v5 .n5-menu-toggle svg{width:20px;height:20px}
 }
+
+/* NZER V4: principal acceso Explora NZER más visible, sin perder estética minimalista. */
+.nzer-home-v5 .n5-menu-toggle{
+ font-family:'Nunito',Arial,sans-serif!important;
+ font-size:21px!important;
+ font-weight:1000!important;
+ letter-spacing:-.45px;
+ gap:11px!important;
+ padding:10px 3px!important;
+ line-height:1.25!important;
+}
+.nzer-home-v5 .n5-menu-toggle svg{width:25px!important;height:25px!important;stroke-width:2.6!important}
+@media(max-width:1250px){.nzer-home-v5 .n5-menu-toggle{font-size:17px!important;gap:7px!important}.nzer-home-v5 .n5-menu-toggle svg{width:23px!important;height:23px!important}}
+@media(max-width:960px){.nzer-home-v5 .n5-menu-toggle{font-size:15px!important}}
+@media(max-width:560px){.nzer-home-v5 .n5-menu-toggle{font-size:12px!important;gap:5px!important;padding:7px 0!important}.nzer-home-v5 .n5-menu-toggle svg{width:21px!important;height:21px!important}}
