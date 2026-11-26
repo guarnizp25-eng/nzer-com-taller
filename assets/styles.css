@@ -160,3 +160,52 @@ h1,h2,h3,h4{font-family:Nunito,sans-serif;line-height:1.14;letter-spacing:-.7px;
   .hero-glow,.art-float-1,.art-float-2 {animation:none!important;}
   .card,.product-card,.content-card,.btn {transition:none!important;}
 }
+
+
+/* =========================================================
+   NZER.COM V3 | Portada viva — SOLO INICIO.
+   La tienda, CARE, PSICO y sus funciones permanecen intactas.
+   ========================================================= */
+.home-v3{--green:#087b42;--forest:#075c35;--leaf:#159f53;--orange:#f47721;--light:#e9fae4;--ink:#143f29;--muted:#4e795e}
+.home-v3 .strip{background:#075c35;color:#fff;padding:10px 14px}
+.home-v3 .header{box-shadow:0 8px 25px rgba(14,93,50,.05)}
+.home-v3 .brand-monogram{display:grid;place-items:center;background:linear-gradient(135deg,#0cae64,#087840);color:#fff;font-family:Nunito,sans-serif;font-size:26px;font-weight:900;box-shadow:0 5px 12px #075b3420}
+.home-v3 .brand-word{color:#087b42}
+.home-v3 .full-hero{background:linear-gradient(114deg,#efffdf 0%,#fffdf4 52%,#fff1dd 100%);position:relative;overflow:hidden}
+.home-v3 .full-hero:before{content:"";position:absolute;width:520px;height:520px;background:#c7f6a964;border-radius:50%;left:-230px;bottom:-340px;pointer-events:none}
+.home-v3 .hero-grid{grid-template-columns:.96fr 1.04fr;gap:44px;min-height:600px;padding-top:65px;padding-bottom:75px}
+.home-v3 .hero-copy h1{font-size:clamp(38px,5vw,67px);color:#0a512f;line-height:1.07;letter-spacing:-2.3px}
+.home-v3 .hero-copy h1 em{color:#f47721}
+.home-v3 .hero-copy .lead{color:#386c50;font-size:16px;max-width:490px;line-height:1.75}
+.home-v3 .badge{background:#fff8d9;border:1px solid #fbe09f;color:#126542}
+.home-v3 .hero-copy .buttons .primary{background:linear-gradient(110deg,#f47721,#ff9946);box-shadow:0 12px 25px #ec6d2838}
+.home-v3 .hero-copy .buttons .outline{background:#fff;border-color:#acd9ba;color:#106a3e}
+.home-v3 .hero-photo-composition{position:relative;display:block;min-height:485px;isolation:isolate}
+.home-v3 .photo-accent{position:absolute;border-radius:50%;z-index:0;pointer-events:none}
+.home-v3 .photo-accent-green{width:94%;height:87%;right:-2%;top:7%;background:#99df77;transform:rotate(-11deg)}
+.home-v3 .photo-accent-orange{width:45%;height:50%;right:-10%;top:-10%;background:#ffc66d}
+.home-v3 .hero-photo-frame{margin:0;position:absolute;inset:6% 2% 7% 5%;background:#e9ffdb;border:8px solid white;border-radius:36px 78px 38px 75px;overflow:hidden;box-shadow:0 24px 65px rgba(12,88,42,.24);transform:rotate(-1.5deg)}
+.home-v3 .hero-photo-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s ease}
+.home-v3 .hero-photo-frame:hover img{transform:scale(1.06)}
+.home-v3 .hero-photo-caption{position:absolute;left:18px;bottom:19px;color:#fff;background:rgba(5,90,47,.94);font-weight:900;font-size:13px;padding:12px 17px;border-radius:99px}
+.home-v3 .hero-positive{position:absolute;z-index:2;display:flex;gap:10px;align-items:center;background:#fff;border-radius:18px;box-shadow:0 15px 32px rgba(18,89,49,.18);padding:11px 15px;color:#155a39;font-size:11px;font-weight:600;line-height:1.4;transform:rotate(-3deg)}
+.home-v3 .hero-positive b{font-weight:900;font-size:14px}
+.home-v3 .hero-positive-top{right:-1%;top:4%}
+.home-v3 .hero-positive-bottom{left:-5%;bottom:7%;transform:rotate(4deg)}
+.home-v3 .bubble-icon{height:40px;width:40px;background:#fff0cd;border-radius:13px;display:grid;place-items:center;color:#e97217;font-size:27px}
+.home-v3 .bubble-green{background:#e6f9e4;color:#0da754}
+.home-v3 .hero-photo-note{position:absolute;right:5%;bottom:1%;z-index:3;font-size:10px;color:#416e4e;background:#f8fff0e0;padding:3px 7px;border-radius:20px}
+.home-v3 .trust-wrap{background:#fff;border-top:1px solid #eaf5dc;border-bottom:1px solid #eaf5dc}
+.home-v3 .cards4 .card{border:1px solid #d9edd8;overflow:hidden;border-radius:24px;box-shadow:0 16px 36px rgba(12,94,50,.11)}
+.home-v3 .card-visual.visual-photo{position:relative;height:203px;overflow:hidden;background:#e9ffdc;display:block}
+.home-v3 .visual-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .45s ease}
+.home-v3 .card:hover .visual-photo img{transform:scale(1.065)}
+.home-v3 .visual-label{position:absolute;left:13px;bottom:12px;background:#fff;color:#11663b;border-radius:40px;padding:8px 11px;font-size:10px;letter-spacing:.04em;font-weight:900;box-shadow:0 4px 11px #113b2720}
+.home-v3 .cards4 .card-copy{padding:23px}
+.home-v3 .cards4 h3{color:#0c5130}
+.home-v3 .feature-art.feature-photo{background:#b6e7a6;min-height:370px;overflow:hidden;position:relative;box-shadow:0 18px 44px #155b3920}
+.home-v3 .feature-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;position:absolute;inset:0}
+.home-v3 .feature-sticker{position:absolute;z-index:1;left:22px;bottom:20px;background:#fff;color:#076f42;border-radius:50px;padding:12px 16px;font-size:12px;font-weight:900;box-shadow:0 8px 25px #0947282b}
+@media(max-width:1070px){.home-v3 .hero-grid{gap:24px;min-height:0}.home-v3 .hero-photo-composition{min-height:390px}.home-v3 .hero-positive-bottom{left:1%}}
+@media(max-width:780px){.home-v3 .hero-grid{grid-template-columns:1fr;gap:22px;padding:40px 0 42px}.home-v3 .hero-copy h1{font-size:clamp(37px,9vw,52px);letter-spacing:-1.4px}.home-v3 .hero-copy .lead{font-size:14px}.home-v3 .hero-photo-composition{min-height:370px}.home-v3 .hero-positive{padding:8px 10px;font-size:10px}.home-v3 .hero-positive b{font-size:12px}.home-v3 .bubble-icon{width:32px;height:32px;font-size:20px}.home-v3 .hero-photo-frame{inset:4% 4% 9% 4%;border-width:5px;border-radius:24px 50px 24px 45px}.home-v3 .hero-photo-note{right:4%;bottom:0}.home-v3 .feature-art.feature-photo{min-height:290px}}
+@media(prefers-reduced-motion:reduce){.home-v3 .hero-photo-frame:hover img,.home-v3 .card:hover .visual-photo img{transform:none;transition:none}}
