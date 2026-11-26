@@ -1,0 +1,271 @@
+/* NZER Inicio — carrusel comercial aprobado V4
+   Verde, naranja y crema NZER. 3 zonas: texto, fotografía y panel propio. */
+.nzer-home-v5 .n5-hero.n5-carousel{background:#fffaf3}
+.nzer-home-v5 .n5-carousel-slide{
+ background:#fffaf3;
+}
+.nzer-home-v5 .n5-carousel-slide--psico,
+.nzer-home-v5 .n5-carousel-slide--care,
+.nzer-home-v5 .n5-carousel-slide--store{background:#fffaf3}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-inner{
+ min-height:422px;
+ padding-bottom:88px;
+ align-items:flex-start;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy{
+ width:min(36%,505px);
+ padding:31px 0 28px;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy h1{
+ font-size:clamp(37px,3.1vw,50px);
+ line-height:1.04;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-copy>p{
+ max-width:420px;
+ font-size:13px;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-orange{
+ background:#ff7416!important;
+ color:white!important;
+}
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker,
+.nzer-home-v5 .n5-carousel-slide--psico .n5-kicker strong{
+ color:#075f36;
+ border-left-color:#ff7416;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-photo{
+ position:absolute;
+ inset:0 0 0 auto;
+ right:22%;
+ width:52%;
+ height:100%;
+ object-fit:cover;
+ object-position:50% 48%;
+ mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 77%,transparent 100%);
+}
+.nzer-home-v5 .n5-carousel-slide::before{
+ display:block;
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:1;
+ pointer-events:none;
+ background:linear-gradient(90deg,#fffaf3 0%,#fffaf3e3 21%,#fffaf333 37%,transparent 56%);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
+ z-index:3;
+ position:absolute;
+ right:0;
+ top:0;
+ bottom:0;
+ width:24.5%;
+ min-width:0;
+ height:100%;
+ transform:none;
+ margin:0;
+ padding:24px 17px 72px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ background:
+   radial-gradient(circle at 90% 10%,#43ab6188,transparent 34%),
+   linear-gradient(135deg,#0b8746,#076837 58%,#064f30);
+ border-left:0;
+ clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);
+ filter:none;
+ box-shadow:none;
+ pointer-events:auto;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-zone::before{display:none}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-art{
+ width:100%;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ text-align:center;
+ padding:0 4px;
+ margin:0;
+ background:transparent;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+ transform:rotate(-3deg);
+ --promo-front:#ff8a11;
+ --promo-depth:#ad5105;
+ --promo-ink:#ffffff;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-eyebrow{
+ color:#fff8dc;
+ text-shadow:0 2px 0 #005232;
+ font-size:clamp(13px,1.3vw,18px);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-value{
+ color:#ff8a0c;
+ font-size:clamp(67px,7vw,114px);
+ text-shadow:2px 3px 0 #fff0be,4px 5px 0 #c54f00,6px 9px 0 #753400,9px 15px 14px #00382081;
+ -webkit-text-stroke:1.7px #ffe8a2;
+ letter-spacing:-6px;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-off{
+ display:block;
+ padding:6px 13px;
+ border-radius:30px;
+ background:#fff4d6;
+ color:#08653c;
+ font-size:clamp(15px,1.55vw,23px);
+ text-shadow:none;
+ box-shadow:0 5px 0 #d8a76a,0 8px 12px #002e2485;
+ transform:rotate(2deg);
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-detail{
+ color:#fff;
+ text-shadow:0 2px 4px #004523;
+ font-size:clamp(13px,1.28vw,17px);
+ margin-top:17px;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-claim{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:6px;
+ padding:11px 14px;
+ width:min(100%,260px);
+ min-height:45px;
+ margin-top:17px;
+ border:none;
+ border-radius:100px;
+ background:#ff7416;
+ color:#fff;
+ box-shadow:0 5px 0 #b94e0c,0 10px 16px #032d2570;
+ font:900 13px 'Nunito',sans-serif;
+ cursor:pointer;
+ text-align:center;
+ transform:translateY(0);
+ transition:transform .15s,box-shadow .15s;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-claim:hover{
+ transform:translateY(2px);
+ box-shadow:0 3px 0 #b94e0c,0 6px 12px #032d2570;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-claim:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-demo{
+ color:#fff3d3;
+ text-shadow:0 1px 3px #004625;
+ font-size:9px;
+ margin-top:16px;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-cta{
+ position:absolute;
+ z-index:6;
+ bottom:28px;
+ left:34%;
+ width:42%;
+ margin:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:9px;
+ flex-wrap:nowrap;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-cta a{
+ flex:1;
+ min-width:0;
+ white-space:normal;
+ padding:12px 13px;
+ font-size:12px;
+ text-align:center;
+ border-radius:100px;
+ box-shadow:0 3px 13px #033a2638;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-hero-cta .n5-outline{
+ background:#fff;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-image-note{
+ right:25%;
+ bottom:8px;
+ z-index:6;
+}
+.nzer-home-v5 .n5-carousel-controls{
+ bottom:4px;
+ left:51%;
+ transform:translateX(-50%);
+ z-index:9;
+ width:auto;
+}
+.nzer-home-v5 .n5-carousel-slide .n5-promo-zone .n5-promo-art::before{display:none}
+/* Texto de maqueta: no permitir pedir ni canjear una oferta inexistente. */
+.nzer-home-v5 .n5-promo-dialog[hidden]{display:none}
+.nzer-home-v5 .n5-promo-dialog{
+ position:fixed;z-index:250;inset:0;
+ background:#002c21b3;
+ display:grid;place-items:center;
+ padding:20px;
+}
+.nzer-home-v5 .n5-promo-dialog-card{
+ width:min(440px,100%);
+ padding:25px 26px;
+ background:#fffef8;
+ border:2px solid #cae7cd;
+ border-radius:20px;
+ box-shadow:0 20px 65px #01281d60;
+ text-align:left;
+}
+.nzer-home-v5 .n5-promo-dialog-card h2{color:#07663a;font-size:23px;margin:0 0 8px}
+.nzer-home-v5 .n5-promo-dialog-card p{color:#345840;font-size:14px;line-height:1.6}
+.nzer-home-v5 .n5-promo-dialog-close{
+ margin-top:15px;padding:11px 19px;border:0;border-radius:12px;
+ background:#078141;color:#fff;font-weight:900;cursor:pointer;
+}
+@media(max-width:1200px) and (min-width:781px){
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{width:39%}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy h1{font-size:clamp(32px,3.6vw,46px)}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{width:26%;padding:15px 10px 69px}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:clamp(65px,7vw,90px)}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-claim{font-size:11px;padding:10px 9px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta{left:36%;width:38%}
+}
+@media(max-width:780px){
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-inner{
+  display:flex;flex-direction:column;min-height:0;padding-bottom:0;
+ }
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy{
+  width:100%;padding:22px 0 14px;
+ }
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-copy h1{font-size:clamp(30px,7vw,42px)}
+ .nzer-home-v5 .n5-carousel-slide::before{display:none}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-photo{
+  position:relative;inset:auto;right:auto;
+  width:calc(100% + 32px);height:230px;margin:0 -16px;
+  mask-image:none;object-fit:cover;object-position:center;
+ }
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{
+  position:relative;inset:auto;width:calc(100% + 32px);
+  min-width:0;margin:0 -16px;
+  clip-path:none;
+  padding:25px 24px 22px;
+  background:linear-gradient(135deg,#0a8b48,#065831);
+ }
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-value{font-size:86px}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-off{font-size:21px}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-detail{font-size:16px}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-claim{font-size:13px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta{
+  position:relative;bottom:auto;left:auto;order:2;
+  width:100%;margin:12px 0 27px;
+  padding:0;flex-wrap:wrap;
+ }
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta a{flex:1 1 140px}
+ .nzer-home-v5 .n5-carousel-slide .n5-image-note{
+  right:10px;bottom:auto;top:410px;font-size:8px
+ }
+ .nzer-home-v5 .n5-carousel-controls{
+  left:50%;bottom:4px;
+ }
+}
+@media(max-width:480px){
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-photo{height:205px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta{margin-bottom:33px}
+ .nzer-home-v5 .n5-carousel-slide .n5-promo-zone{padding:22px 15px}
+ .nzer-home-v5 .n5-carousel-slide .n5-hero-cta a{font-size:11px}
+}
