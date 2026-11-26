@@ -169,3 +169,176 @@
 @media(prefers-reduced-motion:reduce){
  .nzer-store-unified .nzer-christmas-slide{transition:none;transform:none}
 }
+
+/* NZER STORE · V3 prototipo aprobado: una sola escena, sin división de ventanas */
+.nzer-store-unified .nzer-christmas-hero{
+ display:grid;grid-template-columns:53% 47%;min-height:480px;
+ background:radial-gradient(ellipse 88% 73% at 38% -22%,#159b4d 0%,transparent 73%),
+ linear-gradient(155deg,#007e3d 0%,#005f35 52%,#168c40 85%,#6aba38 100%);
+ isolation:isolate;overflow:hidden;position:relative;color:white;
+}
+.nzer-store-unified .nzer-christmas-hero:after{
+ content:"";position:absolute;z-index:0;pointer-events:none;
+ left:-6%;right:-4%;bottom:-88px;height:135px;
+ border-radius:50% 54% 0 0 / 100% 90% 0 0;
+ background:#66b93e;transform:rotate(-1deg);
+}
+.nzer-store-unified .nzer-christmas-left{
+ min-height:480px;background:transparent;isolation:initial;
+ position:relative;overflow:visible;z-index:1;
+}
+.nzer-store-unified .nzer-christmas-left:after{display:none}
+.nzer-store-unified .nzer-christmas-left:before{
+ content:"";position:absolute;z-index:0;
+ left:1.5%;top:9%;width:48%;height:79%;
+ border:10px solid #ff8719;
+ border-radius:51% 49% 43% 57% / 37% 54% 46% 63%;
+ transform:rotate(-6deg);
+ background:#fff9ec;box-shadow:0 0 0 3px rgba(255,206,87,.45),0 14px 30px #003c274a;
+}
+.nzer-store-unified .nzer-christmas-boy{
+ position:absolute;left:2.5%;right:auto;bottom:12%;top:auto;
+ width:47%;height:77%;z-index:2;
+ object-fit:cover;object-position:center 30%;
+ border-radius:50% 50% 44% 56% / 39% 55% 45% 61%;
+ transform:rotate(-4deg);
+ mix-blend-mode:normal;filter:none;
+}
+.nzer-store-unified .nzer-christmas-left-copy{
+ position:absolute;z-index:3;
+ left:51%;top:31%;width:48%;max-width:none;
+ pointer-events:none;text-shadow:0 2px 8px #00442349;
+}
+.nzer-store-unified .nzer-christmas-brand{
+ display:inline-block;background:#f9d72d;color:#07532e;
+ font-size:12px;font-weight:1000;letter-spacing:.6px;
+ padding:8px 17px;border-radius:50px;
+}
+.nzer-store-unified .nzer-christmas-left h1{
+ font:1000 clamp(37px,3.7vw,65px)/1.1 'Nunito',Arial,sans-serif;
+ letter-spacing:-1.4px;color:white;margin:15px 0 22px;
+}
+.nzer-store-unified .nzer-christmas-left h1 strong{
+ display:inline-block;white-space:nowrap;color:#075934;
+ font-weight:1000;font-size:.82em;letter-spacing:-.9px;
+ background:#ffdc32;padding:8px 12px 9px;border-radius:12px 23px 13px 21px;
+ transform:rotate(-2deg);box-shadow:0 4px 0 #de9e00;
+}
+.nzer-store-unified .nzer-christmas-left-copy>a{
+ pointer-events:auto;min-height:44px;padding:12px 20px;
+ border-radius:100px;background:#ff7415;font-size:13px;
+ box-shadow:0 6px 12px #004d2873;
+}
+.nzer-store-unified .nzer-christmas-right{
+ position:relative;z-index:1;align-self:center;
+ margin:22px 29px 24px 0;padding:30px 42px 18px;
+ height:auto;min-height:409px;border:7px solid #f4a21b;
+ border-radius:28% 20% 24% 17% / 20% 21% 24% 19%;
+ background:#fff9ef;color:#095a34;
+ box-shadow:0 11px 30px #00452c37;
+}
+.nzer-store-unified .nzer-christmas-heading{
+ padding:0;text-align:center;margin-top:0;
+}
+.nzer-store-unified .nzer-christmas-eyebrow{
+ display:inline-block;margin-top:-48px;
+ padding:10px 20px;background:#d9181c;color:white;
+ border-radius:26px 18px 28px 18px;
+ transform:rotate(-5deg);
+ font:1000 13px 'Nunito',Arial,sans-serif;
+ letter-spacing:.5px;box-shadow:0 7px 14px #74200d55;
+}
+.nzer-store-unified .nzer-christmas-heading h2{
+ margin:8px 0 14px;color:#075833;
+ font:1000 clamp(17px,1.65vw,25px)/1.1 'Nunito',Arial,sans-serif;
+}
+.nzer-store-unified .nzer-christmas-carousel-controls{
+ position:relative;display:grid;grid-template-columns:28px minmax(0,1fr) 28px;
+ align-items:center;gap:4px;
+}
+.nzer-store-unified .nzer-christmas-arrow{
+ border:0;background:#087a43;color:white;cursor:pointer;
+ width:30px;height:36px;border-radius:100px;font-size:29px;
+ line-height:1;display:grid;place-items:center;padding:0 0 5px;
+ box-shadow:0 2px 8px #074c2c33;z-index:6;
+}
+.nzer-store-unified .nzer-christmas-arrow:hover{background:#ff7818}
+.nzer-store-unified .nzer-christmas-rotator{min-height:245px}
+.nzer-store-unified .nzer-christmas-slide{
+ grid-template-columns:52% 48%;gap:5px;
+ transform:translateX(14px) scale(.98);
+ transition:opacity .42s ease,transform .45s ease,visibility .45s ease;
+}
+.nzer-store-unified .nzer-christmas-slide.is-active{transform:translateX(0) scale(1)}
+.nzer-store-unified .nzer-christmas-product-photo{height:230px}
+.nzer-store-unified .nzer-christmas-product-info{padding:6px 5px}
+.nzer-store-unified .nzer-christmas-product-info h3{
+ font:1000 clamp(16px,1.4vw,22px)/1.13 'Nunito',Arial,sans-serif;
+ margin:6px 0 9px;
+}
+.nzer-store-unified .nzer-christmas-offer-line{display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-height:42px}
+.nzer-store-unified .nzer-christmas-offer-line del{font-size:12px;color:#92938a}
+.nzer-store-unified .nzer-christmas-discount{
+ display:inline-grid;place-items:center;white-space:nowrap;
+ border:3px solid white;border-radius:60px;background:#e91424;
+ color:white;font:1000 clamp(18px,1.8vw,27px)/1 'Nunito',Arial,sans-serif;
+ padding:8px 12px;box-shadow:0 0 0 2px #e91424,0 3px 12px #b9122852;
+ animation:nzer-offer-heartbeat 1.9s ease-in-out infinite;
+ transform-origin:center;
+}
+.nzer-store-unified .nzer-christmas-price{
+ display:inline-block;background:#ffdb28;color:#d91819;border-radius:99px;
+ padding:3px 14px;font:1000 clamp(19px,1.75vw,27px)/1.2 'Nunito',Arial,sans-serif;
+}
+.nzer-store-unified .nzer-christmas-product-info>a{
+ border-radius:100px;margin-top:9px;font-size:11px;padding:9px 13px;
+}
+.nzer-store-unified .nzer-christmas-footer{border-top:0;padding:0;margin-top:4px}
+.nzer-store-unified .nzer-christmas-dots{display:flex;justify-content:center;gap:8px}
+.nzer-store-unified .nzer-christmas-dot{
+ width:10px;height:10px;border:1px solid #b6c2a6;border-radius:50%;
+ background:#d9e0d1;cursor:pointer;padding:0;
+}
+.nzer-store-unified .nzer-christmas-dot.is-active{
+ background:#ff7b16;border-color:#fff;outline:1px solid #dc6415;
+ transform:scale(1.3);
+}
+.nzer-store-unified .nzer-christmas-disclaimer{font-size:9px;margin-top:7px}
+@keyframes nzer-offer-heartbeat{
+ 0%,100%{transform:scale(1)}
+ 40%{transform:scale(1.18)}
+ 60%{transform:scale(1.04)}
+ 78%{transform:scale(1.12)}
+}
+@media(max-width:1150px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:49% 51%}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(30px,3.5vw,45px)}
+ .nzer-store-unified .nzer-christmas-right{margin-right:13px;padding:28px 25px 16px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:210px}
+}
+@media(max-width:750px){
+ .nzer-store-unified .nzer-christmas-hero{grid-template-columns:1fr}
+ .nzer-store-unified .nzer-christmas-left{min-height:315px}
+ .nzer-store-unified .nzer-christmas-left:before{left:2%;top:9%;width:47%;height:81%;border-width:7px}
+ .nzer-store-unified .nzer-christmas-boy{left:3%;width:45%;height:78%;bottom:13%}
+ .nzer-store-unified .nzer-christmas-left-copy{left:51%;top:23%;width:47%}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:clamp(27px,6vw,40px)}
+ .nzer-store-unified .nzer-christmas-left h1 strong{white-space:normal;font-size:.79em}
+ .nzer-store-unified .nzer-christmas-right{margin:5px 15px 22px;padding:30px 17px 16px;min-height:345px}
+ .nzer-store-unified .nzer-christmas-rotator{min-height:206px}
+ .nzer-store-unified .nzer-christmas-product-photo{height:190px}
+ .nzer-store-unified .nzer-christmas-eyebrow{margin-top:-42px}
+}
+@media(max-width:420px){
+ .nzer-store-unified .nzer-christmas-left{min-height:275px}
+ .nzer-store-unified .nzer-christmas-left h1{font-size:27px}
+ .nzer-store-unified .nzer-christmas-brand{font-size:10px}
+ .nzer-store-unified .nzer-christmas-left-copy>a{font-size:10px;padding:9px 12px}
+ .nzer-store-unified .nzer-christmas-slide{grid-template-columns:50% 50%}
+ .nzer-store-unified .nzer-christmas-product-info h3{font-size:15px}
+ .nzer-store-unified .nzer-christmas-discount{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){
+ .nzer-store-unified .nzer-christmas-discount{animation:none}
+ .nzer-store-unified .nzer-christmas-slide{transition:none}
+}
