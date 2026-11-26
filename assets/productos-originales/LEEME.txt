@@ -1,0 +1,2 @@
+NZER STORE — 20 imágenes originales generadas digitalmente. Son representaciones conceptuales, NO fotografías de productos reales de un proveedor. Precios simulados en soles, sin stock, compra ni entrega confirmados.
+Subir los 20 archivos .webp a assets/productos/ en GitHub para su integración al catálogo.
