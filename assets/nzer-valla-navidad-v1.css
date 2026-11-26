@@ -51,3 +51,32 @@
 @media(max-width:730px){.nzv-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:28px 15px;gap:12px}.nzv-story{grid-column:1/-1;text-align:center}.nzv-story h1{font-size:clamp(35px,8vw,54px);margin:14px auto}.nzv-story h1 strong{margin:auto}.nzv-story p{margin:0 auto 18px}.nzv-kicker{font-size:18px}.nzv-stage{height:280px}.nzv-product-image{inset:4% 0 15%}.nzv-deal{min-height:280px;padding:50px 0 0}.nzv-xmas{top:4px;font-size:10px;padding:9px}.nzv-deal h2{font-size:clamp(15px,3.6vw,22px)}.nzv-discount{font-size:clamp(23px,5vw,33px);padding:6px 12px}.nzv-new-price{font-size:clamp(20px,4.5vw,29px)}.nzv-product-link{font-size:10px;padding:9px}.nzv-foot{padding:5px 15px 19px}}
 @media(max-width:420px){.nzv-inner{gap:4px;padding:20px 9px 25px}.nzv-story h1{font-size:36px}.nzv-stage{height:230px}.nzv-deal{min-height:230px}.nzv-xmas{font-size:9px}.nzv-deal h2{font-size:15px}.nzv-discount{font-size:22px}.nzv-new-price{font-size:19px;padding:5px 8px}.nzv-old-price{font-size:13px}.nzv-stage .nzv-pedestal{height:40px}.nzv-foot{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.nzv-discount{animation:none}.nzv-product-image,.nzv-cta{transition:none}}
+
+/* V2: oferta sin tarjeta blanca y juguetes con fondo procesado transparente */
+.nzv-hero .nzv-deal,.nzv-hero .nzv-product-image,.nzv-hero .nzv-product-image .nzer-product-visual{
+ background:transparent!important;box-shadow:none;
+}
+.nzv-hero .nzv-deal{
+ border:0!important;border-radius:0!important;
+ text-align:center;padding-top:64px;
+}
+.nzv-hero .nzv-product-image .nzer-product-visual>svg{display:none!important}
+.nzv-hero .nzv-product-image .nzer-product-original{
+ mix-blend-mode:normal!important;
+ -webkit-mask-image:none!important;mask-image:none!important;
+ opacity:0!important;
+ border:0!important;background:transparent!important;
+ filter:drop-shadow(0 12px 10px rgba(0,27,16,.42));
+}
+.nzv-hero .nzv-product-image .nzer-product-original.nzv-cutout-ready{
+ opacity:1!important;
+}
+.nzv-hero .nzv-product-image .nzer-product-original.nzv-cutout-fallback{
+ opacity:1!important;mix-blend-mode:multiply!important;
+ -webkit-mask-image:radial-gradient(ellipse 62% 60% at center,#000 53%,transparent 95%)!important;
+ mask-image:radial-gradient(ellipse 62% 60% at center,#000 53%,transparent 95%)!important;
+}
+.nzv-hero .nzv-product-image .nzer-product-original.nzv-cutout-pending{opacity:0!important}
+@media(max-width:730px){
+ .nzv-hero .nzv-deal{padding-top:49px}
+}
