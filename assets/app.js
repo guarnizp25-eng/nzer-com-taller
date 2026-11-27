@@ -221,6 +221,34 @@ const NZER_PRODUCTS = [
     "ages": "Verificar edad recomendada y advertencias del fabricante"
   }
 ];
+/* Vista previa administrativa: solo en ?nzer_draft_preview=1.
+   Consume borradores locales del mismo navegador, sin alterar la tienda visible normal.
+   Nunca incluir costos ni información privada en esta representación pública. */
+const NZER_IS_DRAFT_PREVIEW=new URLSearchParams(location.search).get('nzer_draft_preview')==='1';
+if(NZER_IS_DRAFT_PREVIEW){
+ try{
+  const draft=JSON.parse(localStorage.getItem('nzer_admin_mock_v1')||'null');
+  if(draft&&Array.isArray(draft.products)){
+   const map={Construcción:['construccion','Construcción'],Regalos:['regalos','Regalos'],
+     'Juguetes NZER Kids':['nzer-kids','Juguetes NZER Kids'],Carros:['carros','Carros'],
+     'Madera didáctica':['madera','Madera didáctica'],Otros:['otros','Otros']};
+   for(const row of draft.products){
+    if(!row||row.status!=='Preparado'||!row.name||!row.sku)continue;
+    const id='admin-'+String(row.id).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,45);
+    const [category,categoryLabel]=map[row.category]||map.Otros;
+    const price=Number(row.price);
+    if(!Number.isFinite(price)||price<0)continue;
+    const photo=typeof row.image==='string'&&/^https:\/\//i.test(row.image)?row.image:'';
+    const obj={id,name:String(row.name).slice(0,100),category,categoryLabel,price,
+     desc:String(row.description||'Descripción pendiente de revisión.').slice(0,500),
+     bg:'#f4f9e8',tag:'BORRADOR NZER',ages:'Verificar edad recomendada y advertencias del fabricante',
+     previewImage:photo};
+    const index=NZER_PRODUCTS.findIndex(p=>p.id===id);
+    if(index>=0)NZER_PRODUCTS[index]=obj;else NZER_PRODUCTS.push(obj);
+   }
+  }
+ }catch(err){console.warn('No fue posible leer el borrador de muestra',err)}
+}
 /* Promociones ilustrativas, no vigentes y sin transacciones reales.
    El precio mostrado en fichas, carrito y catálogo es siempre coherente. */
 const NZER_DEMO_OFFERS=Object.freeze({magnet:20,train:20,track:15,activity:25,rainbow:30});
@@ -321,7 +349,7 @@ const NZER_PRODUCT_PHOTO_ROOT=new URL('productos-originales/',document.querySele
 function productArtwork(p){
  // Solo archivos fotográficos WebP del repositorio: sin ilustraciones SVG superpuestas.
  // Son imágenes conceptuales de catálogo y no certifican inventario físico.
- const path=NZER_PRODUCT_PHOTO_ROOT+encodeURIComponent(p.id)+'.webp';
+ const path=NZER_IS_DRAFT_PREVIEW&&p.previewImage?p.previewImage:NZER_PRODUCT_PHOTO_ROOT+encodeURIComponent(p.id)+'.webp';
  const label=String(p.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
  return '<span class="nzer-product-visual nzer-photographic-only">'+
   '<img class="nzer-product-original is-loaded" src="'+path+'" alt="Fotografía ilustrativa de '+label+'" loading="lazy" decoding="async"></span>';
@@ -334,7 +362,7 @@ function updateCartBadge(){document.querySelectorAll('[data-cart-count]').forEac
 function money(n){return 'S/ '+Number(n).toFixed(2)}
 function toast(message){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window.nzerToast);window.nzerToast=setTimeout(()=>el.classList.remove('show'),2800)}
 function imgProduct(p){return '<div class="product-image" style="background:'+p.bg+'"><span class="product-label">'+p.categoryLabel+'</span>'+productArtwork(p)+'</div>'}
-function addToCart(id){const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;const c=getCart();c[id]=Math.min(99,(Number(c[id])||0)+1);saveCart(c);toast('Producto referencial agregado al carrito de demostración')}
+function addToCart(id){if(NZER_IS_DRAFT_PREVIEW){toast('Vista previa: el carrito está desactivado.');return;}const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;const c=getCart();c[id]=Math.min(99,(Number(c[id])||0)+1);saveCart(c);toast('Producto referencial agregado al carrito de demostración')}
 function renderShop(){const root=document.getElementById('productGrid');if(!root)return;
 const active=document.querySelector('.filter.active')?.dataset.category||'all';
 const term=(document.getElementById('productSearch')?.value||'').trim().toLocaleLowerCase('es');
