@@ -169,3 +169,6 @@
  .nzer-checkout-page .nzc-stack>.nzc-panel:nth-child(4) .nzc-option-list{grid-template-columns:repeat(2,minmax(0,1fr))}
  .nzer-checkout-page .nzc-option small{font-size:9px}
 }
+
+/* La advertencia legal continúa en el resumen; evita una segunda franja debajo del carrito en desktop. */
+@media(min-width:961px){.nzer-checkout-page .nzc-bottom-note{display:none}.nzer-checkout-page .nzc-cart-items{max-height:200px;overflow-y:auto;scrollbar-width:thin}}
