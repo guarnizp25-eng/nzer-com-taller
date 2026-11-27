@@ -224,6 +224,10 @@ const NZER_PRODUCTS = [
 /* Promociones ilustrativas, no vigentes y sin transacciones reales.
    El precio mostrado en fichas, carrito y catálogo es siempre coherente. */
 const NZER_DEMO_OFFERS=Object.freeze({magnet:20,train:20,track:15,activity:25,rainbow:30});
+/* Colecciones especiales del catálogo de muestra: sin inventario ni productos de marca propia confirmados. */
+const NZER_DEMO_GIFT_IDS=Object.freeze(['woodblocks','rainbow','magnet','animals','activity','train','toolbox','shapes']);
+const NZER_OWN_TOYS_IDS=Object.freeze([]); // Reservado para productos propios verificados de NZER Kids.
+
 function demoDiscount(p){return NZER_DEMO_OFFERS[p.id]||0}
 function demoPrice(p){return Math.round(p.price*(100-demoDiscount(p)))/100}
 function demoPriceMarkup(p){
@@ -348,7 +352,7 @@ const exploratoryAges={
 let selected=NZER_PRODUCTS.filter(p=>{
  if(active!=='all'&&p.category!==active)return false;
  const name=p.name.toLocaleLowerCase('es');
- if(categories.length&&!categories.some(cat=>cat===p.category||(cat==='rompecabezas'&&name.includes('rompecabezas'))||(cat==='herramientas'&&(name.includes('herramienta')||name.includes('martillo')))))return false;
+ if(categories.length&&!categories.some(cat=>cat===p.category||(cat==='rompecabezas'&&name.includes('rompecabezas'))||(cat==='herramientas'&&(name.includes('herramienta')||name.includes('martillo')))||(cat==='regalos'&&NZER_DEMO_GIFT_IDS.includes(p.id))||(cat==='nzer-kids'&&NZER_OWN_TOYS_IDS.includes(p.id))))return false;
  if(prices.length){const price=demoPrice(p);if(!prices.some(range=>range==='0-30'?price<30:range==='30-60'?price>=30&&price<60:range==='60-100'?price>=60&&price<100:price>=100))return false;}
  if(materials.includes('madera')&&!name.includes('madera'))return false;
  if(ages.length&&!ages.some(age=>(exploratoryAges[age]||[]).includes(p.id)))return false;
@@ -358,10 +362,10 @@ const order=document.getElementById('productSort')?.value||'featured';
 const headline=document.getElementById('nzstoreResultsTitle');
 const description=document.getElementById('nzstoreResultsDescription');
 const filtering=categories.length>0||prices.length>0||materials.length>0||ages.length>0||!!term;
-if(headline)headline.textContent=filtering?'Resultados de tu búsqueda':'Juguetes destacados';
+if(headline)headline.textContent=categories.includes('nzer-kids')&&categories.length===1?'Juguetes NZER Kids':categories.includes('regalos')&&categories.length===1?'Ideas para regalar':filtering?'Resultados de tu búsqueda':'Juguetes destacados';
 if(description)description.textContent=ages.length
  ?'Selección exploratoria por etapa, no una recomendación de edad ni seguridad. Verifica siempre edad mínima, piezas pequeñas y advertencias del fabricante antes de comprar o usar.'
- :filtering?'Productos que coinciden con los filtros elegidos. Puedes combinar categorías, precios y búsqueda.':'Explora los juguetes destacados de NZER y utiliza los filtros para encontrar lo que buscas.';
+ :categories.includes('nzer-kids')&&categories.length===1?'Estamos preparando una línea de juguetes NZER Kids. Aún no hay productos propios confirmados ni artículos disponibles en esta categoría.':categories.includes('regalos')&&categories.length===1?'Ideas ilustrativas para obsequiar. Precios y productos de demostración; verifica siempre la edad recomendada y las advertencias del fabricante.':filtering?'Productos que coinciden con los filtros elegidos. Puedes combinar categorías, precios y búsqueda.':'Explora los juguetes destacados de NZER y utiliza los filtros para encontrar lo que buscas.';
 if(order==='featured'){
  const featuredIds=['woodblocks','truck','toolbox','ridecar','abacus','animals'];
  selected.sort((a,b)=>{
@@ -379,7 +383,7 @@ const productPath=root.dataset.productPath||'producto/index.html';
 root.innerHTML=selected.map(p=>'<article class="product-card">'+imgProduct(p)+
 '<div class="product-body"><span class="product-meta">'+p.tag+'</span><h3>'+p.name+'</h3><p>'+p.desc+
 '</p><div class="product-bottom"><b class="price">'+demoPriceMarkup(p)+'</b><button class="add-btn" type="button" data-add="'+p.id+'">+ Agregar</button></div>'+
-'<a class="product-link" href="'+productPath+'?id='+p.id+'">Ver producto →</a></div></article>').join('')||'<div class="empty">No encontramos productos con esos filtros. Prueba otra etapa o limpia los filtros. Las edades de uso siguen pendientes de verificación.</div>';
+'<a class="product-link" href="'+productPath+'?id='+p.id+'">Ver producto →</a></div></article>').join('')||'<div class="empty">'+(categories.includes('nzer-kids')&&categories.length===1?'Próximamente: juguetes NZER Kids. Todavía no contamos con productos propios confirmados. Puedes desmarcar esta categoría para explorar el catálogo de demostración.':'No encontramos productos con esos filtros. Prueba otra etapa o limpia los filtros. Las edades de uso siguen pendientes de verificación.')+'</div>';
 root.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.add)))}
 function renderDetail(){const target=document.getElementById('productDetail');if(!target)return;
 const id=new URLSearchParams(window.location.search).get('id')||'magnet';
