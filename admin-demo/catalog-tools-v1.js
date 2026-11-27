@@ -37,11 +37,27 @@ function validate(obj){
   if(title.length>140||!Number.isFinite(discount)||discount<0||discount>100||product.length>120||!/^(|\d{4}-\d{2}-\d{2})$/.test(from)||!/^(|\d{4}-\d{2}-\d{2})$/.test(to)||from&&to&&from>to)throw Error('La promoción no pasó la validación.');
   promo={title,discount,product,from,to};
  }
- return {products,promo};
+ let inventoryMovements=[];
+if(obj.inventoryLedgerVersion===1){
+ if(!Array.isArray(obj.inventoryMovements)||obj.inventoryMovements.length>20000)throw Error('Historial de inventario ausente o demasiado grande.');
+ const seen=new Set(),balances=new Map();
+ inventoryMovements=obj.inventoryMovements.map((m,i)=>{
+  if(!m||typeof m!=='object')throw Error('Movimiento inválido '+(i+1)+'.');
+  const id=String(m.id||''),productId=String(m.productId||''),sku=String(m.sku||''),name=String(m.name||''),type=String(m.type||''),at=String(m.at||''),reason=String(m.reason||''),reference=String(m.reference||'');
+  const delta=Number(m.delta),stockAfter=Number(m.stockAfter);
+  if(!/^[a-zA-Z0-9_-]{1,110}$/.test(id)||seen.has(id)||!productId||productId.length>70||sku.length>60||name.length>120||!['entrada','salida','ajuste','apertura'].includes(type)||!Number.isFinite(Date.parse(at))||!Number.isSafeInteger(delta)||!Number.isSafeInteger(stockAfter)||stockAfter<0||stockAfter>1000000||!reason||reason.length>180||reference.length>80)throw Error('Movimiento de inventario inválido '+(i+1)+'.');
+  const prev=balances.get(productId)||0;
+  if(prev+delta!==stockAfter)throw Error('El saldo histórico no coincide en el movimiento '+(i+1)+'.');
+  seen.add(id);balances.set(productId,stockAfter);
+  return {id,productId,sku,name,type,at,delta,stockAfter,reason,reference};
+ });
+ for(const p of products)if((balances.get(p.id)||0)!==p.stock)throw Error('El stock de '+p.sku+' no coincide con su historial.');
+}
+return {products,promo,...(obj.inventoryLedgerVersion===1?{inventoryLedgerVersion:1,inventoryMovements}:{})};
 }
 exportButton.addEventListener('click',()=>{
  const current=api.getData();
- const payload={format:'nzer-admin-demo-catalog',version:1,exportedAt:new Date().toISOString(),products:current.products,promo:current.promo||null};
+ const payload={format:'nzer-admin-demo-catalog',version:1,exportedAt:new Date().toISOString(),products:current.products,promo:current.promo||null,inventoryLedgerVersion:current.inventoryLedgerVersion||0,inventoryMovements:current.inventoryMovements||[]};
  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download='NZER-CATALOGO-RESPALDO-'+new Date().toISOString().slice(0,10)+'.json';
@@ -57,7 +73,7 @@ picker.addEventListener('change',async()=>{
   const clean=validate(raw);
   if(!confirm('Restaurar '+clean.products.length+' productos y su promoción de prueba?\n\nReemplazará los datos de ESTE navegador. Antes puedes descargar un respaldo. No afecta la web pública.'))return;
   const current=api.getData();
-  current.products=clean.products;current.promo=clean.promo;
+  current.products=clean.products;current.promo=clean.promo;current.inventoryLedgerVersion=clean.inventoryLedgerVersion||0;current.inventoryMovements=clean.inventoryMovements||[];
   api.save();
   api.nav('productos');
   alert('Respaldo restaurado en este navegador. Comprueba el catálogo y la vista previa. No se publicó nada.');
