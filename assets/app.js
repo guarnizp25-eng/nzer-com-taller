@@ -39,7 +39,8 @@ const NZER_PREVIEW_CAMPAIGN=(()=>{
  if(!NZER_IS_DRAFT_PREVIEW)return null;
  try{const d=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
  const rows=Array.isArray(d?.campaigns)?d.campaigns.filter(c=>c&&c.status==='Borrador'&&Array.isArray(c.items)):[];
- return rows.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||null;
+ const selected=localStorage.getItem('nzer_admin_preview_campaign_id');
+ return rows.find(c=>c.id===selected)||rows.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||null;
  }catch(e){return null}
 })();
 function nzerPromoFor(p){
