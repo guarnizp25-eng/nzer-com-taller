@@ -54,3 +54,11 @@
 .store-nav-v1 .nzer-menu-toggle svg{height:23px;width:23px}
 }
 @media(prefers-reduced-motion:reduce){.store-nav-v1 .nzer-store-overlay,.store-nav-v1 .nzer-store-drawer{animation:none}}
+
+/* NZER STORE: mismo panel Explora NZER, sin iconos y con fuente Nunito */
+.store-nav-v1 .nzer-store-drawer-header h2{font-family:'Nunito',Arial,sans-serif!important;font-size:30px!important;font-weight:1000!important}
+.store-nav-v1 .nzer-store-drawer-header p{font-family:'Nunito',Arial,sans-serif!important;font-size:13px!important}
+.store-nav-v1 .nzer-store-drawer-group h3{font-family:'Nunito',Arial,sans-serif!important;font-size:13px!important;font-weight:1000!important}
+.store-nav-v1 .nzer-store-drawer-group a{font-family:'Nunito',Arial,sans-serif!important;font-size:20px!important;font-weight:900!important;line-height:1.25;padding:15px 16px!important;color:#085336!important}
+.store-nav-v1 .nzer-store-drawer-group a:hover{background:#e7f6e4!important}
+@media(max-width:480px){.store-nav-v1 .nzer-store-drawer-group a{font-size:18px!important;padding:13px 14px!important}}
