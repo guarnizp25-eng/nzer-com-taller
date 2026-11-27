@@ -113,3 +113,86 @@ function tallerListOrders_(){
  * No se expone una función pública para confirmar pagos.
  * El cambio de estado requiere control administrativo separado.
  */
+
+/**
+ * Solo para un operador autorizado en ejecución de servidor.
+ * No publicar como función invocable desde una página abierta al público.
+ * Datos de prueba: el pago es una confirmación SIMULADA, sin integración bancaria.
+ *
+ * Evento posible: CONFIRMAR_PAGO, CANCELAR, ENTREGAR.
+ * La actualización de existencias conserva el registro de cada cambio.
+ */
+function tallerChangeOrder_(orderId,action,paymentMethod){
+ const id=String(orderId||'');
+ if(!/^NZER-(WEB|FISICA)-[A-Z0-9-]{8,40}$/.test(id))throw Error('ID de pedido inválido');
+ if(!['CONFIRMAR_PAGO','CANCELAR','ENTREGAR'].includes(action))throw Error('Acción no permitida');
+ const lock=LockService.getScriptLock();
+ lock.waitLock(15000);
+ try{
+  const db=tallerDb_();
+  const orders=tallerSheet_(db,NZER_TALLER_TABS.ORDERS);
+  const details=tallerSheet_(db,NZER_TALLER_TABS.LINES);
+  const stock=tallerSheet_(db,NZER_TALLER_TABS.STOCK);
+  const orderRows=tallerRows_(orders),index=orderRows.findIndex(r=>String(r[0])===id);
+  if(index<0)throw Error('Pedido no encontrado');
+  const order=orderRows[index],before=String(order[4]);
+  const permitted=(before==='PENDIENTE'&&['CONFIRMAR_PAGO','CANCELAR'].includes(action))
+    ||(before==='PAGADO'&&action==='ENTREGAR');
+  if(!permitted)throw Error('Transición no permitida desde '+before);
+  const next=action==='CONFIRMAR_PAGO'?'PAGADO':action==='CANCELAR'?'CANCELADO':'ENTREGADO';
+  const method=String(paymentMethod||'');
+  if(action==='CONFIRMAR_PAGO'&&!['YAPE','PLIN','TRANSFERENCIA','EFECTIVO','TARJETA_SIMULADA'].includes(method))
+   throw Error('Indica un medio de pago simulado');
+  const lines=tallerRows_(details).filter(r=>String(r[0])===id);
+  if(!lines.length)throw Error('Pedido sin detalle');
+  const rows=tallerRows_(stock);
+  const diff=new Map();
+  for(const line of lines){
+   const productId=String(line[2]),qty=Number(line[5]);
+   if(!Number.isSafeInteger(qty)||qty<=0)throw Error('Detalle de pedido inválido');
+   diff.set(productId,(diff.get(productId)||0)+qty);
+  }
+  const updates=[];
+  if(action!=='ENTREGAR'){
+   for(const [productId,qty] of diff){
+    const row=rows.findIndex(r=>String(r[0])===productId);
+    if(row<0)throw Error('Inventario sin producto '+productId);
+    const physical=Number(rows[row][4]),reserved=Number(rows[row][5]);
+    if(!Number.isSafeInteger(physical)||!Number.isSafeInteger(reserved)||reserved<qty)
+      throw Error('Inventario reservado inconsistente: '+productId);
+    if(action==='CONFIRMAR_PAGO'&&physical<qty)
+      throw Error('Existencias insuficientes: '+productId);
+    updates.push({row:row+2,physical:action==='CONFIRMAR_PAGO'?physical-qty:physical,
+      reserved:reserved-qty});
+   }
+  }
+  // Google Sheets no proporciona transacciones ACID. El bloqueo evita
+  // ediciones concurrentes de este script; anomalías requieren conciliación.
+  updates.forEach(u=>{
+    stock.getRange(u.row,5,1,3).setValues([[u.physical,u.reserved,u.physical-u.reserved]]);
+  });
+  const fields=orders.getRange(index+2,5,1,7).getValues()[0];
+  fields[0]=next; // estado
+  if(action==='CONFIRMAR_PAGO'){fields[1]='CONFIRMADO_SIMULADO';fields[2]=method;}
+  fields[6]=new Date(); // fecha actualizacion (col K)
+  orders.getRange(index+2,5,1,7).setValues([fields]);
+  tallerEvent_(db,id,action,before,next,'Solo simulación / sin movimiento de dinero');
+  return {id,status:next,paymentStatus:fields[1],total:Number(order[9])};
+ }finally{lock.releaseLock()}
+}
+/** Verificación de consistencia previa a cualquier futura publicación. */
+function tallerAuditStock_(){
+ const db=tallerDb_();
+ const orders=tallerRows_(tallerSheet_(db,NZER_TALLER_TABS.ORDERS));
+ const details=tallerRows_(tallerSheet_(db,NZER_TALLER_TABS.LINES));
+ const pendingIds=new Set(orders.filter(r=>String(r[4])==='PENDIENTE').map(r=>String(r[0])));
+ const reserved=new Map();
+ details.filter(r=>pendingIds.has(String(r[0]))).forEach(r=>{
+  const id=String(r[2]);reserved.set(id,(reserved.get(id)||0)+Number(r[5]));
+ });
+ return tallerRows_(tallerSheet_(db,NZER_TALLER_TABS.STOCK)).filter(r=>r[0])
+  .map(r=>({id:String(r[0]),physical:Number(r[4]),reserved:Number(r[5]),
+    expectedReserved:reserved.get(String(r[0]))||0,available:Number(r[6])}))
+  .filter(r=>r.physical<0||r.reserved!==r.expectedReserved||
+    r.available!==r.physical-r.reserved);
+}
