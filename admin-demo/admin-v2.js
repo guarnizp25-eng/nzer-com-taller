@@ -39,6 +39,7 @@ function fillEditor(p){
  if(!p){selected=null;form.reset();form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);preview.textContent='📦';return}
  selected=p.id;form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=false);
  for(const k of ['name','sku','category','price','stock','status','image','description'])if(form.elements[k])form.elements[k].value=p[k]??'';
+ if(form.elements.stock){form.elements.stock.readOnly=true;form.elements.stock.title='El stock se controla en Inventario → Registrar movimiento';}
  preview.innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="Vista previa del producto" referrerpolicy="no-referrer">':sym(p);
  $('#nzaEditorHint').textContent='Producto de prueba · '+p.sku+' · sin publicación real.';
 }
@@ -46,15 +47,15 @@ window.NZER_ADMIN_MOCK_EDITOR=fillEditor;
 const f=$('#nzaQuickEdit');
 f?.addEventListener('submit',e=>{
  e.preventDefault();const d=api.getData(),p=d.products.find(x=>x.id===selected);if(!p)return;const elems=f.elements;
- const stock=Number(elems.stock.value),price=Number(elems.price.value);
- if(!Number.isInteger(stock)||stock<0||!Number.isFinite(price)||price<0){alert('Revisa el precio y el stock.');return}
- p.name=elems.name.value.trim();p.category=elems.category.value;p.price=price;p.stock=stock;p.status=elems.status.value;p.image=elems.image.value.trim();p.description=elems.description.value.trim();if(!p.name){alert('Debes indicar el nombre.');return}
+ const price=Number(elems.price.value);
+ if(!Number.isFinite(price)||price<0){alert('Revisa el precio.');return}
+ p.name=elems.name.value.trim();p.category=elems.category.value;p.price=price;p.status=elems.status.value;p.image=elems.image.value.trim();p.description=elems.description.value.trim();if(!p.name){alert('Debes indicar el nombre.');return}
  api.save();$('#nzaEditorHint').textContent='Cambios guardados solo en este navegador.';
 });
 $('#nzaDuplicate')?.addEventListener('click',()=>{
  const d=api.getData(),p=d.products.find(x=>x.id===selected);if(!p)return;
  const base=p.sku+'-COPIA',sku=base+'-'+String(Date.now()).slice(-5);
- const cp={...p,id:'mock-'+Date.now(),sku,name:p.name+' (copia)',status:'Borrador'};
+ const cp={...p,id:'mock-'+Date.now(),sku,name:p.name+' (copia)',stock:0,status:'Borrador'};delete cp.storeId;
  d.products.push(cp);selected=cp.id;api.save();fillEditor(cp);
 });
 $('#nzaQuickNew')?.addEventListener('click',()=>api.openProduct());
