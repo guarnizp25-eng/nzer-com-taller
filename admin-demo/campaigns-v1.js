@@ -60,7 +60,7 @@ form.addEventListener('submit',e=>{
  const rows=currentRows();if(!rows.length){alert('Selecciona al menos un producto.');return;}
  const items=[];
  for(const {p,price} of rows){
-  if(!Number.isFinite(price)||price<=0||price>=Number(p.price)||Math.round(price*100)!==price*100){alert('Revisa el precio promocional de '+p.name+'. Debe ser mayor a cero y menor al regular.');return;}
+  if(!Number.isFinite(price)||price<=0||price>=Number(p.price)||Math.abs(Math.round(price*100)-price*100)>0.00001){alert('Revisa el precio promocional de '+p.name+'. Debe ser mayor a cero y menor al regular.');return;}
   if(Number(p.cost)>0&&price<Number(p.cost)&&!confirm('La promoción de '+p.name+' es inferior al costo registrado. ¿Guardar el borrador de todos modos?'))return;
   items.push({productId:p.id,storeId:p.storeId||'',offerPrice:price});
  }
@@ -80,5 +80,17 @@ $('#nzaCampaignList')?.addEventListener('click',e=>{
 $('#nzaCampaignClear')?.addEventListener('click',reset);
 $('#nzaPromoGoPreview')?.addEventListener('click',()=>api.nav('vista-previa'));
 window.addEventListener('nzer-admin-updated',renderList);
+/* Ejemplo inicial exclusivo del taller; no modifica precios del catálogo público. */
+{
+ const d=data();
+ if(!d.campaigns.length&&!d.campaignWorkshopSeeded){
+  const a=products().find(p=>p.storeId==='magnet'),b=products().find(p=>p.storeId==='train');
+  if(a&&b){
+   d.campaigns.push({id:'camp-202611270001',title:'Navidad NZER · Taller',from:'2026-12-10',to:'2026-12-24',reason:'Fecha festiva',status:'Borrador',
+     items:[{productId:a.id,storeId:a.storeId,offerPrice:69},{productId:b.id,storeId:b.storeId,offerPrice:45}],updatedAt:new Date().toISOString()});
+  }
+  d.campaignWorkshopSeeded=true;api.save();
+ }
+}
 drawPicker();drawTotals();renderList();
 })();
