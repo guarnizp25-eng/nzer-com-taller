@@ -34,13 +34,28 @@ const NZER_DEMO_OFFERS=Object.freeze({magnet:20,train:20,track:15,activity:25,ra
 const NZER_DEMO_GIFT_IDS=Object.freeze(['woodblocks','rainbow','magnet','animals','activity','train','toolbox','shapes']);
 const NZER_OWN_TOYS_IDS=Object.freeze([]); // Reservado para productos propios verificados de NZER Kids.
 
+/* Las campañas son borradores locales; solo se aplican al catálogo dentro de la vista previa. */
+const NZER_PREVIEW_CAMPAIGN=(()=>{
+ if(!NZER_IS_DRAFT_PREVIEW)return null;
+ try{const d=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
+ const rows=Array.isArray(d?.campaigns)?d.campaigns.filter(c=>c&&c.status==='Borrador'&&Array.isArray(c.items)):[];
+ return rows.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||null;
+ }catch(e){return null}
+})();
+function nzerPromoFor(p){
+ if(!NZER_IS_DRAFT_PREVIEW||!NZER_PREVIEW_CAMPAIGN)return null;
+ const line=NZER_PREVIEW_CAMPAIGN.items.find(x=>x.storeId===p.id||x.productId==='catalog-'+p.id);
+ if(!line)return null;
+ const offered=Number(line.offerPrice);
+ return Number.isFinite(offered)&&offered>0&&offered<p.price?offered:null;
+}
 function demoDiscount(p){return p.draftPreview?0:NZER_DEMO_OFFERS[p.id]||0}
-function demoPrice(p){return Math.round(p.price*(100-demoDiscount(p)))/100}
+function demoPrice(p){const offer=nzerPromoFor(p);return offer!==null?offer:Math.round(p.price*(100-demoDiscount(p)))/100}
 function demoPriceMarkup(p){
- const d=demoDiscount(p);
+ const offer=nzerPromoFor(p),d=offer!==null?Math.round((p.price-offer)/p.price*100):demoDiscount(p);
  return (d?'<span class="nzer-demo-price-before">'+money(p.price)+'</span> ':'')+
   '<span class="nzer-demo-price-now">'+money(demoPrice(p))+'</span>'+
-  (d?'<small class="nzer-demo-price-label">−'+d+'% · simulación</small>':'');
+  (d?'<small class="nzer-demo-price-label">−'+d+'% · '+(offer!==null?'borrador promocional':'simulación')+'</small>':'');
 }
 const CART_KEY='nzer_store_demo_cart_2026';
 const COLORS=['#FF831E','#12A96B','#18ACF3','#FFD042','#E34B65','#9651E8','#F15D34'];
