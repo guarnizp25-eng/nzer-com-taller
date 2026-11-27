@@ -34,3 +34,9 @@
 .nza-promo-rotation{display:block;margin-top:5px;font-size:11px;color:#617366;line-height:1.4}
 @media(max-width:1280px){.nza-segmentation-tools{grid-template-columns:minmax(0,1fr) 130px}.nza-segmentation-tools .btn{grid-column:1/-1}}
 @media(max-width:550px){.nza-segmentation-tools{grid-template-columns:1fr}.nza-segmentation-tools .btn{grid-column:auto}}
+
+.nza-campaign-saved{margin:10px 0;padding:12px;background:#edf7eb;border:1px solid #cce4c9;border-radius:9px;font-size:13px;line-height:1.5;color:#225b35}
+.nza-campaign-saved[hidden]{display:none}
+.nza-campaign-saved button{margin-left:6px;padding:5px 10px;border:1px solid #327b53;border-radius:7px;background:#fff;color:#175936;font:inherit;font-weight:700;cursor:pointer}
+.nza-campaign-publication{font-size:11px!important;color:#69796b!important;line-height:1.4}
+.nza-campaign-preview-note{font-size:13px;color:#175b39;background:#eef6eb;border:1px solid #d3e6ce;border-radius:8px;padding:9px 12px;margin-bottom:8px;font-weight:650}
