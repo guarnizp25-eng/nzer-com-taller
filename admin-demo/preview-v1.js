@@ -13,7 +13,14 @@ function updateChecks(){
  if(notice){notice.classList.toggle('approved',approved);notice.textContent=approved?'Borrador revisado y aprobado en esta sesión. No se ha publicado nada.':!visited.has('mobile')?'Revisa también la tienda desde la vista celular.':complete?'Las comprobaciones están completas. Ya puedes aprobar el borrador.':'Verifica ambos dispositivos y marca todos los puntos de la lista.';}
  if(status){status.classList.toggle('approved',approved);status.textContent=approved?'Borrador aprobado. La publicación comercial continúa deshabilitada hasta contar con una conexión segura.':'Debes revisar y aprobar los cambios en la vista previa real.';}
 }
-function reload(){const u=new URL('../store/index.html',location.href);u.searchParams.set('nzer_draft_preview','1');u.searchParams.set('revision',String(++rev));frame.src=u.href;}
+function reload(){
+ const d=api.getData(),campaign=d.campaigns?.find(c=>c.id===localStorage.getItem('nzer_admin_preview_campaign_id'));
+ const label=$('#nzaSelectedCampaign');
+ if(label)label.textContent=campaign?'Campaña seleccionada: '+campaign.title+' · Borrador sin publicar':'Catálogo en borrador · Sin publicar';
+ approved=false;
+ const u=new URL('../store/index.html',location.href);u.searchParams.set('nzer_draft_preview','1');u.searchParams.set('revision',String(++rev));frame.src=u.href;
+}
+window.NZER_PREVIEW_REFRESH=reload;
 function changeDevice(value){device=value;visited.add(value);const container=$('#nzaPreviewFrame');container.classList.toggle('desktop',value==='desktop');container.classList.toggle('mobile',value==='mobile');deviceButtons.forEach(b=>{const on=b.dataset.device===value;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});$('#nzaScreenSize').textContent=value==='mobile'?'Celular · 375 px':'Escritorio';updateChecks();}
 function invalidate(){approved=false;visited=new Set();checks.forEach(x=>x.checked=false);changeDevice(device);visited=new Set([device]);updateChecks();reload();}
 deviceButtons.forEach(b=>b.addEventListener('click',()=>changeDevice(b.dataset.device)));
