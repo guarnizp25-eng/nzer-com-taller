@@ -55,14 +55,14 @@
 </div>
 <div class="panel" style="margin-top:18px"><div class="panel-heading"><div><h2>Carga rápida</h2><p>Prepara productos nuevos sin salir del catálogo.</p></div></div><div class="toolbar"><div class="img-upload">Fotos de productos: la carga directa a la nube requiere almacenamiento seguro. En esta maqueta se permite una URL de prueba.</div><button class="btn" id="nzaQuickNew" type="button">＋ Agregar producto</button></div></div></section>
 <section id="view-inventario" class="view hidden">
-<div class="titleline"><div><span class="eyebrow">Control de existencias</span><h1>Inventario</h1><p>El stock se calcula automáticamente por movimientos. Ningún saldo se modifica sin registrar su motivo.</p></div><span class="chip">Registro local de pruebas</span></div>
+<div class="titleline"><div><span class="eyebrow">Control de existencias</span><h1>Inventario</h1><p>El stock se calcula automáticamente por movimientos. Ningún saldo se modifica sin registrar su motivo.</p></div><span class="chip">TALLER · movimientos simulados</span></div>
 <div class="stats nza-inv-stats" id="nzaInvStats"></div>
 <div class="nza-inv-layout">
   <div class="panel">
     <div class="panel-heading"><div><h2>Existencias por producto</h2><p>Selecciona un producto para registrar su ingreso, salida o ajuste.</p></div></div>
     <div class="toolbar product-filters nza-inv-filters"><input id="nzaInventorySearch" class="search" placeholder="Buscar producto o código SKU..." aria-label="Buscar inventario"></div>
     <div class="tablewrap"><table><thead><tr><th>Producto</th><th>SKU</th><th>Stock</th><th>Estado</th><th>Movimiento</th></tr></thead><tbody id="inventoryRows"></tbody></table></div>
-    <p class="muted" style="margin-top:11px">Los datos actuales son demostrativos y permanecen exclusivamente en este navegador. No se descontarán pedidos automáticamente hasta conectar un sistema comercial seguro.</p>
+    <p class="muted" style="margin-top:11px">Estás probando con existencias y movimientos de práctica. Cada ingreso, salida y ajuste modificará el saldo y quedará en el historial. Los pedidos reales siguen desconectados.</p>
   </div>
   <div class="panel nza-inv-editor">
     <span class="eyebrow">Control de movimientos</span><h2>Registrar movimiento</h2>
@@ -115,4 +115,4 @@ $('#inventoryRows').onclick=e=>{const b=e.target.closest('[data-stock]');if(b&&w
 $('#promoTitle').addEventListener('input',e=>$('#bannerTitle').textContent=e.target.value||'Tu campaña');$('#promoDiscount').addEventListener('input',e=>$('#bannerSubtitle').textContent='Descuento ilustrativo: '+(Number(e.target.value)||0)+'% · Sin publicar');
 $('#promoForm').addEventListener('submit',e=>{e.preventDefault();const from=$('#promoFrom').value,to=$('#promoTo').value;if(from&&to&&from>to){alert('La fecha final debe ser posterior al inicio.');return}data.promo={title:$('#promoTitle').value,discount:Number($('#promoDiscount').value),product:$('#promoProduct').value,from,to};save();alert('Campaña guardada solo como prueba. No cambia la web pública.')});window.NZER_ADMIN_MOCK={getData:()=>data,save,render,nav,openProduct};render();nav('productos');
 })();
-</script><script src="admin-v2.js?v=3"></script><script src="preview-v1.js?v=3"></script><script src="catalog-tools-v1.js?v=3"></script><script src="dashboard-catalog-v1.js?v=1"></script><script src="inventory-system-v1.js?v=1"></script><div class="demo-corner">● MODO PROTOTIPO · SIN VENTAS</div></body></html>
+</script><script src="admin-v2.js?v=3"></script><script src="preview-v1.js?v=3"></script><script src="catalog-tools-v1.js?v=3"></script><script src="dashboard-catalog-v1.js?v=1"></script><script src="inventory-system-v1.js?v=2"></script><div class="demo-corner">● MODO PROTOTIPO · SIN VENTAS</div></body></html>
