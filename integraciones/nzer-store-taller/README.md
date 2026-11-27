@@ -45,3 +45,26 @@
 ## Limitaciones conocidas
 
 El flujo de preparación escribe varias hojas de manera secuencial; un error a mitad de ejecución podría dejar una reserva inconsistente. Antes de exponer la conexión al público, añadir conciliación y reparaciones verificables, o migrar el procesamiento transaccional a un backend que admita operaciones atómicas. No usar este código todavía con pagos reales ni inventario físico real.
+
+## Portal de administración listo para despliegue restringido (27/11/2026)
+
+Se añadieron `Web.gs` y `Admin.html`. Son un **panel de operaciones ficticias** conectado a las funciones de `Code.gs` y solo accesible tras autenticación del operador. No se ha desplegado.
+
+### Activación por el propietario de Google Apps Script
+
+1. Abre [script.google.com](https://script.google.com/home/projects/create) con **la cuenta propietaria o con acceso de edición** a la hoja de pruebas.
+2. Crea **un proyecto nuevo de pruebas** titulado `NZER STORE TALLER — API DE PRUEBAS`. Nunca modifiques NZER V1.
+3. Copia el contenido completo de `Code.gs` y `Web.gs` desde esta carpeta en sendos archivos de tipo Script. Crea un archivo HTML de nombre exacto `Admin` y pega el contenido de `Admin.html`.
+4. En **Configuración del proyecto → Propiedades de la secuencia de comandos**, añade:
+   - `NZER_TALLER_SPREADSHEET_ID` = `13McrDS1mtJf73H0TeLY0oiuo6gOEmRSVaX34QFpwrbc`
+   - `NZER_TALLER_ADMIN_EMAIL` = tu cuenta de Google autorizada que ejecutará la aplicación (no publicar aquí el email).
+5. Guarda y ejecuta `adminTallerAudit` desde el editor para autorizar los permisos. Verifica que devuelva `[]` antes de continuar.
+6. **Implementar → Nueva implementación → Aplicación web**, ejecutar como **Usuario que accede a la aplicación** y acceso **Solo yo**. Si esa opción de acceso no estuviera disponible o no se mantiene la autenticación, **NO publicar**.
+7. Abre la URL `/exec` de la implementación iniciando sesión con la cuenta autorizada. Deberás ver la bandeja vacía y el inventario ficticio.
+8. Desde el panel registra una venta de prueba. Comprueba que aparece en Google Sheets y que la auditoría sigue sin inconsistencias. Prueba el mismo enlace desde un segundo dispositivo con la misma cuenta autorizada.
+
+### Qué NO activa aún este procedimiento
+
+El carrito web público continúa almacenando sus pedidos en `localStorage`. Para admitir pedidos web desde usuarios anónimos se necesita un **servicio público separado que únicamente acepte la creación de pedidos**, con controles contra abuso, protección de datos y precios/campañas definidos por el servidor. No cambiar el portal de administración a "Cualquiera": expondría acciones de cambio de estados y pagos ficticios.
+
+La aplicación de pruebas no está operativa hasta que el propietario termine el despliegue y se confirme el funcionamiento desde la URL.
