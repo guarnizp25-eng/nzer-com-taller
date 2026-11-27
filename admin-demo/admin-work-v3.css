@@ -78,11 +78,11 @@ td{padding:8px 9px}
 #view-productos > .product-filters,
 #view-productos > .panel{grid-column:1}
 #view-productos > .titleline{grid-row:1}
-#view-productos > .nza-catalog-io{grid-row:2}
-#view-productos > .stats{grid-row:3;margin:0}
-#view-productos > .product-filters{grid-row:4;margin:0}
+#view-productos > .stats{grid-row:2;margin:0}
+#view-productos > .product-filters{grid-row:3;margin:0}
+#view-productos > .nza-catalog-io{grid-row:5;margin:0!important}
 #view-productos > .product-layout{display:contents}
-#view-productos .product-layout > .panel{grid-column:1;grid-row:5}
+#view-productos .product-layout > .panel{grid-column:1;grid-row:4}
 #view-productos .product-layout > .product-editor{grid-column:2;grid-row:1 / span 6;align-self:start;position:sticky;top:72px;min-width:0;max-height:calc(100vh - 88px);overflow:auto;scrollbar-width:thin}
 #view-productos > .panel{grid-row:6;margin-top:0!important}
 #view-productos .product-editor .panel{margin:0}
@@ -113,3 +113,13 @@ td{padding:8px 9px}
   #view-productos .editor-fields{grid-template-columns:1fr}
   #view-productos .editor-fields label.full{grid-column:auto}
 }
+
+/* Ajustes de la pantalla aprobada: el catálogo queda a la izquierda y el editor comienza arriba. */
+#view-productos .product-editor .editor-fields label{font-size:14px}
+#view-productos .product-editor .field{font-size:14px}
+#view-productos .product-editor .editor-actions{padding-top:8px}
+#view-productos .product-editor .panel-heading h2{font-weight:760}
+#view-productos .product-layout>.panel{min-width:0}
+#view-productos .nza-catalog-io{align-self:start}
+body:has(#view-productos:not(.hidden)) .note{font-size:12px;padding:7px 11px;margin-bottom:10px}
+@media(min-width:931px){#view-productos .product-layout>.product-editor{max-height:calc(100dvh - 92px)}}
