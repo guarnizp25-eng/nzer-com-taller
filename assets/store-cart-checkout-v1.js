@@ -1,47 +1,77 @@
-/* NZER STORE · checkout demostrativo V2: identificación honesta sin credenciales */
-(()=>{
-'use strict';
+/* NZER STORE · selector inicial de cuenta o compra como visitante (sin backend de identidad) */
+(()=>{'use strict';
 function init(){
+ const modal=document.getElementById('nzcAccountOverlay');
+ const dialog=modal?.querySelector('.nzc-account-dialog');
+ const guest=document.getElementById('nzcGuestContinue');
+ const open=document.getElementById('nzcOpenAccountModal');
+ const close=document.getElementById('nzcAccountClose');
+ const emailForm=document.getElementById('nzcCreateAccountForm');
+ const email=document.getElementById('nzcAccountEmail');
+ const accountMessage=document.getElementById('nzcAccountMessage');
+ const feedback=document.getElementById('nzcIdentityFeedback');
  const trigger=document.getElementById('nzcPreviewPayment');
  const preview=document.getElementById('nzcPaymentPreview');
  const items=document.getElementById('cartItems');
- const guest=document.getElementById('nzcGuestContinue');
- const login=document.getElementById('nzcLoginUnavailable');
- const feedback=document.getElementById('nzcIdentityFeedback');
- if(!trigger||!preview||!items||!guest||!login||!feedback)return;
+ if(!modal||!dialog||!guest||!open||!close||!emailForm||!email||!accountMessage||!feedback||!trigger||!preview||!items)return;
  const labels={yape:'Yape',plin:'Plin',transferencia:'transferencia bancaria',local:'pago en el local'};
- let guestChosen=false;
- function refresh(){preview.hidden=true;preview.replaceChildren();}
- function showMessage(msg){feedback.textContent=msg;}
- function goToSection(section){section?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}
- guest.addEventListener('click',()=>{
-  guestChosen=true;guest.setAttribute('aria-pressed','true');
-  guest.textContent='✓ Continuar como visitante';
-  showMessage('Has elegido continuar como visitante en esta demostración. No creamos una cuenta ni almacenamos tus datos personales.');
+ let guestChosen=false,restoreFocus=null;
+ function showModal(){
+  restoreFocus=document.activeElement;
+  modal.hidden=false;
+  document.body.style.overflow='hidden';
+  accountMessage.textContent='';
+  dialog.focus();
+ }
+ function hideModal(){
+  modal.hidden=true;document.body.style.overflow='';
+  email.value=''; // never persist a visitor's email in this demo
+  (restoreFocus?.isConnected?restoreFocus:open).focus();
+ }
+ function setGuest(){
+  guestChosen=true;
+  feedback.textContent='Continuarás como visitante. No creamos una cuenta ni almacenamos datos personales.';
   refresh();
-  // Se conserva la vista compacta, sin desplazamiento automático.
+  hideModal();
+ }
+ function refresh(){preview.hidden=true;preview.replaceChildren();}
+ guest.addEventListener('click',setGuest);
+ close.addEventListener('click',hideModal);
+ open.addEventListener('click',showModal);
+ modal.addEventListener('click',e=>{if(e.target===modal)hideModal();});
+ document.addEventListener('keydown',e=>{
+  if(modal.hidden)return;
+  if(e.key==='Escape'){e.preventDefault();hideModal();return;}
+  if(e.key==='Tab'){
+   const focusable=[...dialog.querySelectorAll('button:not([disabled]),input:not([disabled])')].filter(el=>el.getClientRects().length);
+   const first=focusable[0],last=focusable[focusable.length-1];
+   if(!first)return;
+   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
  });
- login.addEventListener('click',()=>{
-  showMessage('El inicio de sesión todavía no está disponible: estamos preparando una autenticación segura. No introduzcas contraseñas ni datos bancarios. Puedes continuar como visitante en esta demostración.');
-  goToSection(document.getElementById('nzcIdentityHeading'));
+ emailForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!email.validity.valid){accountMessage.textContent='Introduce un correo electrónico válido.';email.focus();return;}
+  // There is no secure authentication provider connected; do not store/transmit or falsely register.
+  accountMessage.textContent='El registro de cuentas con correo todavía no está habilitado. Tu correo no se ha guardado ni enviado. Puedes continuar sin cuenta por ahora.';
+  email.value='';
  });
  items.addEventListener('click',event=>{if(event.target.closest('[data-qty]'))refresh();});
  document.querySelectorAll('input[name="paymentDemo"]').forEach(input=>input.addEventListener('change',refresh));
  trigger.addEventListener('click',()=>{
   const count=Number(document.querySelector('[data-order-count]')?.textContent)||0;
-  if(!count){preview.hidden=false;preview.textContent='Tu carrito está vacío. Agrega productos de demostración antes de continuar.';return;}
-  if(!guestChosen){
-   showMessage('Primero selecciona «Continuar como visitante». El acceso con cuenta está pendiente de implementación.');
-   goToSection(document.getElementById('nzcIdentityHeading'));
-   return;
-  }
+  if(!count){preview.hidden=false;preview.textContent='Agrega al menos un producto para revisar el pago de prueba.';return;}
+  if(!guestChosen){showModal();return;}
   const method=document.querySelector('input[name="paymentDemo"]:checked')?.value||'local';
   const total=document.querySelector('[data-subtotal]')?.textContent||'S/ 0.00';
-  const lead=document.createElement('strong');lead.textContent='Modalidad seleccionada: '+(labels[method]||'pago en el local');
-  const p=document.createElement('p');p.textContent='Total referencial: '+total+'. El recojo en Cruce La Joya se coordinaría al confirmar el pedido.';
-  const note=document.createElement('p');note.textContent=(method==='local'?'El pago se realizaría únicamente después de confirmar disponibilidad y el punto de recojo.':'No existe aún un enlace, QR o cuenta de cobro habilitada para '+(labels[method]||method)+'.')+' Esta es una simulación: no se ha enviado un pedido, reservado inventario ni iniciado un pago.';
-  preview.replaceChildren(lead,p,note);preview.hidden=false;goToSection(preview);
+  const title=document.createElement('strong');title.textContent='Pago de prueba: '+(labels[method]||'pago en local');
+  const amount=document.createElement('p');amount.textContent='Total referencial: '+total+'. Recojo previsto en Cruce La Joya, previa coordinación.';
+  const disclaimer=document.createElement('p');disclaimer.textContent='Simulación únicamente: no se registra ningún pedido ni se cobra. Los medios de pago reales aún no están habilitados.';
+  preview.replaceChildren(title,amount,disclaimer);preview.hidden=false;
  });
+ // Every entry into the cart starts with the choice, regardless of cart content.
+ showModal();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
