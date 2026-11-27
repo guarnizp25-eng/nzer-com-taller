@@ -59,3 +59,11 @@
 .nza-preview-frame.mobile .nza-shop-bar{margin:17px 0 12px}.nza-preview-frame.mobile .nza-shop-bar h3{font-size:15px}.nza-preview-frame.mobile .nza-shop-search{display:none}
 @media(max-width:1150px){.nza-preview-layout{grid-template-columns:1fr}.nza-preview-sidebar{position:static}}
 @media(max-width:650px){.nza-preview-stage{padding:6px}.nza-browser-chrome{font-size:9px}.nza-preview-frame.desktop .nza-shop-header nav{font-size:8px}.nza-preview-frame.desktop .nza-shop-hero{padding:14px}.nza-preview-frame.desktop .nza-shop-hero h2{font-size:18px}.nza-preview-frame.desktop .nza-shop-hero-symbol{font-size:30px}.nza-preview-frame.desktop .nza-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.nza-preview-frame.desktop .nza-shop-content{padding:10px}.nza-preview-frame.desktop .nza-shop-photo{height:90px}.nza-publish-steps{grid-template-columns:1fr}}
+
+/* Vista real embebida, no simulación de tarjetas. */
+.nza-preview-frame{height:760px;min-height:580px;position:relative;background:white;transition:max-width .25s}
+.nza-preview-frame iframe{width:100%;height:100%;display:block;border:0;background:#fff}
+.nza-preview-frame.mobile{width:min(375px,100%);max-width:375px;min-width:0;height:740px;border:7px solid #263d30;border-radius:26px;box-shadow:0 6px 20px #0b291f26}
+.nza-preview-frame.mobile iframe{border-radius:17px}
+.nza-preview-frame.desktop{max-width:1200px}
+@media(max-width:650px){.nza-preview-frame.desktop{height:610px}.nza-preview-frame.mobile{height:630px}.nza-preview-stage{overflow:auto}}
