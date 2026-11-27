@@ -69,9 +69,10 @@ function renderList(){
   const valid=(c.items||[]).filter(x=>products().some(p=>p.id===x.productId));
   return '<div class="nza-campaign-card"><strong>'+esc(c.title)+'</strong><small>'+esc(c.from)+' → '+esc(c.to)+' · '+esc(c.reason)+' · '+valid.length+' productos</small><span>Borrador guardado · No publicado</span><div>'+
   '<button type="button" class="btn secondary sm" data-load-campaign="'+esc(c.id)+'">Editar</button>'+
-  '<button type="button" class="btn sm" data-preview-campaign="'+esc(c.id)+'">Vista previa</button>'+
+  '<button type="button" class="btn sm" data-preview-campaign="'+esc(c.id)+'">Previsualizar</button>'+ 
+  '<button type="button" class="btn sm" data-apply-campaign="'+esc(c.id)+'">Aplicar en taller</button>'+
   '<button type="button" class="btn ghost sm" data-remove-campaign="'+esc(c.id)+'">Eliminar</button></div>'+
-  '<small class="nza-campaign-publication">Siguiente paso: revisar en escritorio y celular. Publicar todavía está deshabilitado.</small></div>';
+  '<small class="nza-campaign-publication">Aplica la campaña para ver sus cambios en la tienda del taller. La página oficial permanece intacta.</small></div>';
  }).join(''):'<p class="nza-promo-disclaimer">Todavía no hay campañas guardadas. Crea la primera y después pulsa Vista previa para revisar los precios en NZER STORE.</p>';
 }
 function previewCampaign(id){
@@ -82,6 +83,18 @@ function previewCampaign(id){
  api.nav('vista-previa');
 }
 
+function applyCampaign(id){
+ const d=data(),c=d.campaigns.find(x=>x.id===id);
+ if(!c)return;
+ if(!confirm('¿Aplicar '+c.title+' en NZER STORE · TALLER?\n\nVerás los precios promocionales funcionando en la tienda de pruebas. No se modifica la página oficial.'))return;
+ localStorage.setItem('nzer_admin_workshop_campaign_id',id);
+ localStorage.setItem('nzer_admin_preview_campaign_id',id);
+ renderList();
+ const note=$('#nzaCampaignSavedNotice');
+ if(note){note.hidden=false;note.innerHTML='Campaña <strong>'+esc(c.title)+'</strong> aplicada en el TALLER. <button type="button" data-open-workshop="1">Abrir tienda del taller</button> · La página oficial no cambia.';}
+ window.NZER_PREVIEW_REFRESH?.();
+}
+function openWorkshop(){window.open(new URL('../store/index.html?nzer_taller=1',location.href).href,'_blank','noopener');}
 function load(id){
  const c=data().campaigns.find(x=>x.id===id);if(!c)return;
  editId=c.id;selected={};for(const x of c.items||[])if(products().some(p=>p.id===x.productId))selected[x.productId]=x.offerPrice;
@@ -126,11 +139,13 @@ form.addEventListener('submit',e=>{
 $('#nzaCampaignList')?.addEventListener('click',e=>{
  const id=e.target.dataset.loadCampaign;if(id){load(id);return;}
  const preview=e.target.dataset.previewCampaign;if(preview){previewCampaign(preview);return;}
+  if(e.target.dataset.applyCampaign){applyCampaign(e.target.dataset.applyCampaign);return;}
+  if(e.target.dataset.openWorkshop){openWorkshop();return;}
  const del=e.target.dataset.removeCampaign;if(!del)return;
  if(!confirm('¿Eliminar esta campaña de prueba?'))return;
  const d=data();d.campaigns=d.campaigns.filter(c=>c.id!==del);api.save();if(editId===del)reset();renderList();
 });
-$('#nzaCampaignSavedNotice')?.addEventListener('click',e=>{const id=e.target.dataset.previewCampaign;if(id)previewCampaign(id)});
+$('#nzaCampaignSavedNotice')?.addEventListener('click',e=>{const id=e.target.dataset.previewCampaign;if(id)previewCampaign(id);if(e.target.dataset.openWorkshop)openWorkshop();});
 $('#nzaCampaignClear')?.addEventListener('click',reset);
 $('#nzaPromoGoPreview')?.addEventListener('click',()=>api.nav('vista-previa'));
 window.addEventListener('nzer-admin-updated',renderList);
