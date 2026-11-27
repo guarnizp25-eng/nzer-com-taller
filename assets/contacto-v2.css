@@ -62,3 +62,11 @@
 .nzc-contact .nzc-toast{font-size:12px;color:#0b7246;margin:8px 0 0;min-height:16px}
 @media(max-width:900px){.nzc-contact .nzc-hero-layout{gap:23px}.nzc-contact .nzc-visit-grid{grid-template-columns:1fr 1fr}.nzc-contact .nzc-quick-card{padding:16px}}
 @media(max-width:650px){.nzc-contact .nzc-wrap{width:calc(100% - 30px)}.nzc-contact .nzc-hero{padding:28px 0}.nzc-contact .nzc-hero-layout,.nzc-contact .nzc-visit-grid,.nzc-contact .nzc-faq-grid{grid-template-columns:1fr}.nzc-contact .nzc-hero h1{font-size:40px}.nzc-contact .nzc-location-hero{padding:23px}.nzc-contact .nzc-quick{padding:35px 0}.nzc-contact .nzc-quick-grid{grid-template-columns:1fr}.nzc-contact .nzc-visit{padding:37px 0}.nzc-contact .nzc-map-panel,.nzc-contact .nzc-map-panel iframe{min-height:290px}.nzc-contact .nzc-social-panel{padding:21px}.nzc-contact .nzc-faq{padding:40px 0}}
+
+/* NZER Contacto V2.1 · marcas sociales vectoriales */
+.nzc-contact .nzc-social-icon{overflow:hidden;flex:0 0 44px;width:44px;height:44px;border-radius:13px;display:grid;place-items:center}
+.nzc-contact .nzc-brand-svg{width:24px;height:24px;display:block;fill:#fff}
+.nzc-contact .nzc-social-icon--instagram{background:linear-gradient(45deg,#ffcc42 0%,#fd5949 32%,#d6249f 65%,#285aeb 100%)}
+.nzc-contact .nzc-social-icon--tiktok{background:#111}
+.nzc-contact .nzc-social-icon--facebook{background:#0866ff}
+.nzc-contact .nzc-social-link:focus-visible{outline:3px solid #ed7517;outline-offset:3px}
