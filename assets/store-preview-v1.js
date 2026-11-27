@@ -12,7 +12,6 @@
   body.nzer-draft-mode:before{content:"NZER STORE · TALLER DE PRUEBAS · SIN COMPRAS REALES";position:sticky;display:block;top:0;z-index:9999;background:#1b533a;color:white;font:900 12px Nunito,Arial,sans-serif;text-align:center;padding:10px}
   body.nzer-draft-mode [data-nzpromo-slide]:not(:first-child){display:none!important}
   body.nzer-draft-mode #nzpromoBanner [data-nzpromo-slide]:first-child{display:flex!important;opacity:1!important;transform:none!important;visibility:visible!important;pointer-events:auto!important}
-  body.nzer-draft-mode .n5-offers-section{display:none!important}
   `;document.head.append(style);
   try{
    const draft=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
@@ -37,6 +36,16 @@
     }
    }
   }catch(e){console.warn('No se pudo leer la campaña de prueba',e)}
+  document.addEventListener('click',e=>{
+   const link=e.target.closest('a[href]');
+   if(link){
+    const dest=new URL(link.href,location.href);
+    if(dest.origin===location.origin&&dest.pathname.includes('/nzer-com-taller/store/')&&!dest.pathname.includes('/carrito/')){
+     dest.searchParams.set(workshop?'nzer_taller':'nzer_draft_preview','1');
+     link.href=dest.href;
+    }
+   }
+  },true);
   document.addEventListener('click',e=>{
    const button=e.target.closest('[data-add],[data-detail-add],[data-qty],[data-remove-item],#checkoutDemo,#nzcCheckoutContinue');
    if(button){e.preventDefault();e.stopImmediatePropagation();return;}
