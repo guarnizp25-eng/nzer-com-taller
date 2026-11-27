@@ -3,7 +3,9 @@ const NZER_PRODUCTS=(window.NZER_CATALOG_PRODUCTS||[]).map(p=>({...p}));
 /* Vista previa administrativa: solo en ?nzer_draft_preview=1.
    Consume borradores locales del mismo navegador, sin alterar la tienda visible normal.
    Nunca incluir costos ni información privada en esta representación pública. */
-const NZER_IS_DRAFT_PREVIEW=new URLSearchParams(location.search).get('nzer_draft_preview')==='1';
+const NZER_PARAMS=new URLSearchParams(location.search);
+const NZER_IS_WORKSHOP=NZER_PARAMS.get('nzer_taller')==='1';
+const NZER_IS_DRAFT_PREVIEW=NZER_PARAMS.get('nzer_draft_preview')==='1'||NZER_IS_WORKSHOP;
 if(NZER_IS_DRAFT_PREVIEW){
  try{
   const draft=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
@@ -20,7 +22,7 @@ if(NZER_IS_DRAFT_PREVIEW){
     const photo=typeof row.image==='string'&&/^https:\/\//i.test(row.image)?row.image:'';
     updated.push({...(original||{}),id,name:String(row.name).slice(0,100),category,categoryLabel,price,
       desc:String(row.description||'Descripción pendiente de revisión.').slice(0,500),
-      bg:original?.bg||'#f4f9e8',tag:original?.tag||'BORRADOR NZER',ages:original?.ages||'Verificar edad recomendada y advertencias del fabricante',
+      bg:original?.bg||'#f4f9e8',tag:original?.tag||'NZER TALLER',ages:original?.ages||'Verificar edad recomendada y advertencias del fabricante',
       previewImage:photo,draftPreview:true});
    }
    NZER_PRODUCTS.splice(0,NZER_PRODUCTS.length,...updated);
@@ -38,9 +40,9 @@ const NZER_OWN_TOYS_IDS=Object.freeze([]); // Reservado para productos propios v
 const NZER_PREVIEW_CAMPAIGN=(()=>{
  if(!NZER_IS_DRAFT_PREVIEW)return null;
  try{const d=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
- const rows=Array.isArray(d?.campaigns)?d.campaigns.filter(c=>c&&c.status==='Borrador'&&Array.isArray(c.items)):[];
- const selected=localStorage.getItem('nzer_admin_preview_campaign_id');
- return rows.find(c=>c.id===selected)||rows.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||null;
+ const rows=Array.isArray(d?.campaigns)?d.campaigns.filter(c=>c&&Array.isArray(c.items)):[];
+ const selected=localStorage.getItem(NZER_IS_WORKSHOP?'nzer_admin_workshop_campaign_id':'nzer_admin_preview_campaign_id');
+ return rows.find(c=>c.id===selected)||null;
  }catch(e){return null}
 })();
 function nzerPromoFor(p){
@@ -50,13 +52,13 @@ function nzerPromoFor(p){
  const offered=Number(line.offerPrice);
  return Number.isFinite(offered)&&offered>0&&offered<p.price?offered:null;
 }
-function demoDiscount(p){return p.draftPreview?0:NZER_DEMO_OFFERS[p.id]||0}
+function demoDiscount(p){return NZER_IS_DRAFT_PREVIEW?0:NZER_DEMO_OFFERS[p.id]||0}
 function demoPrice(p){const offer=nzerPromoFor(p);return offer!==null?offer:Math.round(p.price*(100-demoDiscount(p)))/100}
 function demoPriceMarkup(p){
  const offer=nzerPromoFor(p),d=offer!==null?Math.round((p.price-offer)/p.price*100):demoDiscount(p);
  return (d?'<span class="nzer-demo-price-before">'+money(p.price)+'</span> ':'')+
   '<span class="nzer-demo-price-now">'+money(demoPrice(p))+'</span>'+
-  (d?'<small class="nzer-demo-price-label">−'+d+'% · '+(offer!==null?'borrador promocional':'simulación')+'</small>':'');
+  (d?'<small class="nzer-demo-price-label">−'+d+'% · '+(offer!==null?'promoción de taller':'simulación')+'</small>':'');
 }
 const CART_KEY='nzer_store_demo_cart_2026';
 const COLORS=['#FF831E','#12A96B','#18ACF3','#FFD042','#E34B65','#9651E8','#F15D34'];
