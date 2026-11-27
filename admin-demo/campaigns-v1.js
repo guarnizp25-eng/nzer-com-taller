@@ -67,9 +67,21 @@ function renderList(){
  const root=$('#nzaCampaignList'),list=data().campaigns;
  root.innerHTML=list.length?list.slice().reverse().map(c=>{
   const valid=(c.items||[]).filter(x=>products().some(p=>p.id===x.productId));
-  return '<div class="nza-campaign-card"><strong>'+esc(c.title)+'</strong><small>'+esc(c.from)+' → '+esc(c.to)+' · '+esc(c.reason)+' · '+valid.length+' productos</small><span>Borrador no publicado</span><div><button type="button" class="btn secondary sm" data-load-campaign="'+esc(c.id)+'">Editar</button><button type="button" class="btn ghost sm" data-remove-campaign="'+esc(c.id)+'">Eliminar</button></div></div>';
- }).join(''):'<p class="nza-promo-disclaimer">Todavía no hay campañas guardadas. Crea la primera para ver los precios tachados en la vista previa.</p>';
+  return '<div class="nza-campaign-card"><strong>'+esc(c.title)+'</strong><small>'+esc(c.from)+' → '+esc(c.to)+' · '+esc(c.reason)+' · '+valid.length+' productos</small><span>Borrador guardado · No publicado</span><div>'+
+  '<button type="button" class="btn secondary sm" data-load-campaign="'+esc(c.id)+'">Editar</button>'+
+  '<button type="button" class="btn sm" data-preview-campaign="'+esc(c.id)+'">Vista previa</button>'+
+  '<button type="button" class="btn ghost sm" data-remove-campaign="'+esc(c.id)+'">Eliminar</button></div>'+
+  '<small class="nza-campaign-publication">Siguiente paso: revisar en escritorio y celular. Publicar todavía está deshabilitado.</small></div>';
+ }).join(''):'<p class="nza-promo-disclaimer">Todavía no hay campañas guardadas. Crea la primera y después pulsa Vista previa para revisar los precios en NZER STORE.</p>';
 }
+function previewCampaign(id){
+ const campaign=data().campaigns.find(c=>c.id===id);
+ if(!campaign)return;
+ localStorage.setItem('nzer_admin_preview_campaign_id',campaign.id);
+ if(window.NZER_PREVIEW_REFRESH)window.NZER_PREVIEW_REFRESH();
+ api.nav('vista-previa');
+}
+
 function load(id){
  const c=data().campaigns.find(x=>x.id===id);if(!c)return;
  editId=c.id;selected={};for(const x of c.items||[])if(products().some(p=>p.id===x.productId))selected[x.productId]=x.offerPrice;
@@ -109,14 +121,16 @@ form.addEventListener('submit',e=>{
  if(overlap){alert('Las fechas se superponen con otra campaña del mismo producto. Edita la campaña existente o cambia las fechas.');return;}
  const campaign={id:editId||'camp-'+Date.now(),title,from,to,reason,items,status:'Borrador',updatedAt:new Date().toISOString()};
  if(editId)d.campaigns=d.campaigns.map(c=>c.id===editId?campaign:c);else d.campaigns.push(campaign);
- api.save();editId=campaign.id;renderList();alert('Campaña guardada en borrador. Revísala en Vista previa; no se publicó ninguna oferta.');
+ api.save();editId=campaign.id;renderList();const note=$('#nzaCampaignSavedNotice');if(note){note.hidden=false;note.innerHTML='Campaña <strong>'+esc(campaign.title)+'</strong> guardada como borrador. <button type="button" data-preview-campaign="'+esc(campaign.id)+'">Ver en tienda</button>. Todavía no se publicó.';note.scrollIntoView({behavior:'smooth',block:'nearest'});}
 });
 $('#nzaCampaignList')?.addEventListener('click',e=>{
  const id=e.target.dataset.loadCampaign;if(id){load(id);return;}
+ const preview=e.target.dataset.previewCampaign;if(preview){previewCampaign(preview);return;}
  const del=e.target.dataset.removeCampaign;if(!del)return;
  if(!confirm('¿Eliminar esta campaña de prueba?'))return;
  const d=data();d.campaigns=d.campaigns.filter(c=>c.id!==del);api.save();if(editId===del)reset();renderList();
 });
+$('#nzaCampaignSavedNotice')?.addEventListener('click',e=>{const id=e.target.dataset.previewCampaign;if(id)previewCampaign(id)});
 $('#nzaCampaignClear')?.addEventListener('click',reset);
 $('#nzaPromoGoPreview')?.addEventListener('click',()=>api.nav('vista-previa'));
 window.addEventListener('nzer-admin-updated',renderList);
