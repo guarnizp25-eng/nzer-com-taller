@@ -22,9 +22,11 @@ function validate(obj){
   if(!Number.isFinite(price)||price<0||!Number.isFinite(cost)||cost<0||!Number.isSafeInteger(stock)||stock<0)throw Error('Precio, costo o stock no válido en '+sku+'.');
   if(!statuses.has(row.status))throw Error('Estado no válido en '+sku+'.');
   const image=String(row.image||'').trim(),description=String(row.description||'');
+  const storeId=String(row.storeId||'');
+  if(storeId&&(!/^[a-zA-Z0-9_-]{1,60}$/.test(storeId)))throw Error('Identificador de tienda inválido: '+sku+'.');
   if(image&&(!/^https:\/\//i.test(image)||image.length>2000))throw Error('La imagen debe tener una URL HTTPS válida: '+sku+'.');
   if(description.length>2000)throw Error('Descripción demasiado larga: '+sku+'.');
-  return {id,name,sku,category,cost,price,stock,status:row.status,image,description};
+  return {id,...(storeId?{storeId}:{}),name,sku,category,cost,price,stock,status:row.status,image,description};
  });
  let promo=null;
  if(obj.promo!==null&&obj.promo!==undefined){
