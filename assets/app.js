@@ -157,6 +157,8 @@ function saveCart(cart){try{localStorage.setItem(CART_KEY,JSON.stringify(cart))}
 function countCart(){return Object.values(getCart()).reduce((sum,v)=>sum+(Number.isInteger(v)&&v>0?v:0),0)}
 function updateCartBadge(){document.querySelectorAll('[data-cart-count]').forEach(x=>x.textContent=countCart())}
 function money(n){return 'S/ '+Number(n).toFixed(2)}
+/* API de lectura para registrar pedidos simulados desde el carrito Taller. */
+window.NZER_TALLER_CART_API=Object.freeze({getCart:()=>({...getCart()}),getLines:()=>Object.entries(getCart()).map(([id,qty])=>{const p=NZER_PRODUCTS.find(x=>x.id===id);return p&&Number.isInteger(qty)&&qty>0?{productId:id,name:p.name,qty,unitPrice:demoPrice(p)}:null}).filter(Boolean),clearCart:()=>saveCart({})});
 function toast(message){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window.nzerToast);window.nzerToast=setTimeout(()=>el.classList.remove('show'),2800)}
 function imgProduct(p){return '<div class="product-image" style="background:'+p.bg+'"><span class="product-label">'+p.categoryLabel+'</span>'+productArtwork(p)+'</div>'}
 function addToCart(id){if(NZER_IS_DRAFT_PREVIEW){toast('Vista previa: el carrito está desactivado.');return;}const p=NZER_PRODUCTS.find(x=>x.id===id);if(!p)return;const c=getCart();c[id]=Math.min(99,(Number(c[id])||0)+1);saveCart(c);toast('Producto referencial agregado al carrito de demostración')}
