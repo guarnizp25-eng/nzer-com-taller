@@ -14,7 +14,16 @@
   `;document.head.append(style);
   try{
    const draft=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
-   if(draft&&draft.promo){
+   const campaign=Array.isArray(draft?.campaigns)?draft.campaigns.filter(c=>c.status==='Borrador'&&Array.isArray(c.items)).sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]:null;
+   if(campaign){
+    const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
+    if(slide){
+     const title=slide.querySelector('h1,h2'),description=slide.querySelector('p'),discount=slide.querySelector('.nzpromo-disc strong');
+     if(title)title.textContent=String(campaign.title||'Campaña en preparación').slice(0,80);
+     if(description)description.textContent='Borrador promocional · '+String(campaign.from||'')+' al '+String(campaign.to||'')+' · No publicado';
+     if(discount){const line=campaign.items.find(x=>{const p=draft.products?.find(p=>p.id===x.productId);return p&&p.price>x.offerPrice});const p=line&&draft.products?.find(p=>p.id===line.productId);discount.textContent=p?Math.round((p.price-line.offerPrice)/p.price*100)+'%':'OFERTA';}
+    }
+   }else if(draft&&draft.promo){
     const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
     if(slide){
      const title=slide.querySelector('h1,h2'),description=slide.querySelector('p'),discount=slide.querySelector('.nzpromo-disc strong');
