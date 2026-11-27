@@ -32,8 +32,8 @@ function render(){
  }
  const promo=$('#nzaHomePromo');
  if(promo){
-  const v=d.promo;
-  promo.innerHTML=v&&v.title?'<div class="nza-home-promo"><strong>'+esc(v.title)+'</strong><p>Descuento de prueba: '+esc(v.discount||0)+'% · '+(v.from?esc(v.from):'Sin fecha de inicio')+' / '+(v.to?esc(v.to):'Sin fecha de fin')+'</p><small>Borrador local · No publicado</small></div>':'<p class="nza-home-empty">No hay promociones guardadas en este navegador.</p>';
+  const rows=Array.isArray(d.campaigns)?d.campaigns:[];
+  promo.innerHTML=rows.length?rows.slice().reverse().slice(0,3).map(c=>'<div class="nza-home-promo"><strong>'+esc(c.title)+'</strong><p>'+esc(c.from)+' al '+esc(c.to)+' · '+(c.items?.length||0)+' producto(s)</p><small>Borrador de taller · Sin publicar</small></div>').join(''):'<p class="nza-home-empty">No hay campañas guardadas.</p>';
  }
 }
 window.addEventListener('nzer-admin-updated',render);
