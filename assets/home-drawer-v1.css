@@ -107,3 +107,13 @@
 @media(max-width:1250px){.nzer-home-v5 .n5-menu-toggle{font-size:17px!important;gap:7px!important}.nzer-home-v5 .n5-menu-toggle svg{width:23px!important;height:23px!important}}
 @media(max-width:960px){.nzer-home-v5 .n5-menu-toggle{font-size:15px!important}}
 @media(max-width:560px){.nzer-home-v5 .n5-menu-toggle{font-size:12px!important;gap:5px!important;padding:7px 0!important}.nzer-home-v5 .n5-menu-toggle svg{width:21px!important;height:21px!important}}
+
+/* NZER V5: menú limpio sin iconos, Nunito de alta legibilidad */
+.nzer-home-v5 .n5-drawer-header h2{font-family:'Nunito',Arial,sans-serif!important;font-size:30px!important;font-weight:1000!important;letter-spacing:-.6px;line-height:1.15}
+.nzer-home-v5 .n5-drawer-header p{font-family:'Nunito',Arial,sans-serif!important;font-size:13px!important;line-height:1.4}
+.nzer-home-v5 .n5-drawer-group h3{font-family:'Nunito',Arial,sans-serif!important;font-size:13px!important;font-weight:1000!important;letter-spacing:1px}
+.nzer-home-v5 .n5-drawer-group a{font-family:'Nunito',Arial,sans-serif!important;font-size:20px!important;font-weight:900!important;line-height:1.25;padding:15px 16px!important;color:#085336!important}
+.nzer-home-v5 .n5-drawer-group a:hover,.nzer-home-v5 .n5-drawer-group a:focus-visible{background:#e7f6e4;color:#086c43!important}
+.nzer-home-v5 .n5-drawer-group a:focus-visible{outline:2px solid #f47917;outline-offset:1px}
+.nzer-home-v5 .n5-drawer-content{padding:21px 18px 28px}
+@media(max-width:480px){.nzer-home-v5 .n5-drawer-header h2{font-size:27px!important}.nzer-home-v5 .n5-drawer-group a{font-size:18px!important;padding:13px 14px!important}}
