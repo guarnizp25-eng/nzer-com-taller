@@ -1,0 +1,27 @@
+/* NZER ADMIN | Campañas comerciales compactas */
+.nza-promo-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.65fr);gap:13px;align-items:start}
+.nza-promo-layout>.panel{min-width:0}.nza-campaign-form{display:grid;gap:12px;margin-top:10px}
+.nza-campaign-form>label,.nza-campaign-dates label{display:grid;gap:5px;font-size:13px;font-weight:650}
+.nza-campaign-form .field{width:100%;padding:9px 11px;font-size:14px}
+.nza-campaign-dates{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nza-promo-picker{max-height:485px;overflow:auto;border:1px solid #e4e8e0;border-radius:10px;background:#fff}
+.nza-promo-item{padding:11px 12px;border-bottom:1px solid #ecf0ea;display:grid;gap:6px}
+.nza-promo-item:last-child{border:0}
+.nza-promo-check{display:flex;align-items:center;gap:9px;cursor:pointer}
+.nza-promo-check input{width:16px;height:16px;accent-color:#19673f}
+.nza-promo-photo{width:40px;height:40px;min-width:40px;display:grid;place-items:center;background:#f2f6ee;border-radius:7px}
+.nza-promo-photo img{width:100%;height:100%;object-fit:contain}
+.nza-promo-name{min-width:0;display:grid;gap:2px}.nza-promo-name strong{font-size:13px;font-weight:670}.nza-promo-name small{font-size:11px;color:#698074}
+.nza-promo-prices{display:grid;grid-template-columns:minmax(0,1fr) 148px 55px;gap:9px;align-items:center;padding-left:25px;font-size:12px}
+.nza-promo-prices label{display:grid;gap:3px;font-size:12px}.nza-promo-prices input{width:100%;border:1px solid #d4dcd2;border-radius:7px;padding:7px;font:inherit}
+.nza-promo-percent{font-weight:750;color:#187342;text-align:right}
+.nza-promo-margin{padding-left:25px;font-size:11px;color:#6e806c}
+.nza-promo-totals{padding:11px;background:#eef7ec;border-radius:9px;color:#315b3d;font-size:13px}
+.nza-promo-actions{display:flex;gap:8px;flex-wrap:wrap}
+.nza-campaign-list{display:grid;gap:9px;margin-top:12px}
+.nza-campaign-card{padding:12px;border-radius:9px;border:1px solid #dfebdc;background:#fbfefa;display:grid;gap:7px}
+.nza-campaign-card strong{font-size:15px}.nza-campaign-card small{font-size:12px;color:#626f63}.nza-campaign-card>span{font-size:11px;color:#aa6417;font-weight:700}
+.nza-campaign-card>div{display:flex;gap:8px}
+.nza-promo-disclaimer{font-size:12px;color:#747b72;margin-top:12px}
+@media(max-width:1030px){.nza-promo-layout{grid-template-columns:1fr}}
+@media(max-width:530px){.nza-promo-prices{grid-template-columns:1fr 120px 50px;padding-left:0}.nza-campaign-dates{grid-template-columns:1fr}}
