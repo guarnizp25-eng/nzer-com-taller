@@ -234,7 +234,10 @@ if(NZER_IS_DRAFT_PREVIEW){
      'Madera didáctica':['madera','Madera didáctica'],Otros:['otros','Otros']};
    for(const row of draft.products){
     if(!row||row.status!=='Preparado'||!row.name||!row.sku)continue;
-    const id='admin-'+String(row.id).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,45);
+    const existingBySku={'NZ-BM-042':'magnet','NZ-AB-001':'abacus'};
+    const normalized=t=>String(t||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/\\s+/g,' ').trim();
+    const matched=NZER_PRODUCTS.find(p=>normalized(p.name)===normalized(row.name));
+    const id=existingBySku[row.sku]||matched?.id||'admin-'+String(row.id).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,45);
     const [category,categoryLabel]=map[row.category]||map.Otros;
     const price=Number(row.price);
     if(!Number.isFinite(price)||price<0)continue;
@@ -242,7 +245,7 @@ if(NZER_IS_DRAFT_PREVIEW){
     const obj={id,name:String(row.name).slice(0,100),category,categoryLabel,price,
      desc:String(row.description||'Descripción pendiente de revisión.').slice(0,500),
      bg:'#f4f9e8',tag:'BORRADOR NZER',ages:'Verificar edad recomendada y advertencias del fabricante',
-     previewImage:photo};
+     previewImage:photo,draftPreview:true};
     const index=NZER_PRODUCTS.findIndex(p=>p.id===id);
     if(index>=0)NZER_PRODUCTS[index]=obj;else NZER_PRODUCTS.push(obj);
    }
@@ -256,7 +259,7 @@ const NZER_DEMO_OFFERS=Object.freeze({magnet:20,train:20,track:15,activity:25,ra
 const NZER_DEMO_GIFT_IDS=Object.freeze(['woodblocks','rainbow','magnet','animals','activity','train','toolbox','shapes']);
 const NZER_OWN_TOYS_IDS=Object.freeze([]); // Reservado para productos propios verificados de NZER Kids.
 
-function demoDiscount(p){return NZER_DEMO_OFFERS[p.id]||0}
+function demoDiscount(p){return p.draftPreview?0:NZER_DEMO_OFFERS[p.id]||0}
 function demoPrice(p){return Math.round(p.price*(100-demoDiscount(p)))/100}
 function demoPriceMarkup(p){
  const d=demoDiscount(p);
