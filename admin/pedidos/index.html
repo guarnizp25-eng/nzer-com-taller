@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NZER ADMIN · Pedidos | TALLER</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#4a2c1d;background:#f9f4ea}*{box-sizing:border-box}body{margin:0}header{background:#633b27;color:white;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}header strong{font-size:22px;letter-spacing:1px}a{color:inherit}header a{color:#fff}main{max-width:1300px;margin:auto;padding:22px}.banner{background:#fff4da;border:1px solid #d9a95a;padding:13px 16px;border-radius:12px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat,.panel{background:white;border:1px solid #e5d8c8;border-radius:14px;padding:18px}.stat span{font-size:13px;color:#806955}.stat strong{display:block;font-size:25px;margin-top:7px}.layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px;margin-top:16px}h2{margin:0 0 14px;font-size:18px}label{font-size:13px;font-weight:650;display:block;margin:12px 0 5px}input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccbdaa;background:#fff;font:inherit}button{background:#267936;color:white;border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer}button.secondary{background:#714b35}button.ghost{background:#f1e7db;color:#553726}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:730px;font-size:13px}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid #eee0d3}th{background:#faf5ee;color:#795943}td button{padding:7px 9px;font-size:12px}small,.help{color:#816954}.pill{display:inline-block;padding:5px 8px;border-radius:30px;background:#eee4d9;white-space:nowrap}.paid{background:#daf1dc;color:#276633}.pending{background:#fff0c8;color:#90620b}.muted{color:#816954}.line{border-top:1px solid #eadfd4;margin:16px 0}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.view{margin-top:16px}.error{color:#a02723}.success{color:#17652e}.table-button{background:#74472e}.source{font-size:12px;color:#967b5c}@media(max-width:900px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){main{padding:12px}.grid{grid-template-columns:1fr 1fr}header{padding:14px}.stat{padding:12px}.stat strong{font-size:20px}}
+</style></head>
+<body><header><div><strong><span style="color:#8fc865">N</span><span style="color:#e2a353">Z</span>ER ADMIN</strong><div style="font-size:12px">STORE · Gestión de pedidos · TALLER</div></div><div><a href="../../store/index.html">Ver tienda Taller</a> &nbsp;·&nbsp; <a href="../../index.html">Inicio NZER</a></div></header>
+<main>
+<div class="banner"><strong>ENTORNO DE PRUEBAS — DATOS FICTICIOS</strong><div>Los movimientos se guardan solo en este navegador. No llegan a Google Sheets, Apps Script, BZLE ni a la página oficial. No se realizan cobros ni se emiten comprobantes.</div></div>
+<div class="grid"><div class="stat"><span>Pedidos</span><strong id="sOrders">0</strong></div><div class="stat"><span>Por cobrar</span><strong id="sPending">0</strong></div><div class="stat"><span>Ventas confirmadas</span><strong id="sSales">S/ 0.00</strong></div><div class="stat"><span>Unidades disponibles</span><strong id="sStock">0</strong></div></div>
+<div class="layout"><section class="panel"><h2>Registrar pedido de prueba</h2>
+<label for="channel">Canal de venta</label><select id="channel"><option value="WEB">Tienda virtual</option><option value="FISICA">Tienda física</option></select>
+<label for="product">Producto del catálogo NZER</label><select id="product"></select>
+<label for="quantity">Cantidad</label><input id="quantity" type="number" min="1" value="1" step="1">
+<label for="customer">Referencia de cliente (ficticia)</label><input id="customer" maxlength="70" placeholder="Ej.: Cliente de prueba">
+<div class="help" id="available" style="margin-top:10px"></div>
+<div class="actions"><button id="create">Crear pedido</button><button id="reset" class="ghost">Restablecer pruebas</button></div>
+<p id="message" role="status" class="help"></p><div class="line"></div>
+<h2>Reglas de esta simulación</h2><p class="help">Crear un pedido reserva unidades; confirmar el pago descuenta del inventario; cancelar libera reservas. La entrega es posterior al pago. Cada acción queda en el historial del pedido.</p>
+</section>
+<section class="panel"><div class="row"><h2>Pedidos físicos y digitales</h2><select id="filter" aria-label="Filtrar pedidos" style="width:auto"><option value="TODOS">Todos</option><option value="WEB">Virtual</option><option value="FISICA">Física</option><option value="PENDIENTE">Pendientes</option><option value="PAGADO">Pagados</option></select></div><div class="scroll"><table><thead><tr><th>Pedido</th><th>Canal</th><th>Producto</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="orders"></tbody></table></div><p class="help" id="empty">Sin pedidos todavía.</p></section></div>
+<section class="panel view"><h2>Detalle e historial</h2><div id="detail" class="help">Selecciona un pedido para revisar su seguimiento.</div></section>
+<p class="source">Primera fase: panel funcional de simulación local. Pendiente: autenticación administrativa, API central segura, persistencia de pedidos entre dispositivos, validación de cobros y conciliación con caja NZER.</p>
+</main>
+<script src="../../assets/catalog-v1.js"></script>
+<script>
+(()=>{'use strict';
+const KEY='nzer-taller-pedidos-v1';
+const CATALOG=Array.isArray(window.NZER_CATALOG_PRODUCTS)?window.NZER_CATALOG_PRODUCTS:[];
+const $=id=>document.getElementById(id);
+const money=n=>'S/ '+Number(n).toFixed(2);
+const initial=()=>({seq:0,orders:[],stock:Object.fromEntries(CATALOG.map(p=>[p.id,5]))});
+const valid=x=>x&&typeof x==='object'&&Array.isArray(x.orders)&&x.stock&&typeof x.stock==='object'&&Number.isInteger(x.seq);
+let data;try{data=JSON.parse(localStorage.getItem(KEY));if(!valid(data))data=initial()}catch{data=initial()}
+let selected=null;
+const getProduct=id=>CATALOG.find(p=>p.id===id);
+const reserved=id=>data.orders.filter(o=>o.productId===id&&o.status==='PENDIENTE').reduce((n,o)=>n+o.qty,0);
+const available=id=>Math.max(0,(data.stock[id]??5)-reserved(id));
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch{$('message').textContent='No se pudo guardar la simulación en este navegador.';return false}};
+const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function render(){
+ const p=$('product').value;
+ $('available').textContent=p?'Stock '+(data.stock[p]??5)+' · Reservadas '+reserved(p)+' · Disponibles '+available(p):'';
+ $('sOrders').textContent=data.orders.length;
+ $('sPending').textContent=data.orders.filter(o=>o.status==='PENDIENTE').length;
+ $('sSales').textContent=money(data.orders.filter(o=>['PAGADO','ENTREGADO'].includes(o.status)).reduce((n,o)=>n+o.total,0));
+ $('sStock').textContent=Object.values(data.stock).reduce((n,v)=>n+Number(v),0)-data.orders.filter(o=>o.status==='PENDIENTE').reduce((n,o)=>n+o.qty,0);
+ const f=$('filter').value,rows=data.orders.filter(o=>f==='TODOS'||o.channel===f||o.status===f).slice().reverse();
+ $('empty').hidden=rows.length>0;
+ $('orders').innerHTML=rows.map(o=>'<tr><td><strong>'+escape(o.id)+'</strong><div class="muted">'+escape(new Date(o.date).toLocaleString('es-PE'))+'</div></td><td>'+escape(o.channel==='WEB'?'Virtual':'Física')+'</td><td>'+escape(o.name)+' × '+o.qty+'</td><td>'+money(o.total)+'</td><td><span class="pill '+(o.status==='PENDIENTE'?'pending':o.status==='PAGADO'||o.status==='ENTREGADO'?'paid':'')+'">'+escape(o.status)+'</span></td><td><button class="table-button" data-id="'+escape(o.id)+'">Revisar</button></td></tr>').join('');
+ $('orders').querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.id;detail()}));
+ detail();
+}
+function detail(){
+ const o=data.orders.find(o=>o.id===selected);
+ if(!o){$('detail').textContent='Selecciona un pedido para revisar su seguimiento.';return}
+ const actions=o.status==='PENDIENTE'?'<button data-action="pay">Confirmar pago ficticio</button> <button class="secondary" data-action="cancel">Cancelar pedido</button>':o.status==='PAGADO'?'<button data-action="deliver">Marcar entregado</button>':'';
+ $('detail').innerHTML='<div class="row"><strong>'+escape(o.id)+'</strong><span class="pill">'+escape(o.status)+'</span></div><p><strong>'+escape(o.name)+'</strong> × '+o.qty+' · '+money(o.total)+'</p><p>Cliente: '+escape(o.customer)+' · Canal: '+escape(o.channel==='WEB'?'Virtual':'Física')+'</p><div class="actions">'+actions+'</div><div class="line"></div><strong>Historial</strong><ul>'+o.events.map(e=>'<li>'+escape(new Date(e.date).toLocaleString('es-PE'))+' — '+escape(e.text)+'</li>').join('')+'</ul>';
+ $('detail').querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>transition(o.id,b.dataset.action)));
+}
+function transition(id,action){
+ const o=data.orders.find(x=>x.id===id);if(!o)return;
+ let text='';
+ if(action==='pay'&&o.status==='PENDIENTE'){
+   if((data.stock[o.productId]??5)<o.qty){$('message').textContent='No hay stock físico suficiente para confirmar.';return}
+   data.stock[o.productId]-=o.qty;o.status='PAGADO';text='Pago de prueba confirmado; inventario descontado';
+ }else if(action==='cancel'&&o.status==='PENDIENTE'){o.status='CANCELADO';text='Pedido cancelado; reserva liberada'}
+ else if(action==='deliver'&&o.status==='PAGADO'){o.status='ENTREGADO';text='Entrega ficticia completada'}
+ else return;
+ o.events.push({date:new Date().toISOString(),text});save();render();
+}
+CATALOG.forEach(p=>{const opt=document.createElement('option');opt.value=p.id;opt.textContent=p.name+' · '+money(p.price);$('product').append(opt)});
+$('product').addEventListener('change',render);$('filter').addEventListener('change',render);
+$('create').addEventListener('click',()=>{
+ const id=$('product').value,p=getProduct(id),qty=Number($('quantity').value);
+ if(!p||!Number.isSafeInteger(qty)||qty<1||qty>available(id)){$('message').textContent='Indica un producto y una cantidad válida dentro del stock disponible.';return}
+ const customer=$('customer').value.trim()||'Cliente de prueba';
+ const channel=$('channel').value==='FISICA'?'FISICA':'WEB';
+ const seq=++data.seq,orderId='NZER-'+(channel==='WEB'?'WEB':'FIS')+'-'+String(seq).padStart(5,'0'),date=new Date().toISOString();
+ const order={id:orderId,channel,productId:id,name:p.name,qty,unitPrice:p.price,total:Math.round(qty*p.price*100)/100,customer,date,status:'PENDIENTE',events:[{date,text:'Pedido registrado y unidades reservadas (simulación)'}]};
+ data.orders.push(order);selected=orderId;$('message').textContent='Pedido de prueba creado: '+orderId;save();render();
+});
+$('reset').addEventListener('click',()=>{if(!confirm('¿Eliminar todos los pedidos ficticios de este navegador y restaurar el stock de prueba?'))return;data=initial();selected=null;$('message').textContent='Datos ficticios restablecidos.';save();render()});
+render();
+})();
+</script></body></html>
