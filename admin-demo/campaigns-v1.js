@@ -5,23 +5,61 @@ const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>
 const money=n=>'S/ '+Number(n).toFixed(2),fmt=n=>Number(n).toFixed(1)+'%';
 const form=$('#nzaCampaignForm');if(!form)return;
 let editId=null,selected={};
+const DEMO_SALES_30=Object.freeze({magnet:8,builder:0,truck:11,excavator:2,toolbox:0,ridecar:6,track:1,garage:1,train:9,cubes:1,animals:5,abacus:2,balance:0,hammer:3,woodblocks:12,crane:0,activity:0,fruits:8,shapes:2,rainbow:3});
+const segmentValue=()=>$('#nzaCampaignSegment')?.value||'all';
+const percentValue=()=>Number($('#nzaBulkDiscount')?.value||10);
+const demoSales=p=>DEMO_SALES_30[p.storeId]??0;
+function rotation(p){
+ const sold=demoSales(p),remaining=Number(p.stock)||0;
+ if(sold===0)return 'no-sales';
+ const rate=sold/(sold+remaining||1);
+ return rate<.15?'low':rate<.4?'medium':'high';
+}
+const belongs=(p,segment)=>segment==='all'||(segment==='low-stock'&&p.stock>0&&p.stock<=3)||(segment==='out-stock'&&p.stock===0)||rotation(p)===segment;
+const offerFromPercent=(p,percentage)=>{
+ const regular=Number(p.price);
+ if(!Number.isFinite(regular)||regular<=0)return null;
+ return Math.max(.01,Math.round(regular*(1-percentage/100)*100)/100);
+};
+function updateSegmentInfo(){
+ const group=products().filter(p=>belongs(p,segmentValue()));
+ const total=products().length;
+ const box=$('#nzaCampaignSegmentSummary');
+ if(box)box.textContent=group.length+' de '+total+' productos cumplen este criterio. Seleccionados: '+Object.keys(selected).length+'. Ventas y rotación simuladas para pruebas (últimos 30 días); no son pedidos reales.';
+}
+function selectGroup(){
+ const percentage=percentValue();
+ if(!Number.isFinite(percentage)||percentage<1||percentage>90){alert('Ingresa un descuento entre 1% y 90%.');return;}
+ const matching=products().filter(p=>belongs(p,segmentValue()));
+ selected={};for(const p of matching){const price=offerFromPercent(p,percentage);if(price!==null&&price<p.price)selected[p.id]=price;}
+ drawPicker();drawTotals();
+}
+function applyBulkDiscount(){
+ const percentage=percentValue();
+ if(!Number.isFinite(percentage)||percentage<1||percentage>90){alert('Ingresa un descuento entre 1% y 90%.');return;}
+ const candidates=products().filter(p=>Object.prototype.hasOwnProperty.call(selected,p.id));
+ if(!candidates.length){alert('Selecciona primero algún producto utilizando un filtro.');return;}
+ for(const p of candidates){const price=offerFromPercent(p,percentage);if(price!==null&&price<p.price)selected[p.id]=price;}
+ drawPicker();drawTotals();
+}
 const products=()=>api.getData().products||[];
 const data=()=>{const d=api.getData();if(!Array.isArray(d.campaigns))d.campaigns=[];return d};
-function reset(){editId=null;selected={};form.reset();drawPicker();drawTotals();}
+function reset(){editId=null;selected={};form.reset();$('#nzaCampaignSegment').value='all';$('#nzaBulkDiscount').value='10';selectGroup();}
 function currentRows(){return products().filter(p=>selected[p.id]!==undefined).map(p=>({p,price:Number(selected[p.id])}));}
 function drawTotals(){
  const entries=currentRows();const changed=entries.filter(({p,price})=>Number.isFinite(price)&&price>=0&&price<Number(p.price));
  $('#nzaCampaignTotals').textContent=entries.length?entries.length+' productos seleccionados · '+changed.length+' descuentos válidos (precio promocional menor al regular).':'Selecciona productos y establece su precio promocional.';
+ updateSegmentInfo();
 }
 function drawPicker(){
  const root=$('#nzaCampaignProducts'),term=($('#nzaCampaignSearch')?.value||'').trim().toLocaleLowerCase('es');
- const list=products().filter(p=>!term||(p.name+' '+p.sku).toLocaleLowerCase('es').includes(term));
+ const list=products().filter(p=>belongs(p,segmentValue())&&(!term||(p.name+' '+p.sku).toLocaleLowerCase('es').includes(term)));
  root.innerHTML=list.map(p=>{
  const chosen=Object.prototype.hasOwnProperty.call(selected,p.id),regular=Number(p.price),price=chosen?selected[p.id]:'';
  const discount=chosen&&Number(price)>=0&&Number(price)<regular?((regular-Number(price))/regular*100):0;
  const cost=Number(p.cost)||0,margin=chosen?Number(price)-cost:0;
  return '<div class="nza-promo-item" data-id="'+esc(p.id)+'"><label class="nza-promo-check"><input type="checkbox" data-pick="'+esc(p.id)+'" '+(chosen?'checked':'')+'><span class="nza-promo-photo">'+(p.image?'<img src="'+esc(p.image)+'" alt="">':'—')+'</span><span class="nza-promo-name"><strong>'+esc(p.name)+'</strong><small>'+esc(p.sku)+'</small></span></label>'+
- '<div class="nza-promo-prices"><span>Regular <strong>'+money(regular)+'</strong></span><label>Promoción (S/)<input type="number" min="0.01" step=".01" data-offer="'+esc(p.id)+'" value="'+(chosen?esc(price):'')+'" placeholder="0.00" '+(!chosen?'disabled':'')+'></label><span class="nza-promo-percent">'+(discount>0?'−'+fmt(discount):'—')+'</span></div>'+
+ '<div class="nza-promo-prices"><span>Regular <strong>'+money(regular)+'</strong><small class="nza-promo-rotation">30 días: '+demoSales(p)+' ventas · '+({ 'no-sales':'Sin ventas',low:'Rotación baja',medium:'Rotación media',high:'Rotación alta'})[rotation(p)]+'</small></span><label>Promoción (S/)<input type="number" min="0.01" step=".01" data-offer="'+esc(p.id)+'" value="'+(chosen?esc(price):'')+'" placeholder="0.00" '+(!chosen?'disabled':'')+'></label><span class="nza-promo-percent">'+(discount>0?'−'+fmt(discount):'—')+'</span></div>'+
  (chosen?'<small class="nza-promo-margin">Margen bruto referencial: '+money(margin)+(cost===0?' · costo no registrado':'')+'</small>':'')+'</div>';
  }).join('')||'<p>No se encontraron productos.</p>';
 }
@@ -36,11 +74,11 @@ function load(id){
  const c=data().campaigns.find(x=>x.id===id);if(!c)return;
  editId=c.id;selected={};for(const x of c.items||[])if(products().some(p=>p.id===x.productId))selected[x.productId]=x.offerPrice;
  form.elements.title.value=c.title;form.elements.from.value=c.from;form.elements.to.value=c.to;form.elements.reason.value=c.reason;
- drawPicker();drawTotals();form.scrollIntoView({behavior:'smooth',block:'start'});
+ $('#nzaCampaignSegment').value='all';drawPicker();drawTotals();form.scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('#nzaCampaignProducts')?.addEventListener('change',e=>{
  const id=e.target.dataset.pick;if(!id)return;
- if(e.target.checked){const p=products().find(x=>x.id===id);if(p)selected[id]=Math.max(.01,Math.round(p.price*.9*100)/100);}
+ if(e.target.checked){const p=products().find(x=>x.id===id);if(p)selected[id]=offerFromPercent(p,percentValue());}
  else delete selected[id];
  drawPicker();drawTotals();
 });
@@ -54,6 +92,8 @@ $('#nzaCampaignProducts')?.addEventListener('input',e=>{
  drawTotals();
 });
 $('#nzaCampaignSearch')?.addEventListener('input',drawPicker);
+$('#nzaCampaignSegment')?.addEventListener('change',()=>{if(editId&&Object.keys(selected).length&&!confirm('El nuevo criterio reemplazará la selección actual de la campaña que estás editando. ¿Continuar?')){ $('#nzaCampaignSegment').value='all';return;}selectGroup();});
+$('#nzaApplyDiscount')?.addEventListener('click',applyBulkDiscount);
 form.addEventListener('submit',e=>{
  e.preventDefault();const d=data(),title=form.elements.title.value.trim(),from=form.elements.from.value,to=form.elements.to.value,reason=form.elements.reason.value;
  if(!title||!from||!to||from>to){alert('Completa el nombre y un periodo de fechas válido.');return;}
@@ -92,5 +132,5 @@ window.addEventListener('nzer-admin-updated',renderList);
   d.campaignWorkshopSeeded=true;api.save();
  }
 }
-drawPicker();drawTotals();renderList();
+selectGroup();renderList();
 })();
