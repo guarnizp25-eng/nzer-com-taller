@@ -19,7 +19,7 @@ function init(){
   guest.textContent='✓ Continuar como visitante';
   showMessage('Has elegido continuar como visitante en esta demostración. No creamos una cuenta ni almacenamos tus datos personales.');
   refresh();
-  goToSection(document.getElementById('nzcDeliveryHeading'));
+  // Se conserva la vista compacta, sin desplazamiento automático.
  });
  login.addEventListener('click',()=>{
   showMessage('El inicio de sesión todavía no está disponible: estamos preparando una autenticación segura. No introduzcas contraseñas ni datos bancarios. Puedes continuar como visitante en esta demostración.');
