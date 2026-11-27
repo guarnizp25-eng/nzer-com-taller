@@ -13,7 +13,7 @@
   body.nzer-draft-mode .n5-offers-section{display:none!important}
   `;document.head.append(style);
   try{
-   const draft=JSON.parse(localStorage.getItem('nzer_admin_mock_v1')||'null');
+   const draft=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
    if(draft&&draft.promo){
     const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
     if(slide){
