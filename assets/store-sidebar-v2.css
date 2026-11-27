@@ -70,3 +70,16 @@
  .nzer-store-unified .nzstore-results .section-heading{margin:5px 0 15px!important}
  .nzer-store-unified .nzstore-results .product-image{height:155px!important}
 }
+
+/* NZER STORE: categorías especiales Regalos / Juguetes NZER Kids */
+.nzer-store-unified .nzstore-filter-group .nzstore-new-category{
+ background:linear-gradient(100deg,#f4fbee,#fff9ee);
+ border-color:#bfdcc7;
+ font-family:'Nunito',Arial,sans-serif;
+ font-weight:1000;
+ color:#08613f;
+}
+.nzer-store-unified .nzstore-filter-group .nzstore-new-category:has(input:checked){
+ background:#e2f4dc;
+ border-color:#0e9355;
+}
