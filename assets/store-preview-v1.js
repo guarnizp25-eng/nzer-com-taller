@@ -14,7 +14,9 @@
   `;document.head.append(style);
   try{
    const draft=JSON.parse(localStorage.getItem('nzer_admin_catalog_v2')||'null');
-   const campaign=Array.isArray(draft?.campaigns)?draft.campaigns.filter(c=>c.status==='Borrador'&&Array.isArray(c.items)).sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]:null;
+   const campaigns=Array.isArray(draft?.campaigns)?draft.campaigns.filter(c=>c.status==='Borrador'&&Array.isArray(c.items)):[];
+   const selected=localStorage.getItem('nzer_admin_preview_campaign_id');
+   const campaign=campaigns.find(c=>c.id===selected)||campaigns.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||null;
    if(campaign){
     const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
     if(slide){
