@@ -1,59 +1,37 @@
-/* NZER ADMIN · Vista previa de catálogo antes de aprobar (solo simulador). */
+/* NZER ADMIN — vista real en borrador. No publica nada. */
 (()=>{
 'use strict';
 const api=window.NZER_ADMIN_MOCK;if(!api)return;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const safe=t=>String(t??'').replace(/[&<>"']/g,k=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[k]));
-const money=n=>'S/ '+Number(n||0).toFixed(2);
-let visited=new Set(),approved=false,view='desktop',selected=null;
-const frame=$('#nzaPreviewFrame');
-const checks=$$('.nza-check');
-const deviceBtns=$$('[data-device]');
-const baseProducts=()=>api.getData().products.filter(p=>p.status==='Preparado');
-const icon=p=>p.category==='Regalos'?'🎁':p.category==='Carros'?'🚚':p.category==='Juguetes NZER Kids'?'🧸':p.category==='Madera didáctica'?'🧮':'🧩';
-const card=p=>'<article class="nza-shop-card"><div class="nza-shop-photo">'+(p.image?'<img alt="" loading="lazy" src="'+safe(p.image)+'">':icon(p))+(p.stock<=0?'<span class="nza-soldout">Agotado</span>':'')+'</div><div class="nza-shop-info"><span class="nza-shop-category">'+safe(p.category)+'</span><strong>'+safe(p.name)+'</strong><p>'+safe(p.description||'Juguete para explorar y aprender.')+'</p><span class="nza-shop-price">'+money(p.price)+'</span><button type="button" data-preview-product="'+safe(p.id)+'">Ver producto</button></div></article>';
-function render(){
- const data=api.getData(),items=baseProducts(),promo=data.promo;
- const heading=$('#nzaShopHeroTitle'),sub=$('#nzaShopHeroSub'),root=$('#nzaPreviewCards');
- if(!heading||!root)return;
- heading.textContent=promo?.title||'Descubre juguetes para crear grandes momentos';
- sub.textContent=promo?'Promoción de prueba: '+promo.discount+'% de descuento ilustrativo. No vigente.':'Encuentra experiencias que inspiran el juego y el aprendizaje.';
- $('#nzaShopSectionTitle').textContent='Juguetes destacados';
- $('#nzaPreviewCount').textContent=items.length+' productos preparados de prueba';
- root.innerHTML=items.length?items.map(card).join(''):'<div class="empty" style="grid-column:1/-1">No hay productos preparados para publicar. Edita un producto y cambia su estado a Preparado.</div>';
- root.querySelectorAll('[data-preview-product]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.previewProduct;showDetail()}));
- if(selected){const p=items.find(p=>p.id===selected);if(!p){selected=null;$('#nzaPreviewDetail').classList.add('hidden')}else showDetail()}
-}
-function showDetail(){
- const p=baseProducts().find(p=>p.id===selected),detail=$('#nzaPreviewDetail');if(!p||!detail)return;
- detail.classList.remove('hidden');
- detail.innerHTML='<button type="button" id="nzaClosePreviewDetail">← Volver al catálogo</button><h4>'+safe(p.name)+'</h4><p>'+safe(p.description||'Descripción pendiente de revisión.')+'</p><p style="margin:10px 0;font-weight:1000;color:#0b683f;font-size:21px">'+money(p.price)+'</p><p style="font-size:11px">'+(p.stock>0?'Existencia de prueba: '+p.stock:'Agotado')+' · '+safe(p.category)+'</p>';
- $('#nzaClosePreviewDetail').onclick=()=>{selected=null;detail.classList.add('hidden')};
-}
-function updateDevice(name){
- view=name;visited.add(name);frame.classList.toggle('desktop',name==='desktop');frame.classList.toggle('mobile',name==='mobile');
- deviceBtns.forEach(b=>{const active=b.dataset.device===name;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
- $('#nzaScreenSize').textContent=name==='mobile'?'Celular · 375 px':'Escritorio · adaptable';
- updateChecks();
-}
+const frame=$('#nzaRealShopFrame');if(!frame)return;
+const deviceButtons=$$('[data-device]'),checks=$$('.nza-check');
+let approved=false,visited=new Set(),rev=0,device='desktop';
 function updateChecks(){
- const done=checks.every(c=>c.checked)&&visited.has('desktop')&&visited.has('mobile');
- const approvalBtn=$('#nzaApprovePreview');approvalBtn.disabled=!done||approved;
- const warning=$('#nzaPreviewWarning');
- warning.classList.toggle('approved',approved);
- warning.textContent=approved?'Vista previa aprobada en esta sesión de prueba. Aún no se ha publicado nada.':!visited.has('mobile')?'Aún falta revisar la visualización en celular.':!visited.has('desktop')?'Aún falta revisar la visualización en escritorio.':done?'Revisión completa. Puedes aprobar la maqueta.':'Marca los cuatro puntos después de comprobar ambas pantallas.';
- $('#nzaPublishReadiness').textContent=approved?'Aprobación de demostración completada. La publicación real sigue deshabilitada porque aún no hay conexión segura.':'Revisa y aprueba la vista previa antes del futuro proceso de publicación.';
- $('#nzaPublishReadiness').classList.toggle('approved',approved);
+ const complete=checks.every(x=>x.checked)&&visited.has('desktop')&&visited.has('mobile');
+ const action=$('#nzaApprovePreview'),notice=$('#nzaPreviewWarning'),status=$('#nzaPublishReadiness');
+ if(action)action.disabled=!complete||approved;
+ if(notice){notice.classList.toggle('approved',approved);notice.textContent=approved?'Borrador revisado y aprobado en esta sesión. No se ha publicado nada.':!visited.has('mobile')?'Revisa también la tienda desde la vista celular.':complete?'Las comprobaciones están completas. Ya puedes aprobar el borrador.':'Verifica ambos dispositivos y marca todos los puntos de la lista.';}
+ if(status){status.classList.toggle('approved',approved);status.textContent=approved?'Borrador aprobado. La publicación comercial continúa deshabilitada hasta contar con una conexión segura.':'Debes revisar y aprobar los cambios en la vista previa real.';}
 }
-function invalidate(){
- approved=false;
- visited=new Set();
- checks.forEach(c=>c.checked=false);
- updateDevice('desktop');
-}
-deviceBtns.forEach(b=>b.addEventListener('click',()=>updateDevice(b.dataset.device)));
-checks.forEach(c=>c.addEventListener('change',updateChecks));
-$('#nzaApprovePreview')?.addEventListener('click',()=>{if(checks.every(c=>c.checked)&&visited.has('desktop')&&visited.has('mobile')){approved=true;updateChecks();api.nav('publicar')}});
-window.addEventListener('nzer-admin-updated',()=>{render();invalidate()});
-render();updateDevice('desktop');
+function reload(){const u=new URL('../store/index.html',location.href);u.searchParams.set('nzer_draft_preview','1');u.searchParams.set('revision',String(++rev));frame.src=u.href;}
+function changeDevice(value){device=value;visited.add(value);const container=$('#nzaPreviewFrame');container.classList.toggle('desktop',value==='desktop');container.classList.toggle('mobile',value==='mobile');deviceButtons.forEach(b=>{const on=b.dataset.device===value;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});$('#nzaScreenSize').textContent=value==='mobile'?'Celular · 375 px':'Escritorio';updateChecks();}
+function invalidate(){approved=false;visited=new Set();checks.forEach(x=>x.checked=false);changeDevice(device);visited=new Set([device]);updateChecks();reload();}
+deviceButtons.forEach(b=>b.addEventListener('click',()=>changeDevice(b.dataset.device)));
+checks.forEach(b=>b.addEventListener('change',updateChecks));
+$('#nzaApprovePreview')?.addEventListener('click',()=>{if(checks.every(x=>x.checked)&&visited.has('desktop')&&visited.has('mobile')){approved=true;updateChecks();api.nav('publicar');}});
+window.addEventListener('nzer-admin-updated',invalidate);
+frame.addEventListener('load',()=>{
+ try{
+  const doc=frame.contentDocument;if(!doc)return;
+  doc.addEventListener('click',e=>{
+   const anchor=e.target.closest('a[href]');if(!anchor)return;
+   const url=new URL(anchor.href,frame.contentWindow.location.href);
+   if(url.origin!==location.origin||!url.pathname.includes('/nzer-com-taller/store/')){e.preventDefault();return;}
+   if(url.pathname.includes('/carrito/')){e.preventDefault();return;}
+   url.searchParams.set('nzer_draft_preview','1');
+   e.preventDefault();frame.src=url.href;
+  },true);
+ }catch(e){console.warn('Vista previa no disponible',e)}
+});
+changeDevice('desktop');reload();
 })();
