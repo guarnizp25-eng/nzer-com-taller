@@ -16,6 +16,39 @@ function reconcile(data){
  const ledger=movements(data);
  for(const p of data.products){const stock=balanceFor(data,p.id);p.stock=validInt(stock)?stock:0;}
 }
+/* Datos exclusivamente para comprobar el sistema, no mercancía existente. */
+const DEMO_STOCK=Object.freeze({
+ magnet:12,builder:8,truck:16,excavator:5,toolbox:3,ridecar:10,track:6,garage:4,
+ train:14,cubes:7,animals:11,abacus:9,balance:2,hammer:5,woodblocks:13,crane:0,
+ activity:1,fruits:12,shapes:8,rainbow:6
+});
+function seedWorkshop(data){
+ const ledger=movements(data);
+ if(ledger.length||data.workshopSeedVersion===1)return false;
+ const matched=data.products.filter(p=>Object.prototype.hasOwnProperty.call(DEMO_STOCK,p.storeId));
+ if(matched.length!==20||data.products.length!==20||data.products.some(p=>Number(p.stock)!==0))return false;
+ const now=Date.now();
+ const add=(p,type,delta,after,reason,days,index)=>{
+  ledger.push({id:'workshop-'+p.storeId+'-'+type+'-'+index,at:new Date(now-days*86400000+index*1000).toISOString(),
+   productId:p.id,sku:p.sku,name:p.name,type,delta,stockAfter:after,reason,reference:'TALLER-NZER'});
+ };
+ matched.forEach((p,i)=>{
+  const goal=DEMO_STOCK[p.storeId];
+  const extra=p.storeId==='crane'?5:(p.storeId==='toolbox'?2:(p.storeId==='activity'?3:0));
+  const opening=goal+extra;
+  if(opening>0)add(p,'apertura',opening,opening,'Saldo inicial de simulación (no es inventario real)',6,i);
+  if(extra>0)add(p,'salida',-extra,goal,'Salida de práctica para probar historial y descuento',2,i);
+ });
+ // Una entrada posterior muestra también el comportamiento de una reposición.
+ const truck=matched.find(p=>p.storeId==='truck');
+ if(truck){const initial=DEMO_STOCK.truck-4;
+  const row=ledger.find(m=>m.productId===truck.id&&m.type==='apertura');
+  if(row){row.delta=initial;row.stockAfter=initial;}
+  add(truck,'entrada',4,DEMO_STOCK.truck,'Reposición de práctica',1,23);
+ }
+ data.workshopSeedVersion=1;
+ return true;
+}
 function init(){
  const d=api.getData();const list=movements(d);
  if(d.inventoryLedgerVersion!==1){
@@ -26,9 +59,13 @@ function init(){
    }
   }
   d.inventoryLedgerVersion=1;
+  seedWorkshop(d);
   reconcile(d);
   api.save();
- }else reconcile(d);
+ }else{
+  if(seedWorkshop(d)){reconcile(d);api.save();}
+  else reconcile(d);
+ }
 }
 function select(id){
  if(!api.getData().products.some(p=>p.id===id))return;
