@@ -1,0 +1,20 @@
+/* NZER INVENTARIO — disposición de trabajo, sin decoración superflua */
+.nza-inv-stats{margin:10px 0 12px}
+.nza-inv-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(315px,.8fr);gap:12px;align-items:start}
+.nza-inv-layout>.panel{min-width:0}
+.nza-inv-filters{margin:10px 0}
+.nza-inv-filters .search{width:100%;padding:9px 11px}
+.nza-inv-editor{position:sticky;top:72px}
+.nza-inv-editor h2{margin:3px 0 12px}
+#nzaInventoryForm{display:grid;gap:11px}
+#nzaInventoryForm label{display:grid;gap:5px;font-size:13px;font-weight:650;color:#39483c}
+#nzaInventoryForm .field{width:100%;font-size:14px;padding:9px 11px}
+#nzaInventoryForm button{width:100%;margin-top:2px}
+.nza-stock-current{background:#f2f8f0;border:1px solid #dce9dd;border-radius:9px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.nza-stock-current span{font-size:13px;color:#365341}
+.nza-stock-current strong{font-size:24px;color:#145536}
+.nza-inv-note,.nza-inv-history .panel-heading p{font-size:12px;color:#68766d}
+.nza-inv-history{margin-top:12px}
+.nza-inv-history td{font-size:12px}
+.nza-positive{color:#177547;font-weight:700}.nza-negative{color:#b84932;font-weight:700}
+@media(max-width:1040px){.nza-inv-layout{grid-template-columns:1fr}.nza-inv-editor{position:static;grid-row:1}.nza-inv-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
