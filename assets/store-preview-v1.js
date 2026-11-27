@@ -24,7 +24,15 @@
      const title=slide.querySelector('h1,h2'),description=slide.querySelector('p'),discount=slide.querySelector('.nzpromo-disc strong');
      if(title)title.textContent=String(campaign.title||'Campaña en preparación').slice(0,80);
      if(description)description.textContent='Campaña de taller · '+String(campaign.from||'')+' al '+String(campaign.to||'')+' · Sin ventas reales';
-     if(discount){const line=campaign.items.find(x=>{const p=draft.products?.find(p=>p.id===x.productId);return p&&p.price>x.offerPrice});const p=line&&draft.products?.find(p=>p.id===line.productId);discount.textContent=p?Math.round((p.price-line.offerPrice)/p.price*100)+'%':'OFERTA';}
+     if(discount){const percentages=campaign.items.map(x=>{const p=draft.products?.find(p=>p.id===x.productId);return p&&p.price>x.offerPrice?Math.round((p.price-x.offerPrice)/p.price*100):0});discount.textContent=percentages.length?Math.max(...percentages)+'%':'OFERTA';}
+    }
+   }else if(workshop){
+    const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
+    if(slide){
+     const title=slide.querySelector('h1,h2'),description=slide.querySelector('p'),discount=slide.querySelector('.nzpromo-disc strong');
+     if(title)title.textContent='NZER STORE · TALLER';
+     if(description)description.textContent='No hay una campaña aplicada. Activa una desde NZER ADMIN para probar sus descuentos.';
+     if(discount)discount.textContent='0%';
     }
    }else if(!workshop&&draft&&draft.promo){
     const slide=document.querySelector('#nzpromoBanner [data-nzpromo-slide]:first-child');
