@@ -67,12 +67,13 @@ function renderList(){
  const root=$('#nzaCampaignList'),list=data().campaigns;
  root.innerHTML=list.length?list.slice().reverse().map(c=>{
   const valid=(c.items||[]).filter(x=>products().some(p=>p.id===x.productId));
-  return '<div class="nza-campaign-card"><strong>'+esc(c.title)+'</strong><small>'+esc(c.from)+' → '+esc(c.to)+' · '+esc(c.reason)+' · '+valid.length+' productos</small><span>Borrador guardado · No publicado</span><div>'+
+  return '<div class="nza-campaign-card"><strong>'+esc(c.title)+'</strong><small>'+esc(c.from)+' → '+esc(c.to)+' · '+esc(c.reason)+' · '+valid.length+' productos</small><span>Campaña de prueba · Sin ventas reales</span><div>'+
   '<button type="button" class="btn secondary sm" data-load-campaign="'+esc(c.id)+'">Editar</button>'+
   '<button type="button" class="btn sm" data-preview-campaign="'+esc(c.id)+'">Previsualizar</button>'+ 
-  '<button type="button" class="btn sm" data-apply-campaign="'+esc(c.id)+'">Aplicar en taller</button>'+
+  '<button type="button" class="btn sm" data-apply-campaign="'+esc(c.id)+'">Aplicar en taller</button>'+ 
+  (localStorage.getItem('nzer_admin_workshop_campaign_id')===c.id?'<button type="button" class="btn ghost sm" data-disable-campaign="'+esc(c.id)+'">Desactivar</button>':'')+
   '<button type="button" class="btn ghost sm" data-remove-campaign="'+esc(c.id)+'">Eliminar</button></div>'+
-  '<small class="nza-campaign-publication">Aplica la campaña para ver sus cambios en la tienda del taller. La página oficial permanece intacta.</small></div>';
+  '<small class="nza-campaign-publication">Aplica la campaña para probar los cambios en la tienda del taller. La página oficial permanece intacta.</small></div>';
  }).join(''):'<p class="nza-promo-disclaimer">Todavía no hay campañas guardadas. Crea la primera y después pulsa Vista previa para revisar los precios en NZER STORE.</p>';
 }
 function previewCampaign(id){
@@ -94,6 +95,7 @@ function applyCampaign(id){
  if(note){note.hidden=false;note.innerHTML='Campaña <strong>'+esc(c.title)+'</strong> aplicada en el TALLER. <button type="button" data-open-workshop="1">Abrir tienda del taller</button> · La página oficial no cambia.';}
  window.NZER_PREVIEW_REFRESH?.();
 }
+function disableCampaign(id){if(localStorage.getItem('nzer_admin_workshop_campaign_id')!==id)return;localStorage.removeItem('nzer_admin_workshop_campaign_id');renderList();const note=$('#nzaCampaignSavedNotice');if(note){note.hidden=false;note.textContent='Campaña desactivada en el taller. La tienda de pruebas vuelve a mostrar los precios regulares al recargar.';}window.NZER_PREVIEW_REFRESH?.();}
 function openWorkshop(){window.open(new URL('../store/index.html?nzer_taller=1',location.href).href,'_blank','noopener');}
 function load(id){
  const c=data().campaigns.find(x=>x.id===id);if(!c)return;
@@ -134,12 +136,13 @@ form.addEventListener('submit',e=>{
  if(overlap){alert('Las fechas se superponen con otra campaña del mismo producto. Edita la campaña existente o cambia las fechas.');return;}
  const campaign={id:editId||'camp-'+Date.now(),title,from,to,reason,items,status:'Borrador',updatedAt:new Date().toISOString()};
  if(editId)d.campaigns=d.campaigns.map(c=>c.id===editId?campaign:c);else d.campaigns.push(campaign);
- api.save();editId=campaign.id;renderList();const note=$('#nzaCampaignSavedNotice');if(note){note.hidden=false;note.innerHTML='Campaña <strong>'+esc(campaign.title)+'</strong> guardada como borrador. <button type="button" data-preview-campaign="'+esc(campaign.id)+'">Ver en tienda</button>. Todavía no se publicó.';note.scrollIntoView({behavior:'smooth',block:'nearest'});}
+ api.save();editId=campaign.id;renderList();const note=$('#nzaCampaignSavedNotice');if(note){note.hidden=false;note.innerHTML='Campaña <strong>'+esc(campaign.title)+'</strong> guardada en taller. <button type="button" data-preview-campaign="'+esc(campaign.id)+'">Ver en tienda</button>. Todavía no se publicó.';note.scrollIntoView({behavior:'smooth',block:'nearest'});}
 });
 $('#nzaCampaignList')?.addEventListener('click',e=>{
  const id=e.target.dataset.loadCampaign;if(id){load(id);return;}
  const preview=e.target.dataset.previewCampaign;if(preview){previewCampaign(preview);return;}
   if(e.target.dataset.applyCampaign){applyCampaign(e.target.dataset.applyCampaign);return;}
+  if(e.target.dataset.disableCampaign){disableCampaign(e.target.dataset.disableCampaign);return;}
   if(e.target.dataset.openWorkshop){openWorkshop();return;}
  const del=e.target.dataset.removeCampaign;if(!del)return;
  if(!confirm('¿Eliminar esta campaña de prueba?'))return;
