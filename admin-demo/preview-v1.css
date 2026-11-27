@@ -67,3 +67,21 @@
 .nza-preview-frame.mobile iframe{border-radius:17px}
 .nza-preview-frame.desktop{max-width:1200px}
 @media(max-width:650px){.nza-preview-frame.desktop{height:610px}.nza-preview-frame.mobile{height:630px}.nza-preview-stage{overflow:auto}}
+
+/* Taller: preview casi a pantalla completa; sin cabeceras ni marcos decorativos. */
+#view-vista-previa.nza-preview-compact{padding-top:0}
+.nza-preview-compact .nza-preview-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 6px;padding:4px 0}
+.nza-preview-toolbar>strong{font-size:17px;font-weight:740;color:#193c2c;margin-right:auto}
+.nza-preview-toolbar .nza-preview-buttons{padding:2px;border-radius:8px}
+.nza-preview-toolbar .nza-device{padding:7px 12px;border-radius:7px;font-size:13px}
+.nza-preview-compact .nza-campaign-preview-note{padding:6px 11px;margin:0 0 8px;font-size:12px}
+.nza-preview-compact .nza-preview-stage{padding:0;border:0;border-radius:8px;background:transparent;overflow:visible}
+.nza-preview-compact .nza-preview-frame{max-width:none;min-height:calc(100dvh - 222px);height:calc(100dvh - 222px);border:1px solid #d5ded2;border-radius:8px;box-shadow:none}
+.nza-preview-compact .nza-preview-frame.desktop{max-width:none}
+.nza-preview-compact .nza-preview-frame.mobile{max-width:390px;margin:0 auto}
+.nza-preview-compact .nza-preview-frame iframe{width:100%;height:100%;border:0}
+.nza-preview-size{display:none}
+.nza-preview-review{margin-top:12px}
+.nza-preview-review .nza-checks{display:flex;flex-wrap:wrap;gap:12px}
+.nza-preview-review .nza-checks label{font-size:12px}
+@media(max-width:800px){.nza-preview-compact .nza-preview-frame{height:calc(100dvh - 270px);min-height:420px}.nza-preview-compact .nza-preview-toolbar>strong{width:100%}}
