@@ -25,3 +25,12 @@
 .nza-promo-disclaimer{font-size:12px;color:#747b72;margin-top:12px}
 @media(max-width:1030px){.nza-promo-layout{grid-template-columns:1fr}}
 @media(max-width:530px){.nza-promo-prices{grid-template-columns:1fr 120px 50px;padding-left:0}.nza-campaign-dates{grid-template-columns:1fr}}
+
+/* Segmentación comercial y descuento masivo */
+.nza-segmentation-tools{display:grid;grid-template-columns:minmax(0,1fr) 150px auto;align-items:end;gap:9px;padding:12px;background:#f3f7f1;border:1px solid #dfe8db;border-radius:9px}
+.nza-segmentation-tools label{display:grid;gap:5px;font-size:13px;font-weight:650}
+.nza-segmentation-tools .btn{min-height:39px;white-space:normal}
+.nza-campaign-segment-summary{font-size:12px;color:#43614f;background:#eaf4e9;padding:9px 12px;border-radius:8px}
+.nza-promo-rotation{display:block;margin-top:5px;font-size:11px;color:#617366;line-height:1.4}
+@media(max-width:1280px){.nza-segmentation-tools{grid-template-columns:minmax(0,1fr) 130px}.nza-segmentation-tools .btn{grid-column:1/-1}}
+@media(max-width:550px){.nza-segmentation-tools{grid-template-columns:1fr}.nza-segmentation-tools .btn{grid-column:auto}}
