@@ -1,5 +1,5 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#087c3d"><meta name="description" content="NZER STORE: revisa tu carrito y conoce los medios de pago previstos. Catálogo en demostración, sin cobros."><title>Mi carrito · NZER STORE</title>
-<link rel="stylesheet" href="../../assets/styles.css?v=24"><link rel="stylesheet" href="../../assets/home-v5.css?v=2"><link rel="stylesheet" href="../../assets/home-drawer-v1.css?v=2"><link rel="stylesheet" href="../../assets/home-search-v1.css"><link rel="stylesheet" href="../../assets/nzer-whatsapp-global.css"><link rel="stylesheet" href="../../assets/store-cart-checkout-v1.css?v=2"></head>
+<link rel="stylesheet" href="../../assets/styles.css?v=24"><link rel="stylesheet" href="../../assets/home-v5.css?v=2"><link rel="stylesheet" href="../../assets/home-drawer-v1.css?v=2"><link rel="stylesheet" href="../../assets/home-search-v1.css"><link rel="stylesheet" href="../../assets/nzer-whatsapp-global.css"><link rel="stylesheet" href="../../assets/store-cart-checkout-v1.css?v=3"></head>
 <body class="nzer-home-v5 nzer-checkout-page">
 <header class="n5-header"><div class="n5-wrap n5-nav">
 <button id="n5HomeMenuToggle" class="n5-menu-toggle" type="button" aria-controls="n5HomeDrawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Explora NZER</button><a class="n5-brand" href="../../index.html" aria-label="NZER, volver a inicio"><span><strong class="n5-brand-name">NZER</strong><span class="n5-brand-slogan">CRECEMOS JUNTOS</span></span></a>
@@ -33,32 +33,40 @@
 </aside>
 <main>
 <section class="nzc-hero"><div class="nzc-container"><div class="nzc-crumb"><a href="../../index.html">Inicio</a> / <a href="../index.html">Tienda</a> / Mi carrito</div>
-<div class="nzc-demo-status">● Catálogo demostrativo · Pagos no habilitados</div>
-<h1>Tu carrito de <span>NZER STORE</span></h1><p>Revisa tus productos, identifica cómo deseas continuar y conoce las opciones previstas para el retiro en local.</p>
+<div class="nzc-hero-row"><div><h1>Mi carrito <span>NZER STORE</span></h1><p>Revisa tus productos, elige cómo continuar y confirma el medio de pago de prueba.</p></div><div class="nzc-demo-status">● Demostración · Sin cobros</div></div>
 <div class="nzc-steps" aria-label="Etapas de compra"><div class="nzc-step is-current"><span>1</span> Carrito</div><div class="nzc-step"><span>2</span> Identificación</div><div class="nzc-step"><span>3</span> Entrega y pago</div><div class="nzc-step"><span>4</span> Confirmación</div></div>
 </div></section>
 <section class="nzc-main"><div class="nzc-container">
 <div class="nzc-layout">
 <div class="nzc-stack">
- <section class="nzc-panel" aria-labelledby="nzcProductsHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">01 · CARRITO</span><h2 id="nzcProductsHeading">Productos seleccionados</h2><p>Puedes cambiar las cantidades antes de continuar.</p></div><a class="nzc-small-link" href="../index.html#catalogo">Seguir explorando →</a></div>
+ <section class="nzc-panel" aria-labelledby="nzcProductsHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">01 · CARRITO</span><h2 id="nzcProductsHeading">Productos seleccionados</h2></div><a class="nzc-small-link" href="../index.html#catalogo">Seguir explorando →</a></div>
  <div id="cartItems" class="nzc-cart-items" aria-live="polite"></div></section>
- <section class="nzc-panel nzc-identity" id="identificacion" aria-labelledby="nzcIdentityHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">02 · IDENTIFICACIÓN</span><h2 id="nzcIdentityHeading">¿Ya eres parte de NZER?</h2><p>Elige cómo te gustaría continuar. No necesitas registrarte para probar el carrito.</p></div><span class="nzc-optional-tag">SIN CUENTA OBLIGATORIA</span></div>
- <div class="nzc-panel-inner"><div class="nzc-identity-grid">
-  <div class="nzc-identity-choice nzc-identity-login"><div class="nzc-identity-illustration" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.7"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div><h3>Iniciar sesión</h3><p>En el futuro podrás consultar tus compras y actualizar tus datos de forma segura.</p><button class="nzc-outline-btn" id="nzcLoginUnavailable" type="button">Acceder a mi cuenta <span aria-hidden="true">→</span></button><span class="nzc-identity-caption">Acceso seguro en preparación</span></div>
-  <div class="nzc-identity-choice nzc-identity-guest"><div class="nzc-identity-illustration" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.8" width="17.6" height="14.4" rx="2.5"/><path d="M7 9h10M7 13h7"/></svg></div><h3>Continuar sin cuenta</h3><p>Explora el proceso de compra sin entregar información personal ni crear un usuario.</p><button class="nzc-guest-btn" id="nzcGuestContinue" type="button" aria-pressed="false">Continuar como visitante <span aria-hidden="true">→</span></button><span class="nzc-identity-caption">Disponible solo en demostración</span></div>
- </div><div class="nzc-identity-feedback" id="nzcIdentityFeedback" role="status" aria-live="polite"></div></div></section>
- <section class="nzc-panel" aria-labelledby="nzcDeliveryHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">03 · ENTREGA</span><h2 id="nzcDeliveryHeading">¿Cómo recibirás tus productos?</h2><p>Modelo previsto para la venta local en La Joya.</p></div></div>
+ <section class="nzc-panel nzc-identity" id="identificacion" aria-labelledby="nzcIdentityHeading">
+ <div class="nzc-panel-header"><div><span class="nzc-section-number">02 · IDENTIFICACIÓN</span><h2 id="nzcIdentityHeading">¿Cómo deseas continuar?</h2></div><span class="nzc-optional-tag">SIN CUENTA OBLIGATORIA</span></div>
+ <div class="nzc-panel-inner">
+  <div class="nzc-identity-grid">
+   <div class="nzc-identity-choice nzc-identity-login">
+    <div class="nzc-identity-label"><span class="nzc-mini-icon" aria-hidden="true">♙</span><span><strong>Iniciar sesión</strong><small>En preparación</small></span></div>
+    <button class="nzc-outline-btn" id="nzcLoginUnavailable" type="button">Ingresar →</button>
+   </div>
+   <div class="nzc-identity-choice nzc-identity-guest">
+    <div class="nzc-identity-label"><span class="nzc-mini-icon" aria-hidden="true">✓</span><span><strong>Sin cuenta</strong><small>Solo demostración</small></span></div>
+    <button class="nzc-guest-btn" id="nzcGuestContinue" type="button" aria-pressed="false">Continuar →</button>
+   </div>
+  </div><div class="nzc-identity-feedback" id="nzcIdentityFeedback" role="status" aria-live="polite"></div>
+ </div></section>
+ <section class="nzc-panel" aria-labelledby="nzcDeliveryHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">03 · ENTREGA</span><h2 id="nzcDeliveryHeading">¿Cómo recibirás tus productos?</h2></div></div>
  <div class="nzc-panel-inner"><div class="nzc-option-list"><label class="nzc-option"><input type="radio" name="deliveryMode" checked value="pickup"><span class="nzc-pay-icon" aria-hidden="true">⌂</span><span class="nzc-option-copy">Recojo en local<small>Cruce La Joya, Arequipa · Previa confirmación</small></span></label></div>
- <div class="nzc-hint">El punto exacto de recojo y los horarios de entrega se comunicarán cuando exista un pedido confirmado. No se ofrece envío a domicilio desde esta demostración.</div></div></section>
- <section class="nzc-panel" aria-labelledby="nzcPaymentHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">03 · MEDIOS DE PAGO</span><h2 id="nzcPaymentHeading">Selecciona un medio de pago</h2><p>Opciones previstas para una futura compra. Todavía no se puede pagar.</p></div></div>
+ </div></section>
+ <section class="nzc-panel" aria-labelledby="nzcPaymentHeading"><div class="nzc-panel-header"><div><span class="nzc-section-number">03 · MEDIOS DE PAGO</span><h2 id="nzcPaymentHeading">Selecciona un medio de pago</h2></div></div>
  <div class="nzc-panel-inner"><div class="nzc-option-list">
  <label class="nzc-option"><input type="radio" name="paymentDemo" value="yape"><span class="nzc-pay-icon" aria-hidden="true">S/</span><span class="nzc-option-copy">Yape <small>Pendiente de vincular y verificar la cuenta comercial</small></span></label>
  <label class="nzc-option"><input type="radio" name="paymentDemo" value="plin"><span class="nzc-pay-icon" aria-hidden="true">S/</span><span class="nzc-option-copy">Plin <small>Pendiente de habilitación</small></span></label>
  <label class="nzc-option"><input type="radio" name="paymentDemo" value="transferencia"><span class="nzc-pay-icon" aria-hidden="true">⇄</span><span class="nzc-option-copy">Transferencia bancaria <small>Cuenta de cobro por confirmar</small></span></label>
  <label class="nzc-option"><input type="radio" name="paymentDemo" value="local" checked><span class="nzc-pay-icon" aria-hidden="true">⌂</span><span class="nzc-option-copy">Pago en el local <small>Sujeto a confirmación del pedido y disponibilidad</small></span></label>
- </div><div class="nzc-hint"><strong>Importante:</strong> No ingreses números de tarjeta, contraseñas ni comprobantes de pago aquí. Esta página todavía no procesa operaciones bancarias.</div></div></section>
+ </div></div></section>
 </div>
-<aside class="nzc-panel nzc-summary" aria-label="Resumen del pedido"><div class="nzc-panel-inner"><div class="nzc-meta">RESUMEN DE COMPRA · DEMOSTRACIÓN</div><h2>Resumen del pedido</h2><p class="nzc-summary-intro">Revisa los importes y la modalidad de entrega antes de continuar.</p>
+<aside class="nzc-panel nzc-summary" aria-label="Resumen del pedido"><div class="nzc-panel-inner"><div class="nzc-meta">RESUMEN DE COMPRA · DEMOSTRACIÓN</div><h2>Resumen del pedido</h2>
 <div class="nzc-sumrow"><span>Unidades</span><strong data-order-count>0</strong></div>
 <div class="nzc-sumrow"><span>Subtotal referencial</span><strong data-subtotal>S/ 0.00</strong></div>
 <div class="nzc-sumrow"><span>Recojo en local</span><strong>A coordinar</strong></div>
@@ -71,4 +79,4 @@
 </div></section></main>
 <footer class="footer"><div class="container"><div class="footer-grid"><div><a href="../../index.html" class="brand"><span class="brand-icon store-monogram" aria-hidden="true">N</span><span><span class="brand-word">NZER</span><span class="brand-slogan">CRECEMOS JUNTOS</span></span></a><p>Una empresa dedicada al desarrollo infantil, la orientación familiar y las experiencias para crecer. Desde Cruce La Joya, Arequipa.</p></div><div><h4>Explora NZER</h4><div class="footer-links"><a href="../../desarrollo-infantil/index.html">Desarrollo infantil</a><a href="../../care/index.html">NZER CARE</a><a href="../../psico/index.html">PSICO NZER</a><a href="../../store/index.html">NZER STORE</a></div></div><div><h4>Para las familias</h4><div class="footer-links"><a href="../../aprende/index.html">Aprende en familia</a><a href="../../nosotros/index.html">Sobre NZER</a><a href="../../contacto/index.html">Contacto</a><a href="../../index.html">Página principal</a></div></div></div><div class="footer-bottom"><span>© 2026 NZER · Prototipo público sin datos personales de niños</span><span>Tienda demostrativa · No procesa pedidos ni pagos.</span></div></div></footer>
 <div class="prototype">✦ TIENDA DE DEMOSTRACIÓN · SIN COBROS</div><div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="../../assets/app.js?v=29" defer></script><script src="../../assets/home-drawer-v1.js" defer></script><script src="../../assets/home-search-v1.js?v=4" defer></script><script src="../../assets/nzer-whatsapp-global.js" defer></script><script src="../../assets/store-cart-checkout-v1.js?v=2" defer></script></body></html>
+<script src="../../assets/app.js?v=29" defer></script><script src="../../assets/home-drawer-v1.js" defer></script><script src="../../assets/home-search-v1.js?v=4" defer></script><script src="../../assets/nzer-whatsapp-global.js" defer></script><script src="../../assets/store-cart-checkout-v1.js?v=3" defer></script></body></html>
