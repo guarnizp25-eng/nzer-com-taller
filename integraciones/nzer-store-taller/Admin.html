@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><base target="_top"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{font:16px system-ui;color:#593824;background:#f8f4ea}*{box-sizing:border-box}body{margin:0}header{background:#603a26;color:#fff;padding:22px}header h1{margin:0;font-size:24px}header span{color:#d8efa7}main{max-width:1120px;margin:auto;padding:20px}section{background:white;border:1px solid #e3d9c9;border-radius:13px;padding:18px;margin:14px 0}h2{font-size:18px;margin:0 0 12px}.grid{display:grid;grid-template-columns:330px 1fr;gap:15px}button{border:0;border-radius:9px;padding:10px 13px;background:#21803f;color:white;cursor:pointer;font-weight:650}button:disabled{opacity:.5}select,input{padding:10px;width:100%;border:1px solid #c7b7a6;border-radius:8px;font:inherit}label{display:block;margin:10px 0 6px;font-weight:600;font-size:13px}.hint{font-size:13px;color:#836b59}.banner{background:#fff0cd;border:1px solid #e8c47b;padding:12px;border-radius:9px}table{border-collapse:collapse;width:100%;font-size:13px;min-width:620px}th,td{text-align:left;border-bottom:1px solid #e7ddd2;padding:10px}th{background:#f5eee7}div.scroll{overflow-x:auto}.actions{display:flex;gap:8px;flex-wrap:wrap}.secondary{background:#70472e}.status{margin:12px 0;min-height:22px;font-weight:600}ul{padding-left:19px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><header><h1><span>NZER</span> ADMIN — Pedidos</h1><div>STORE · TALLER · Base central de pruebas</div></header>
+<main><div class="banner"><b>PRUEBAS ÚNICAMENTE</b> — No ingresar datos reales de clientes. No se procesa dinero ni se emiten comprobantes. El registro se almacena en la hoja de pruebas del Taller.</div>
+<div class="grid"><section><h2>Nueva venta ficticia</h2><label for="product">Producto</label><select id="product"></select><label for="qty">Cantidad</label><input id="qty" type="number" min="1" max="99" step="1" value="1"><p id="available" class="hint"></p><div class="actions"><button id="create">Registrar pedido ficticio</button></div></section>
+<section><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2>Pedidos centralizados</h2><button id="refresh" class="secondary">Actualizar</button></div><div id="status" class="status" role="status"></div><div class="scroll"><table><thead><tr><th>Pedido</th><th>Canal</th><th>Fecha</th><th>Estado</th><th>Importe</th><th>Acción</th></tr></thead><tbody id="orders"></tbody></table></div></section></div>
+<section><h2>Comprobación de inventario</h2><p class="hint">La auditoría compara reservas registradas contra pedidos pendientes.</p><button id="audit" class="secondary">Auditar stock de prueba</button><p id="auditResult" class="hint"></p></section>
+</main>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+let catalog=[],orders=[];
+const money=n=>'S/ '+Number(n).toFixed(2);
+function error(e){$('status').textContent='Error: '+(e&&e.message||String(e));}
+function loading(msg){$('status').textContent=msg;}
+function list(){
+ loading('Consultando pedidos...');
+ google.script.run.withSuccessHandler(rows=>{
+   orders=rows||[];$('orders').replaceChildren();
+   orders.forEach(o=>{
+     const tr=document.createElement('tr');
+     [o.id,o.channel,new Date(o.date).toLocaleString('es-PE'),o.status,money(o.total)].forEach(v=>{
+       const td=document.createElement('td');td.textContent=v;tr.append(td);
+     });
+     const cell=document.createElement('td');
+     if(o.status==='PENDIENTE'){
+       const pay=document.createElement('button');pay.textContent='Pago ficticio';pay.addEventListener('click',()=>act(o.id,'CONFIRMAR_PAGO'));
+       const cancel=document.createElement('button');cancel.textContent='Cancelar';cancel.className='secondary';cancel.addEventListener('click',()=>act(o.id,'CANCELAR'));
+       cell.append(pay,document.createTextNode(' '),cancel);
+     }else if(o.status==='PAGADO'){
+       const delivery=document.createElement('button');delivery.textContent='Entregado';delivery.addEventListener('click',()=>act(o.id,'ENTREGAR'));cell.append(delivery);
+     }
+     tr.append(cell);$('orders').append(tr);
+   });
+   loading('Pedidos centralizados: '+orders.length);loadCatalog();
+ }).withFailureHandler(error).adminTallerOrders();
+}
+function loadCatalog(){
+ google.script.run.withSuccessHandler(rows=>{
+   catalog=rows||[];$('product').replaceChildren();
+   catalog.forEach(p=>{const opt=document.createElement('option');opt.value=p.id;opt.textContent=p.name+' — '+money(p.price);$('product').append(opt);});availability();
+ }).withFailureHandler(error).adminTallerCatalog();
+}
+function availability(){
+ const p=catalog.find(x=>x.id===$('product').value);
+ $('available').textContent=p?'Disponibles: '+p.available+' · '+money(p.price)+' por unidad':'Catálogo vacío';
+}
+function act(id,action){
+ if(!confirm('¿Aplicar la acción de prueba '+action+' al pedido '+id+'?'))return;
+ loading('Actualizando pedido...');
+ google.script.run.withSuccessHandler(()=>list()).withFailureHandler(error).adminTallerChangeOrder(id,action,'EFECTIVO');
+}
+$('product').addEventListener('change',availability);
+$('create').addEventListener('click',()=>{
+ const id=$('product').value,qty=Number($('qty').value);
+ const item=catalog.find(x=>x.id===id);
+ if(!item||!Number.isSafeInteger(qty)||qty<1||qty>item.available){loading('Cantidad no válida o sin stock de prueba.');return;}
+ loading('Registrando pedido ficticio...');
+ google.script.run.withSuccessHandler(r=>{loading('Creado: '+r.id);list()}).withFailureHandler(error)
+ .adminTallerCreateOrder({items:[{productId:id,qty}]});
+});
+$('refresh').addEventListener('click',list);
+$('audit').addEventListener('click',()=>{
+ $('auditResult').textContent='Auditando...';
+ google.script.run.withSuccessHandler(rows=>{
+   $('auditResult').textContent=(rows||[]).length?JSON.stringify(rows,null,2):'Inventario coherente: no se detectaron diferencias.';
+ }).withFailureHandler(e=>{$('auditResult').textContent=e.message}).adminTallerAudit();
+});
+list();
+})();
+</script></body></html>
