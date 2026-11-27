@@ -1,0 +1,64 @@
+/* NZER KIDS · Contacto V2 · Nunito / responsive / ubicación y redes */
+.nzer-home-v5.nzc-contact{font-family:'Nunito',Arial,sans-serif;color:#064932;background:#fff}
+.nzc-contact .nzc-page *{box-sizing:border-box}
+.nzc-contact .nzc-wrap{width:min(1320px,calc(100% - 44px));margin-inline:auto}
+.nzc-contact .nzc-hero{padding:40px 0 43px;background:radial-gradient(circle at 0% 12%,#d6f0c6 0 150px,transparent 152px),linear-gradient(114deg,#fffaf0,#eff8e7)}
+.nzc-contact .nzc-hero-layout{display:grid;grid-template-columns:1fr .93fr;gap:52px;align-items:center}
+.nzc-contact .nzc-crumb{font-size:13px;color:#6b816a;font-weight:900;margin:0 0 20px}
+.nzc-contact .nzc-crumb a{color:#097549;text-decoration:none}
+.nzc-contact .nzc-kicker{font-size:12px;letter-spacing:1.5px;color:#aa6228;font-weight:1000;display:block;margin-bottom:11px}
+.nzc-contact .nzc-hero h1{font-size:clamp(40px,4.25vw,67px);line-height:1.06;letter-spacing:-1.8px;font-weight:1000;margin:0 0 18px;color:#064b33}
+.nzc-contact .nzc-hero h1 span{color:#ea7418;display:block}
+.nzc-contact .nzc-hero-copy>p{font-size:17px;line-height:1.58;color:#4d6955;margin:0 0 23px;max-width:600px}
+.nzc-contact .nzc-actions{display:flex;flex-wrap:wrap;align-items:center;gap:11px}
+.nzc-contact .nzc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:28px;min-height:45px;padding:11px 20px;font-weight:1000;font-size:14px;text-decoration:none!important;border:1px solid transparent;cursor:pointer}
+.nzc-contact .nzc-btn-primary{background:#ed7217;color:white!important;box-shadow:0 7px 13px #bf72252b}
+.nzc-contact .nzc-btn-secondary{background:#fff;color:#086944!important;border-color:#b2d8bb}
+.nzc-contact .nzc-location-hero{position:relative;background:#fff;border:1px solid #dce7d2;box-shadow:0 12px 34px #0a4a2714;padding:24px;border-radius:25px;overflow:hidden}
+.nzc-contact .nzc-location-hero:before{position:absolute;content:"";width:210px;height:210px;border-radius:50%;background:#e9f7df;right:-73px;top:-88px}
+.nzc-contact .nzc-address-icon{display:grid;place-items:center;width:56px;height:56px;background:#e7f5de;color:#078451;border-radius:17px;position:relative}
+.nzc-contact .nzc-address-icon svg{height:32px;width:32px;fill:none;stroke:currentColor;stroke-width:2.2}
+.nzc-contact .nzc-location-hero h2{font-size:29px;line-height:1.12;font-weight:1000;color:#074d33;margin:16px 0 10px;position:relative}
+.nzc-contact .nzc-location-hero p{font-size:17px;line-height:1.55;color:#4c6651;position:relative;margin:0 0 18px}
+.nzc-contact .nzc-location-hero .nzc-address-label{font-size:11px;letter-spacing:1.2px;font-weight:950;color:#ae6a2d;margin-top:13px}
+.nzc-contact .nzc-location-hero .nzc-location-actions{display:flex;flex-wrap:wrap;gap:10px}
+.nzc-contact .nzc-quick{padding:34px 0 38px;background:#fff}
+.nzc-contact .nzc-quick-title{text-align:center;margin-bottom:22px}
+.nzc-contact .nzc-quick-title h2{font-size:clamp(29px,3vw,42px);font-weight:1000;line-height:1.15;color:#074e33;margin:0 0 8px}
+.nzc-contact .nzc-quick-title p{font-size:15px;color:#637668;margin:0}
+.nzc-contact .nzc-quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.nzc-contact .nzc-quick-card{background:#fbfdf9;border:1px solid #deeadb;border-radius:17px;padding:20px;display:flex;align-items:flex-start;gap:13px}
+.nzc-contact .nzc-quick-card .nzc-quick-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:13px;background:#e5f5dd;font-size:20px;color:#08784b}
+.nzc-contact .nzc-quick-card h3{font-size:18px;font-weight:1000;margin:0 0 5px;color:#084e34}
+.nzc-contact .nzc-quick-card p{font-size:13px;color:#697b6a;line-height:1.5;margin:0}
+.nzc-contact .nzc-visit{background:#f5f9f1;padding:50px 0}
+.nzc-contact .nzc-visit-header{margin-bottom:22px}
+.nzc-contact .nzc-visit-header h2{font-size:clamp(31px,3.2vw,44px);font-weight:1000;line-height:1.1;margin:5px 0 10px;color:#065033}
+.nzc-contact .nzc-visit-header p{font-size:16px;color:#617665;margin:0;line-height:1.5}
+.nzc-contact .nzc-visit-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:19px}
+.nzc-contact .nzc-map-panel{position:relative;overflow:hidden;border:1px solid #d8e6d4;background:#e4efd9;border-radius:22px;min-height:360px}
+.nzc-contact .nzc-map-panel iframe{display:block;border:0;width:100%;height:100%;min-height:360px}
+.nzc-contact .nzc-map-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 15px;background:#fff}
+.nzc-contact .nzc-map-footer strong{font-size:13px;color:#145b3d}
+.nzc-contact .nzc-map-footer a{font-size:13px;font-weight:950;color:#087648}
+.nzc-contact .nzc-social-panel{border-radius:22px;background:white;border:1px solid #dce9d5;padding:27px 25px}
+.nzc-contact .nzc-social-panel h3{font-size:27px;line-height:1.1;font-weight:1000;color:#075135;margin:0 0 10px}
+.nzc-contact .nzc-social-panel>p{font-size:14px;line-height:1.6;color:#617666;margin:0 0 18px}
+.nzc-contact .nzc-socials{display:grid;gap:10px}
+.nzc-contact .nzc-social-link{display:flex;align-items:center;gap:12px;border:1px solid #e2eadf;background:#fcfefb;border-radius:14px;padding:12px 14px;text-decoration:none}
+.nzc-contact .nzc-social-link:hover{background:#edf8e9}
+.nzc-contact .nzc-social-icon{width:40px;height:40px;display:grid;place-items:center;color:white;background:#0c7848;border-radius:12px;font-weight:1000;font-size:19px;flex-shrink:0}
+.nzc-contact .nzc-social-link span:last-child{min-width:0}
+.nzc-contact .nzc-social-link strong{display:block;color:#064e32;font-size:15px;font-weight:1000}
+.nzc-contact .nzc-social-link small{display:block;color:#7e8c7c;font-size:12px;margin-top:2px;overflow-wrap:anywhere}
+.nzc-contact .nzc-social-info{color:#84683e;font-size:11px;line-height:1.5;margin-top:16px}
+.nzc-contact .nzc-faq{padding:49px 0 59px;background:#fff}
+.nzc-contact .nzc-faq-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:38px}
+.nzc-contact .nzc-faq h2{font-size:clamp(30px,3vw,42px);font-weight:1000;color:#075337;line-height:1.12;margin:10px 0}
+.nzc-contact .nzc-faq .nzc-faq-copy{font-size:15px;line-height:1.6;color:#607965}
+.nzc-contact .nzc-faq details{border-bottom:1px solid #dce9dd;padding:15px 4px}
+.nzc-contact .nzc-faq summary{cursor:pointer;font-size:16px;font-weight:950;color:#075337}
+.nzc-contact .nzc-faq details p{font-size:14px;color:#5a7363;line-height:1.6;padding:8px 5px 0;margin:0}
+.nzc-contact .nzc-toast{font-size:12px;color:#0b7246;margin:8px 0 0;min-height:16px}
+@media(max-width:900px){.nzc-contact .nzc-hero-layout{gap:23px}.nzc-contact .nzc-visit-grid{grid-template-columns:1fr 1fr}.nzc-contact .nzc-quick-card{padding:16px}}
+@media(max-width:650px){.nzc-contact .nzc-wrap{width:calc(100% - 30px)}.nzc-contact .nzc-hero{padding:28px 0}.nzc-contact .nzc-hero-layout,.nzc-contact .nzc-visit-grid,.nzc-contact .nzc-faq-grid{grid-template-columns:1fr}.nzc-contact .nzc-hero h1{font-size:40px}.nzc-contact .nzc-location-hero{padding:23px}.nzc-contact .nzc-quick{padding:35px 0}.nzc-contact .nzc-quick-grid{grid-template-columns:1fr}.nzc-contact .nzc-visit{padding:37px 0}.nzc-contact .nzc-map-panel,.nzc-contact .nzc-map-panel iframe{min-height:290px}.nzc-contact .nzc-social-panel{padding:21px}.nzc-contact .nzc-faq{padding:40px 0}}
