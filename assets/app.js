@@ -235,7 +235,7 @@ if(NZER_IS_DRAFT_PREVIEW){
    for(const row of draft.products){
     if(!row||row.status!=='Preparado'||!row.name||!row.sku)continue;
     const existingBySku={'NZ-BM-042':'magnet','NZ-AB-001':'abacus'};
-    const normalized=t=>String(t||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/\\s+/g,' ').trim();
+    const normalized=t=>String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
     const matched=NZER_PRODUCTS.find(p=>normalized(p.name)===normalized(row.name));
     const id=existingBySku[row.sku]||matched?.id||'admin-'+String(row.id).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,45);
     const [category,categoryLabel]=map[row.category]||map.Otros;
