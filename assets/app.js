@@ -349,6 +349,7 @@ const NZER_PRODUCT_PHOTO_ROOT=new URL('productos-originales/',document.querySele
 function productArtwork(p){
  // Solo archivos fotográficos WebP del repositorio: sin ilustraciones SVG superpuestas.
  // Son imágenes conceptuales de catálogo y no certifican inventario físico.
+ if(NZER_IS_DRAFT_PREVIEW&&p.id.startsWith('admin-')&&!p.previewImage)return '<span class="nzer-product-visual nzer-photographic-only" style="display:grid;place-items:center;background:#f0f8e7;font-size:58px;min-height:150px" aria-label="Imagen pendiente de producto">📦</span>';
  const path=NZER_IS_DRAFT_PREVIEW&&p.previewImage?p.previewImage:NZER_PRODUCT_PHOTO_ROOT+encodeURIComponent(p.id)+'.webp';
  const label=String(p.name).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
  return '<span class="nzer-product-visual nzer-photographic-only">'+
