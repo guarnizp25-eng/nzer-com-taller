@@ -183,26 +183,4 @@
 <div class="n5-demo">✦ DEMOSTRACIÓN · IMÁGENES ILUSTRATIVAS</div><div class="toast n5-toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/catalog-v1.js?v=1" defer></script><script src="assets/app.js?v=33" defer></script><script src="assets/home-v5.js?v=22" defer></script><script src="assets/home-drawer-v1.js" defer></script><script src="assets/home-search-v1.js" defer></script><script src="assets/home-carousel-v1.js?v=3" defer></script><script src="assets/home-promo-dialog-v1.js" defer></script>
 <script src="assets/nzer-whatsapp-global.js" defer></script><script src="assets/home-expanded-v1.js?v=1" defer></script>
-<style id="nzer-familia-float-style">
-#nf-promo{position:fixed;right:12px;bottom:108px;z-index:890;max-width:min(340px,calc(100vw - 24px));font-family:inherit;transition:transform .55s ease,opacity .55s ease}
-#nf-promo.nf-compact{transform:translateX(0)}#nf-promo.nf-expanded{transform:translateX(0)}
-#nf-promo.nf-off{transform:translateX(calc(100% + 24px));opacity:0;pointer-events:none}
-#nf-promo .nf-card{background:#064b36;color:#fff;border:2px solid #dfb951;border-radius:20px;box-shadow:0 8px 22px #0004;padding:14px 16px;position:relative}
-#nf-promo .nf-label{color:#f5d374;font-size:11px;font-weight:800;letter-spacing:.08em}
-#nf-promo .nf-title{font-size:20px;font-weight:850;line-height:1.2;margin:3px 0}
-#nf-promo .nf-description{font-size:12px;line-height:1.4;margin:5px 0 10px}
-#nf-promo .nf-cta{display:inline-block;border-radius:16px;background:#f1c95b;color:#174332;padding:7px 13px;text-decoration:none;font-size:12px;font-weight:800}
-#nf-promo .nf-close{position:absolute;top:-12px;right:-7px;background:#fff;border:1px solid #ddd;border-radius:50%;height:28px;width:28px;color:#143b2c;cursor:pointer}
-#nf-promo .nf-mini{display:none;background:#064b36;border:2px solid #dfb951;border-radius:30px;padding:10px 13px;color:#fff;font-weight:800;box-shadow:0 5px 16px #0003;cursor:pointer}
-#nf-promo.nf-compact .nf-card{display:none}#nf-promo.nf-compact .nf-mini{display:block}
-@media(min-width:700px){#nf-promo{right:24px;bottom:112px}}
-@media(prefers-reduced-motion:reduce){#nf-promo{transition:none}}
-</style>
-<aside id="nf-promo" class="nf-off" aria-label="Conoce NZER Familia">
-<div class="nf-card"><button type="button" class="nf-close" aria-label="Cerrar anuncio">×</button><div class="nf-label">♛ NUEVO · NZER FAMILIA</div><div class="nf-title">Crecer juntos, desde casa</div><p class="nf-description">Videos, cursos y actividades para familias con niños de 2 a 5 años.</p><a class="nf-cta" href="nzer-familia-premium-demo.html">Conoce NZER Familia →</a></div>
-<button type="button" class="nf-mini" aria-label="Abrir NZER Familia">♛ NZER Familia ▸</button>
-</aside>
-<script>
-(function(){const el=document.getElementById('nf-promo');if(!el)return;const mini=el.querySelector('.nf-mini'),close=el.querySelector('.nf-close');const key='nf-last-expanded-v1',dismiss='nf-dismissed-v1';const delay=5*60*1000;let timer;function store(k,v){try{sessionStorage.setItem(k,String(v))}catch(e){}}function read(k){try{return sessionStorage.getItem(k)}catch(e){return null}}function compact(){clearTimeout(timer);el.className='nf-compact'}function expand(){if(read(dismiss)==='yes')return;el.className='nf-expanded';store(key,Date.now());timer=setTimeout(compact,8000)}function initialize(){if(read(dismiss)==='yes'){el.remove();return}const last=Number(read(key)||0);if(!last||Date.now()-last>=delay){setTimeout(expand,4000)}else{compact()}}mini.addEventListener('click',expand);close.addEventListener('click',()=>{store(dismiss,'yes');el.remove()});initialize()})();
-</script>
-</body></html>
+<script src="assets/nzer-familia-float-v2.js?v=2" defer></script></body></html>
